@@ -1,0 +1,4 @@
+[application]
+
+config/name="escape-the-black-hole"
+config/icon="res://icon.png"
