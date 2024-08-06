@@ -13,3 +13,13 @@ config_version=5
 config/name="escape-the-black-hole"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=265
+window/size/viewport_height=240
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/net.yarvis.pixel_pen/plugin.cfg")
