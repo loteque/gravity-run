@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ban08y7b71u11"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_ho20o"]
+[ext_resource type="Script" path="res://lib/Movement.gd" id="2_4ymgx"]
+[ext_resource type="Script" path="res://lib/Gravity.gd" id="3_7q004"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
+size = Vector2(26, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0yai"]
+radius = 51.0392
+
+[node name="Asteroid" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2yx3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ho20o")
+region_enabled = true
+region_rect = Rect2(0, 12, 26, 25)
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("2_4ymgx")
+
+[node name="GravityArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
+shape = SubResource("CircleShape2D_t0yai")
+
+[node name="Gravity" type="Node" parent="."]
+script = ExtResource("3_7q004")

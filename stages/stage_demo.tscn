@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6bgb1kkgovqa"]
+
+[ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player_ship/player_ship.tscn" id="1_jftv1"]
+[ext_resource type="PackedScene" uid="uid://bd2u34b3po55s" path="res://black_hole/black_hole.tscn" id="2_6grln"]
+
+[node name="StageDemo" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jftv1")]
+position = Vector2(132, 119)
+
+[node name="BlackHole" parent="." instance=ExtResource("2_6grln")]
+position = Vector2(-16, 120)
