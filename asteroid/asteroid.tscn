@@ -21,19 +21,26 @@ texture = ExtResource("1_ho20o")
 region_enabled = true
 region_rect = Rect2(0, 12, 26, 25)
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input")]
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
 script = ExtResource("2_4ymgx")
 actor = NodePath("..")
 speed = 75.0
 input = NodePath("../ActorInput")
+gravity = NodePath("../Gravity")
 
-[node name="GravityArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
-shape = SubResource("CircleShape2D_t0yai")
-
-[node name="Gravity" type="Node" parent="."]
+[node name="Gravity" type="Area2D" parent="." groups=["Grav"]]
+collision_layer = 0
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 5.0
 script = ExtResource("3_7q004")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
+shape = SubResource("CircleShape2D_t0yai")
 
 [node name="ActorInput" type="Node" parent="."]
 script = ExtResource("4_k2jfy")
