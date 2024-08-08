@@ -16,5 +16,7 @@ texture = ExtResource("1_367l1")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 12)
 
-[node name="Movement" type="Node" parent="."]
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_ldb40")
+actor = NodePath("..")
+speed = 200.0
