@@ -13,4 +13,4 @@ position = Vector2(132, 119)
 position = Vector2(-16, 120)
 
 [node name="Asteroid" parent="." instance=ExtResource("3_ok51h")]
-position = Vector2(259, 118)
+position = Vector2(265, 31)
