@@ -12,6 +12,8 @@ size = Vector2(26, 12)
 radius = 51.0392
 
 [node name="Asteroid" type="CharacterBody2D" groups=["Obstacle"]]
+motion_mode = 1
+platform_on_leave = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2yx3h")

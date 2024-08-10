@@ -5,12 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://ban08y7b71u11" path="res://asteroid/asteroid.tscn" id="3_ok51h"]
 
 [node name="StageDemo" type="Node2D"]
+position = Vector2(120, -2)
 
 [node name="Player" parent="." instance=ExtResource("1_jftv1")]
-position = Vector2(132, 119)
+position = Vector2(18, 113)
 
 [node name="BlackHole" parent="." instance=ExtResource("2_6grln")]
-position = Vector2(-16, 120)
+position = Vector2(-137, 113)
 
 [node name="Asteroid" parent="." instance=ExtResource("3_ok51h")]
-position = Vector2(265, 31)
+position = Vector2(379, 205)
+
+[node name="Asteroid2" parent="." instance=ExtResource("3_ok51h")]
+position = Vector2(195, 67)
