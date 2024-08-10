@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dit028henhvgo"]
+[gd_scene load_steps=9 format=3 uid="uid://dit028henhvgo"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_367l1"]
 [ext_resource type="Script" path="res://lib/Movement.gd" id="2_ldb40"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="3_cc2tu"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="4_xs4ys"]
+[ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_3qqbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
-size = Vector2(26, 12)
+size = Vector2(14, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ouwe"]
 radius = 5.83095
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xr2u"]
+size = Vector2(16, 8)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -48,3 +52,10 @@ script = ExtResource("4_xs4ys")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 shape = SubResource("CircleShape2D_1ouwe")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("5_3qqbp")
+actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_3xr2u")

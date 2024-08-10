@@ -7,11 +7,11 @@
 [node name="StageDemo" type="Node2D"]
 position = Vector2(120, -2)
 
+[node name="Spawner" parent="." instance=ExtResource("3_ebcw6")]
+position = Vector2(207, 0)
+
 [node name="Player" parent="." instance=ExtResource("1_jftv1")]
 position = Vector2(18, 113)
 
 [node name="BlackHole" parent="." instance=ExtResource("2_6grln")]
 position = Vector2(-137, 113)
-
-[node name="Spawner" parent="." instance=ExtResource("3_ebcw6")]
-position = Vector2(207, 0)

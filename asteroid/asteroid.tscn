@@ -1,15 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://ban08y7b71u11"]
+[gd_scene load_steps=11 format=3 uid="uid://ban08y7b71u11"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_ho20o"]
 [ext_resource type="Script" path="res://lib/Movement.gd" id="2_4ymgx"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="3_7q004"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="4_k2jfy"]
+[ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_bmhl4"]
+[ext_resource type="Script" path="res://lib/HitBox.gd" id="6_6tbj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
-size = Vector2(26, 12)
+size = Vector2(18, 18)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0yai"]
 radius = 51.0392
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvk8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf2ue"]
+size = Vector2(26, 24)
 
 [node name="Asteroid" type="CharacterBody2D" groups=["Obstacle"]]
 motion_mode = 1
@@ -46,3 +53,18 @@ shape = SubResource("CircleShape2D_t0yai")
 
 [node name="ActorInput" type="Node" parent="."]
 script = ExtResource("4_k2jfy")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+monitorable = false
+script = ExtResource("5_bmhl4")
+actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_gvk8c")
+
+[node name="HitBox" type="Area2D" parent="." groups=["Hitbox"]]
+monitoring = false
+script = ExtResource("6_6tbj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_xf2ue")
