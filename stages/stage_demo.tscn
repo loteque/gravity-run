@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player_ship/player_ship.tscn" id="1_jftv1"]
 [ext_resource type="PackedScene" uid="uid://bd2u34b3po55s" path="res://black_hole/black_hole.tscn" id="2_6grln"]
-[ext_resource type="PackedScene" uid="uid://ban08y7b71u11" path="res://asteroid/asteroid.tscn" id="3_ok51h"]
+[ext_resource type="PackedScene" uid="uid://byexshvj16hy0" path="res://asteroid/asteriod_spawner.tscn" id="3_ebcw6"]
 
 [node name="StageDemo" type="Node2D"]
 position = Vector2(120, -2)
@@ -13,8 +13,5 @@ position = Vector2(18, 113)
 [node name="BlackHole" parent="." instance=ExtResource("2_6grln")]
 position = Vector2(-137, 113)
 
-[node name="Asteroid" parent="." instance=ExtResource("3_ok51h")]
-position = Vector2(379, 205)
-
-[node name="Asteroid2" parent="." instance=ExtResource("3_ok51h")]
-position = Vector2(195, 67)
+[node name="Spawner" parent="." instance=ExtResource("3_ebcw6")]
+position = Vector2(207, 0)
