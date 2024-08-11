@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2gsxahbujr77"]
+[gd_scene load_steps=3 format=3 uid="uid://b2gsxahbujr77"]
 
 [ext_resource type="Script" path="res://stages/StageLoader.gd" id="1_h43jn"]
+[ext_resource type="Script" path="res://main.gd" id="1_x7bxa"]
 
 [node name="Main" type="Node"]
+process_mode = 3
+script = ExtResource("1_x7bxa")
 
 [node name="StageLoader" type="Node" parent="."]
+process_mode = 1
 script = ExtResource("1_h43jn")

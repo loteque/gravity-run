@@ -15,6 +15,10 @@ func die():
     
     actor.queue_free()
 
+    if actor.is_in_group("Player"):
+
+        Main.handle_game_over()
+        
 
 func damage(area):
     

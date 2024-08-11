@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtf4nsxhkunfm"]
+
+[ext_resource type="Script" path="res://ui/menu_screen.gd" id="1_huh3c"]
+[ext_resource type="Texture2D" uid="uid://g5gkm34j8s3x" path="res://greybox_sheet_texture_2d.tres" id="1_iar14"]
+[ext_resource type="PackedScene" uid="uid://dqbx2jm6rivgn" path="res://ui/menu.tscn" id="2_a47f8"]
+
+[sub_resource type="Gradient" id="Gradient_yu6rl"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h0ear"]
+gradient = SubResource("Gradient_yu6rl")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wpsr3"]
+load_path = "res://.godot/imported/greybox_texture_sheet.png-dcf74daa823ea5eef1d995e7e63f9b40.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqywt"]
+atlas = SubResource("CompressedTexture2D_wpsr3")
+region = Rect2(56, 99, 379, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7gyp"]
+atlas = ExtResource("1_iar14")
+region = Rect2(56, 74, 66, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v22ve"]
+atlas = ExtResource("1_iar14")
+region = Rect2(53, 39, 125, 24)
+
+[node name="MenuScreen" type="CanvasLayer" node_paths=PackedStringArray("menu", "titles")]
+process_mode = 3
+script = ExtResource("1_huh3c")
+menu = NodePath("VBoxContainer/Menu")
+titles = [NodePath("VBoxContainer/Title"), NodePath("VBoxContainer/Pause"), NodePath("VBoxContainer/GameOver")]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_h0ear")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -56.5
+offset_right = 189.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_aqywt")
+stretch_mode = 4
+
+[node name="Pause" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_x7gyp")
+stretch_mode = 4
+
+[node name="GameOver" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_v22ve")
+stretch_mode = 4
+
+[node name="Menu" parent="VBoxContainer" instance=ExtResource("2_a47f8")]
+layout_mode = 2
