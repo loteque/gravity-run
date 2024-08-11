@@ -17,8 +17,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/viewport_width=265
-window/size/viewport_height=240
+window/size/viewport_width=640
+window/size/viewport_height=380
 window/stretch/mode="viewport"
 
 [editor_plugins]
