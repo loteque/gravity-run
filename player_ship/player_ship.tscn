@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dit028henhvgo"]
+[gd_scene load_steps=10 format=3 uid="uid://dit028henhvgo"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_367l1"]
 [ext_resource type="Script" path="res://lib/Movement.gd" id="2_ldb40"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="3_cc2tu"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="4_xs4ys"]
 [ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_3qqbp"]
+[ext_resource type="PackedScene" uid="uid://76ek6csd6uyu" path="res://player_ship/color_flash_effect/flash_effect.tscn" id="6_mnedk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
 size = Vector2(12, 4)
@@ -61,3 +62,6 @@ actor = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_3xr2u")
+
+[node name="Flash" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("6_mnedk")]
+target_node = NodePath("../Sprite2D")
