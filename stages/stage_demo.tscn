@@ -8,17 +8,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ncr50"]
 shader = ExtResource("1_ucyh5")
-shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/dimensions = Vector2(640, 380)
 shader_parameter/small_stars = 50.0
 shader_parameter/small_stars_far_size = 0.5
 shader_parameter/small_stars_near_size = 0.6
 shader_parameter/large_stars = 8.0
 shader_parameter/large_stars_far_size = 0.2
-shader_parameter/large_stars_near_size = 0.2
+shader_parameter/large_stars_near_size = 0.3
 shader_parameter/far_stars_color = Color(1, 1, 1, 1)
 shader_parameter/near_stars_color = Color(1, 1, 1, 1)
-shader_parameter/base_scroll_speed = 0.05
-shader_parameter/additional_scroll_speed = 0.05
+shader_parameter/base_scroll_speed = 0.19
+shader_parameter/additional_scroll_speed = 0.19
 
 [node name="StageDemo" type="Node2D"]
 
@@ -31,7 +31,7 @@ offset_right = 640.0
 offset_bottom = 380.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0470588, 0, 0.0313726, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Spawner" parent="." instance=ExtResource("3_ebcw6")]
 position = Vector2(739, 0)

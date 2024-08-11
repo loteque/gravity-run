@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bd2u34b3po55s"]
+[gd_scene load_steps=17 format=3 uid="uid://bd2u34b3po55s"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_bqxve"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="2_gdhim"]
@@ -13,8 +13,8 @@ size = Vector2(56, 56)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqi4q"]
 radius = 218.112
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys66h"]
-size = Vector2(44, 44)
+[sub_resource type="CircleShape2D" id="CircleShape2D_otral"]
+radius = 28.0179
 
 [sub_resource type="Gradient" id="Gradient_8aurr"]
 offsets = PackedFloat32Array(0, 0.532787, 1)
@@ -32,13 +32,22 @@ shader_parameter/y_zoom = 0.0
 shader_parameter/fadeGradient = SubResource("GradientTexture2D_ej8fe")
 
 [sub_resource type="Gradient" id="Gradient_ha6lg"]
-offsets = PackedFloat32Array(0, 0.564935, 0.681818)
-colors = PackedColorArray(0, 0, 0, 1, 0.305882, 0.305882, 0.305882, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.67, 0.678)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d7bqq"]
 gradient = SubResource("Gradient_ha6lg")
+width = 512
+height = 512
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_dnoxs"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1r00f"]
+gradient = SubResource("Gradient_dnoxs")
+width = 128
+height = 128
 
 [node name="BlackHole" type="Node2D"]
 
@@ -70,12 +79,11 @@ shape = SubResource("CircleShape2D_rqi4q")
 script = ExtResource("3_ny24m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_ys66h")
+shape = SubResource("CircleShape2D_otral")
 
 [node name="InvertLayer" type="Sprite2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 material = SubResource("ShaderMaterial_bhg4g")
-scale = Vector2(4.6875, 4.6875)
 texture = SubResource("GradientTexture2D_d7bqq")
 script = ExtResource("6_skumi")
 follow_target = NodePath("../Sprite2D")
@@ -88,5 +96,6 @@ top_level = true
 z_index = 5
 position = Vector2(1.52588e-05, 6.10352e-05)
 scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_1r00f")
 script = ExtResource("6_skumi")
 follow_target = NodePath("../../Sprite2D")

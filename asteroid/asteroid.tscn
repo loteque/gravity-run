@@ -7,28 +7,26 @@
 [ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_bmhl4"]
 [ext_resource type="Script" path="res://lib/HitBox.gd" id="6_6tbj5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
-size = Vector2(18, 18)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yiah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0yai"]
 radius = 51.0392
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvk8c"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1i3s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf2ue"]
-size = Vector2(26, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvxgp"]
 
 [node name="Asteroid" type="CharacterBody2D" groups=["Obstacle"]]
 motion_mode = 1
 platform_on_leave = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2yx3h")
+shape = SubResource("CircleShape2D_8yiah")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ho20o")
 region_enabled = true
-region_rect = Rect2(0, 13, 26, 25)
+region_rect = Rect2(27, 13, 26, 25)
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
 script = ExtResource("2_4ymgx")
@@ -60,11 +58,11 @@ script = ExtResource("5_bmhl4")
 actor = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_gvk8c")
+shape = SubResource("CircleShape2D_n1i3s")
 
 [node name="HitBox" type="Area2D" parent="." groups=["Hitbox"]]
 monitoring = false
 script = ExtResource("6_6tbj5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_xf2ue")
+shape = SubResource("CircleShape2D_qvxgp")

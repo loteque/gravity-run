@@ -7,13 +7,13 @@
 [ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_3qqbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
-size = Vector2(24, 13)
+size = Vector2(12, 4)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ouwe"]
-radius = 37.1214
+radius = 22.0227
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xr2u"]
-size = Vector2(34, 20)
+size = Vector2(16, 8)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -22,13 +22,13 @@ floor_stop_on_slope = false
 floor_block_on_wall = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_2yx3h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_367l1")
 region_enabled = true
-region_rect = Rect2(27, 13, 56, 25)
+region_rect = Rect2(69, 155, 25, 16)
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
 script = ExtResource("2_ldb40")
@@ -59,4 +59,5 @@ script = ExtResource("5_3qqbp")
 actor = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_3xr2u")

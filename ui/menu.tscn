@@ -5,15 +5,15 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynr00"]
 atlas = ExtResource("1_g55yp")
-region = Rect2(53, 64, 29, 9)
+region = Rect2(0, 201, 29, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uag7i"]
 atlas = ExtResource("1_g55yp")
-region = Rect2(83, 64, 24, 9)
+region = Rect2(30, 201, 24, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0jrk"]
 atlas = ExtResource("1_g55yp")
-region = Rect2(108, 64, 51, 9)
+region = Rect2(55, 201, 51, 9)
 
 [node name="Menu" type="VBoxContainer" node_paths=PackedStringArray("buttons")]
 offset_right = 59.0
