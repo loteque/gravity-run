@@ -1,11 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6bgb1kkgovqa"]
+[gd_scene load_steps=7 format=3 uid="uid://b6bgb1kkgovqa"]
 
 [ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player_ship/player_ship.tscn" id="1_jftv1"]
+[ext_resource type="Shader" path="res://third_party/star_field_shader/starfield_shader_v5.gdshader" id="1_ucyh5"]
 [ext_resource type="PackedScene" uid="uid://bd2u34b3po55s" path="res://black_hole/black_hole.tscn" id="2_6grln"]
 [ext_resource type="PackedScene" uid="uid://byexshvj16hy0" path="res://asteroid/asteriod_spawner.tscn" id="3_ebcw6"]
 [ext_resource type="PackedScene" uid="uid://dtf4nsxhkunfm" path="res://ui/menu_screen.tscn" id="4_hl086"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncr50"]
+shader = ExtResource("1_ucyh5")
+shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/small_stars = 50.0
+shader_parameter/small_stars_far_size = 0.5
+shader_parameter/small_stars_near_size = 0.6
+shader_parameter/large_stars = 8.0
+shader_parameter/large_stars_far_size = 0.2
+shader_parameter/large_stars_near_size = 0.2
+shader_parameter/far_stars_color = Color(1, 1, 1, 1)
+shader_parameter/near_stars_color = Color(1, 1, 1, 1)
+shader_parameter/base_scroll_speed = 0.05
+shader_parameter/additional_scroll_speed = 0.05
+
 [node name="StageDemo" type="Node2D"]
+
+[node name="Starfield" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ncr50")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0, 0.0313726, 1)
 
 [node name="Spawner" parent="." instance=ExtResource("3_ebcw6")]
 position = Vector2(739, 0)
