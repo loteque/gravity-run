@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd2u34b3po55s"]
+[gd_scene load_steps=6 format=3 uid="uid://bd2u34b3po55s"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_bqxve"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="2_gdhim"]
 [ext_resource type="Script" path="res://lib/HitBox.gd" id="3_ny24m"]
+[ext_resource type="PackedScene" uid="uid://bogs8ssdogpsr" path="res://black_hole/black_hole_modular.tscn" id="3_4f83c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umjh8"]
 size = Vector2(56, 56)
@@ -16,6 +17,7 @@ size = Vector2(44, 44)
 [node name="BlackHole" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_bqxve")
 region_enabled = true
 region_rect = Rect2(0, 93, 55, 56)
@@ -43,3 +45,8 @@ script = ExtResource("3_ny24m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ys66h")
+
+[node name="BlackHoleEventhorizonShader" parent="." instance=ExtResource("3_4f83c")]
+position = Vector2(1.52588e-05, 6.10352e-05)
+scale = Vector2(2, 2)
+script = null

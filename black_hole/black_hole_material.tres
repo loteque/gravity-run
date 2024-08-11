@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bb57815wd75y0"]
+
+[ext_resource type="Shader" path="res://black_hole/black_hole_warp.gdshader" id="1_flks3"]
+
+[resource]
+shader = ExtResource("1_flks3")
+shader_parameter/strength = 0.05
+shader_parameter/black_radius = 0.65
