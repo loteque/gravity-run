@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_2yx3h")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ho20o")
 region_enabled = true
-region_rect = Rect2(0, 12, 26, 25)
+region_rect = Rect2(0, 13, 26, 25)
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
 script = ExtResource("2_4ymgx")

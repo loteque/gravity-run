@@ -18,7 +18,7 @@ size = Vector2(44, 44)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bqxve")
 region_enabled = true
-region_rect = Rect2(0, 90, 56, 56)
+region_rect = Rect2(0, 93, 55, 56)
 
 [node name="EventHorizon" type="Area2D" parent="."]
 
