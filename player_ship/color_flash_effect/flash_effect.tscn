@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://76ek6csd6uyu"]
+
+[ext_resource type="Script" path="res://player_ship/color_flash_effect/flash.gd" id="1_pwun1"]
+
+[node name="Flash" type="Node"]
+script = ExtResource("1_pwun1")
+flash_color = Color(1, 1, 1, 1)
+flash_duration = 0.1
