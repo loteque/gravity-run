@@ -1,11 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://ban08y7b71u11"]
+[gd_scene load_steps=14 format=3 uid="uid://ban08y7b71u11"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_ho20o"]
+[ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_r0pvp"]
 [ext_resource type="Script" path="res://lib/Movement.gd" id="2_4ymgx"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="3_7q004"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="4_k2jfy"]
 [ext_resource type="Script" path="res://asteroid/AsteroidHurtBox.gd" id="5_5487i"]
 [ext_resource type="Script" path="res://lib/HitBox.gd" id="6_6tbj5"]
+[ext_resource type="PackedScene" uid="uid://76ek6csd6uyu" path="res://third_party/color_flash_effect/flash_effect.tscn" id="7_cgx0p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xa4r6"]
+resource_local_to_scene = true
+shader = ExtResource("1_r0pvp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/is_on = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yiah"]
 radius = 7.0
@@ -24,6 +32,7 @@ motion_mode = 1
 platform_on_leave = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xa4r6")
 texture = ExtResource("1_ho20o")
 region_enabled = true
 region_rect = Rect2(27, 13, 26, 25)
@@ -55,10 +64,12 @@ shape = SubResource("CircleShape2D_t0yai")
 [node name="ActorInput" type="Node" parent="."]
 script = ExtResource("4_k2jfy")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect")]
 monitorable = false
 script = ExtResource("5_5487i")
 actor = NodePath("..")
+health = 3
+flash_effect = NodePath("../Flash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_n1i3s")
@@ -70,3 +81,6 @@ damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_qvxgp")
+
+[node name="Flash" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("7_cgx0p")]
+target_node = NodePath("../Sprite2D")

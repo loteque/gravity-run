@@ -6,38 +6,48 @@ class_name HurtBox
 @export var flash_effect: Node
 
 func _ready():
-    area_entered.connect(_on_area_entered)
+	area_entered.connect(_on_area_entered)
 
 
-func die():
+func die(_area: Area2D):
 
-    if !actor: return
-    
-    actor.queue_free()
+	if !actor: return
 
-    if actor.is_in_group("Player"):
+	actor.queue_free()
 
-        Main.handle_game_over()
-        
+	if actor.is_in_group("Player"):
+
+		Main.handle_game_over()
+		
+
+func is_hitbox_valid(hitbox: Area2D) -> bool:
+
+	if hitbox.get_parent() == self.get_parent():
+		
+		return false
+
+	if !hitbox.is_in_group("Hitbox"):
+
+		return false
+
+	return true
+
 
 func damage(hitbox: Area2D):
-    
-    if hitbox.get_parent() == self.get_parent():
-        
-        return
 
-    if !hitbox.is_in_group("Hitbox"):
+	if !is_hitbox_valid(hitbox): return
 
-        return
+	health = health - hitbox.damage
 
-    if health <= 0:
-        
-        die(); return
+	if flash_effect:
+		
+		flash_effect.flash()
 
-    health = health - hitbox.damage
-    flash_effect.flash()
+	if health <= 0:
+		
+		die(hitbox); return
 
 
 func _on_area_entered(area: Area2D):
-        
-    damage(area)
+	
+	damage(area)

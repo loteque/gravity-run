@@ -1,10 +1,22 @@
 extends HurtBox
 
 
-func die():
+func is_hitbox_valid(hitbox: Area2D) -> bool:
+
+	if hitbox.get_parent().is_in_group("Obstacle"):
+
+		return false
+
+	return super.is_hitbox_valid(hitbox)
+
+
+func die(area: Area2D):
 	
-	State.player_state.get("player1").asteroid_killed.emit()
-	super.die()
+	if is_hitbox_valid(area):
+
+		State.player_state.get("player1").asteroid_killed.emit()
+	
+	super.die(area)
 
 
 func _on_area_entered(area: Area2D):
