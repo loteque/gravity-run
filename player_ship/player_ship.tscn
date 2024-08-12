@@ -84,8 +84,8 @@ position = Vector2(10, 0)
 script = ExtResource("8_oqag3")
 bullet = ExtResource("9_t6dfb")
 
-[node name="PlayerUI" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("8_6t3di")]
-actor = NodePath("..")
+[node name="PlayerUI" parent="." instance=ExtResource("8_6t3di")]
 
-[node name="PlayerState" type="Node" parent="."]
+[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("11_a02nr")
+hurtbox = NodePath("../HurtBox")
