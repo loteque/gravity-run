@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlhuc3rk04sxd"]
+[gd_scene load_steps=6 format=3 uid="uid://dlhuc3rk04sxd"]
 
 [ext_resource type="Script" path="res://ui/level_progress_bar/level_progress_bar.gd" id="1_beipc"]
+
+[sub_resource type="Theme" id="Theme_bvwb1"]
+default_font_size = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2qdg"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -13,35 +16,59 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0upqy"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Theme" id="Theme_rilac"]
+[sub_resource type="Theme" id="Theme_ag1af"]
 default_font_size = 8
 
-[node name="LevelProgress" type="VBoxContainer"]
+[node name="LevelProgressBar" type="HBoxContainer"]
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 13.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = SubResource("Theme_bvwb1")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "L"
+
+[node name="PlayerLevel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+
+[node name="Lev" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Lev"]
+layout_mode = 2
+size_flags_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_r2qdg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0upqy")
 step = 1.0
 show_percentage = false
 script = ExtResource("1_beipc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Lev"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_rilac")
+theme = SubResource("Theme_ag1af")
 
-[node name="CurrentKills" type="Label" parent="HBoxContainer"]
+[node name="CurrentKills" type="Label" parent="Lev/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Delimiter" type="Label" parent="HBoxContainer"]
+[node name="Delimiter" type="Label" parent="Lev/HBoxContainer"]
 layout_mode = 2
 text = "/"
 
-[node name="KillsNeeded" type="Label" parent="HBoxContainer"]
+[node name="KillsNeeded" type="Label" parent="Lev/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

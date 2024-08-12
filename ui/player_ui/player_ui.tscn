@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://7ol42fgfnbpr"]
+[gd_scene load_steps=3 format=3 uid="uid://7ol42fgfnbpr"]
 
-[ext_resource type="Script" path="res://ui/player_ui/player_ui.gd" id="1_cq4sw"]
 [ext_resource type="PackedScene" uid="uid://dl2htgjrw0710" path="res://ui/player_ui/total_kills_counter/TotalKillsCounter.tscn" id="1_yuab5"]
 [ext_resource type="PackedScene" uid="uid://dlhuc3rk04sxd" path="res://ui/level_progress_bar/level_progress_bar.tscn" id="3_o6d62"]
 
 [node name="PlayerUI" type="CanvasLayer"]
-script = ExtResource("1_cq4sw")
 
 [node name="TotalKills" parent="." instance=ExtResource("1_yuab5")]
 anchors_preset = 1
@@ -27,3 +25,4 @@ grow_horizontal = 2
 [node name="ProgressBar" parent="MarginContainer" instance=ExtResource("3_o6d62")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_horizontal = 4

@@ -3,7 +3,7 @@ extends HurtBox
 
 func die():
 	
-	GameState.player_state.get("player1").asteroid_killed.emit()
+	State.player_state.get("player1").asteroid_killed.emit()
 	super.die()
 
 

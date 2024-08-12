@@ -1,7 +1,6 @@
-extends Resource
+extends Node
 class_name GameState
 
-static var player_state: Dictionary = {"player1": null, "player2": null,}
 static var is_paused: bool = false
 static var is_game_over: bool = false
 
@@ -25,3 +24,7 @@ static func end_stage(game_over: bool = true):
         StageLoader.current_stage.get_tree().paused = true
         is_paused = true
         is_game_over = true
+
+
+var player_state: Dictionary = {"player1": null, "player2": null,}
+signal player_state_changed(state: PlayerState)

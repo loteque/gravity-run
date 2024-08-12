@@ -1,29 +1,35 @@
 extends ProgressBar
 
-@onready var player_state: PlayerState = get_tree().get_first_node_in_group("Player").get_node("PlayerState")
 
 func _ready():
 	
+	State.player_state_changed.connect(_on_player_state_changed)
+
 	%CurrentKills.text = "0"
-	
-	player_state.ready.connect(_on_player_state_ready)
-	
-	max_value = player_state.kills_until_next_level
-	%KillsNeeded.text = str(max_value)
 
 
-func _on_player_state_ready():
+func _on_player_state_changed(state: PlayerState):
 	
-	player_state.kills_this_level_updated.connect(_on_kills_this_level_updated)
-	player_state.kills_until_next_level_updated.connect(_on_kills_until_next_level_updated)
+	max_value = state.kills_until_next_level
+	%KillsNeeded.text = str(state.kills_until_next_level)
+
+	state.kills_this_level_updated.connect(_on_kills_this_level_updated)
+	state.kills_until_next_level_updated.connect(_on_kills_until_next_level_updated)
+	state.level_updated.connect(_on_level_updated)
 
 
 func _on_kills_this_level_updated(kill_count: int):
 	
 	value = kill_count
-	%CurrentKills.text = str(value)
+	%CurrentKills.text = str(kill_count)
+
 
 func _on_kills_until_next_level_updated(kills_needed: int):
 	
 	max_value = kills_needed
-	%KillsNeeded.text = str(max_value)
+	%KillsNeeded.text = str(kills_needed)
+
+
+func _on_level_updated(level):
+	
+	%PlayerLevel.text = str(level)
