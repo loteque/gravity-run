@@ -43,11 +43,17 @@ func get_rand_spawn_point():
 	return get_child(rand_idx)
 
 
-func _on_timeout():
+func spawn(_init_args: Array[Variant] = []):
 
 	var spawn_point: Marker2D = get_rand_spawn_point()
 	var spawn_node: Node2D = spawn_object.instantiate()
 	spawn_point.add_child(spawn_node)
+
+
+func _on_timeout():
+
+	spawn()
+
 	
 
 	

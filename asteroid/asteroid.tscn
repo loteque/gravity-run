@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_ho20o"]
 [ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_r0pvp"]
-[ext_resource type="Script" path="res://lib/Movement.gd" id="2_4ymgx"]
+[ext_resource type="Script" path="res://asteroid/AsteroidMovement.gd" id="3_6slht"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="3_7q004"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="4_k2jfy"]
 [ext_resource type="Script" path="res://asteroid/AsteroidHurtBox.gd" id="5_5487i"]
@@ -41,7 +41,8 @@ region_rect = Rect2(27, 13, 26, 25)
 shape = SubResource("CircleShape2D_8yiah")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
-script = ExtResource("2_4ymgx")
+script = ExtResource("3_6slht")
+min_speed = 40.0
 actor = NodePath("..")
 speed = 75.0
 input = NodePath("../ActorInput")

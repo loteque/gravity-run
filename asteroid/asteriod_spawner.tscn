@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://byexshvj16hy0"]
 
-[ext_resource type="Script" path="res://lib/Spawner.gd" id="1_383kj"]
+[ext_resource type="Script" path="res://asteroid/asteriod_spawner.gd" id="1_dfhry"]
 [ext_resource type="PackedScene" uid="uid://ban08y7b71u11" path="res://asteroid/asteroid.tscn" id="2_vhbno"]
 
 [node name="AsteroidSpawner" type="Node2D"]
-script = ExtResource("1_383kj")
+script = ExtResource("1_dfhry")
 timer_name = &"AsteroidSpawner"
 wait_max = 5.0
 spawn_object = ExtResource("2_vhbno")

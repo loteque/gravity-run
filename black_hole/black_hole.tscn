@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd2u34b3po55s"]
+[gd_scene load_steps=16 format=3 uid="uid://bd2u34b3po55s"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_bqxve"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="2_gdhim"]
@@ -7,14 +7,11 @@
 [ext_resource type="Shader" path="res://black_hole/invert_gradient.gdshader" id="5_gw8rx"]
 [ext_resource type="Script" path="res://black_hole/follow_node2d.gd" id="6_skumi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_umjh8"]
-size = Vector2(56, 56)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqi4q"]
 radius = 218.112
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otral"]
-radius = 28.0179
+radius = 14.0
 
 [sub_resource type="Gradient" id="Gradient_8aurr"]
 offsets = PackedFloat32Array(0, 0.532787, 1)
@@ -57,11 +54,6 @@ texture = ExtResource("1_bqxve")
 region_enabled = true
 region_rect = Rect2(0, 93, 55, 56)
 
-[node name="EventHorizon" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EventHorizon"]
-shape = SubResource("RectangleShape2D_umjh8")
-
 [node name="GravityArea" type="Area2D" parent="." groups=["BlackHole"]]
 collision_layer = 0
 collision_mask = 16
@@ -77,6 +69,7 @@ shape = SubResource("CircleShape2D_rqi4q")
 
 [node name="HitBox" type="Area2D" parent="." groups=["Hitbox"]]
 script = ExtResource("3_ny24m")
+damage = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_otral")
