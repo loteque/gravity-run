@@ -1,6 +1,7 @@
 extends Node
 class_name Main
 
+
 static func handle_game_over():
 
 	GameState.end_stage()

@@ -1,14 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://dit028henhvgo"]
+[gd_scene load_steps=16 format=3 uid="uid://dit028henhvgo"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_367l1"]
+[ext_resource type="Shader" path="res://player_ship/color_flash_effect/solid_color_shader.gdshader" id="1_dwyfn"]
 [ext_resource type="Script" path="res://lib/Movement.gd" id="2_ldb40"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="3_cc2tu"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="4_xs4ys"]
 [ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_3qqbp"]
 [ext_resource type="PackedScene" uid="uid://76ek6csd6uyu" path="res://player_ship/color_flash_effect/flash_effect.tscn" id="6_mnedk"]
+[ext_resource type="PackedScene" uid="uid://7ol42fgfnbpr" path="res://ui/player_ui/player_ui.tscn" id="8_6t3di"]
+[ext_resource type="Script" path="res://player_ship/Muzzle.gd" id="8_oqag3"]
+[ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player_ship/bullet.tscn" id="9_t6dfb"]
+[ext_resource type="Script" path="res://player_ship/PlayerState.gd" id="11_a02nr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
 size = Vector2(12, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2dak"]
+shader = ExtResource("1_dwyfn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/is_on = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ouwe"]
 radius = 22.0227
@@ -27,6 +37,7 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_2yx3h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q2dak")
 texture = ExtResource("1_367l1")
 region_enabled = true
 region_rect = Rect2(69, 155, 25, 16)
@@ -55,9 +66,11 @@ script = ExtResource("4_xs4ys")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 shape = SubResource("CircleShape2D_1ouwe")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect")]
 script = ExtResource("5_3qqbp")
 actor = NodePath("..")
+health = 3
+flash_effect = NodePath("../Flash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 0)
@@ -65,3 +78,14 @@ shape = SubResource("RectangleShape2D_3xr2u")
 
 [node name="Flash" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("6_mnedk")]
 target_node = NodePath("../Sprite2D")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(10, 0)
+script = ExtResource("8_oqag3")
+bullet = ExtResource("9_t6dfb")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("8_6t3di")]
+actor = NodePath("..")
+
+[node name="PlayerState" type="Node" parent="."]
+script = ExtResource("11_a02nr")

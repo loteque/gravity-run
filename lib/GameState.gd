@@ -1,6 +1,7 @@
 extends Resource
 class_name GameState
 
+static var player_state: Dictionary = {"player1": null, "player2": null,}
 static var is_paused: bool = false
 static var is_game_over: bool = false
 

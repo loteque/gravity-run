@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl2htgjrw0710"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_25kbp"]
+[ext_resource type="Script" path="res://ui/player_ui/total_kills_counter/TotalKillsLabel.gd" id="2_quimn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysxk2"]
+atlas = ExtResource("1_25kbp")
+region = Rect2(13, 0, 12, 12)
+
+[node name="TotalKillsCounter" type="HBoxContainer"]
+offset_right = 26.0
+offset_bottom = 23.0
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_ysxk2")
+stretch_mode = 2
+
+[node name="TotalKillsLabel" type="Label" parent="."]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_quimn")

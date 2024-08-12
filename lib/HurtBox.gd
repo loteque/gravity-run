@@ -3,7 +3,7 @@ class_name HurtBox
 
 @export var actor: Node2D
 @export var health: int
-
+@export var flash_effect: Node
 
 func _ready():
     area_entered.connect(_on_area_entered)
@@ -20,13 +20,13 @@ func die():
         Main.handle_game_over()
         
 
-func damage(area):
+func damage(hitbox: Area2D):
     
-    if area.get_parent() == self.get_parent():
+    if hitbox.get_parent() == self.get_parent():
         
         return
 
-    if !area.is_in_group("Hitbox"):
+    if !hitbox.is_in_group("Hitbox"):
 
         return
 
@@ -34,7 +34,8 @@ func damage(area):
         
         die(); return
 
-    health = health - area.damage
+    health = health - hitbox.damage
+    flash_effect.flash()
 
 
 func _on_area_entered(area: Area2D):

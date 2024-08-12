@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnyleqcusyak5"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_rutrj"]
+[ext_resource type="Script" path="res://lib/HitBox.gd" id="2_ll05p"]
+[ext_resource type="Script" path="res://player_ship/BulletMovement.gd" id="3_i376n"]
+[ext_resource type="Script" path="res://lib/ActorInput.gd" id="4_mhdu5"]
+[ext_resource type="Script" path="res://lib/Gravity.gd" id="5_002r4"]
+[ext_resource type="Script" path="res://lib/HurtBox.gd" id="6_7xrrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0edw"]
+atlas = ExtResource("1_rutrj")
+region = Rect2(48, 236, 4, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg13y"]
+size = Vector2(4, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp62h"]
+size = Vector2(4, 2)
+
+[node name="Bullet" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_y0edw")
+
+[node name="BulletHitBox" type="Area2D" parent="." groups=["Bullet"]]
+script = ExtResource("2_ll05p")
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitBox"]
+shape = SubResource("RectangleShape2D_fg13y")
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
+script = ExtResource("3_i376n")
+actor = NodePath("..")
+speed = 750.0
+input = NodePath("../ActorInput")
+gravity = NodePath("../Gravity")
+
+[node name="ActorInput" type="Node" parent="."]
+script = ExtResource("4_mhdu5")
+
+[node name="Gravity" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("5_002r4")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("6_7xrrg")
+actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_hp62h")
