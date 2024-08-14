@@ -1,7 +1,7 @@
 extends Node
 class_name StageLoader
 
-static var stages: Stages = preload("res://stages/stages.tres")
+static var stages = preload("res://stages/stages.tres")
 static var current_stage: Node
 static var loader_node: StageLoader
 
