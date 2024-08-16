@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo5paxmtfujr8"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_gqyai"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u404"]
+atlas = ExtResource("1_gqyai")
+region = Rect2(113, 295, 61, 53)
+
+[node name="Alien" type="TextureRect"]
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_1u404")
