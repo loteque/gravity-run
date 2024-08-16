@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxku4vtbp8jdw"]
+[gd_scene load_steps=11 format=3 uid="uid://dxku4vtbp8jdw"]
 
 [ext_resource type="Shader" path="res://third_party/star_field_shader/starfield_shader_v5.gdshader" id="1_aamxg"]
+[ext_resource type="Script" path="res://cut_scenes/cut_scene_i/cut_scene_i.gd" id="1_wsmqk"]
 [ext_resource type="PackedScene" uid="uid://01wlvylcex6u" path="res://cut_scenes/interior_space_station.tscn" id="2_3d335"]
 [ext_resource type="PackedScene" uid="uid://bqv83dng3q1y2" path="res://cut_scenes/interior_quackers_ship_i.tscn" id="3_e3tpa"]
+[ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="3_x4s8l"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="4_xa7x7"]
 [ext_resource type="PackedScene" uid="uid://dtf4nsxhkunfm" path="res://ui/menu_screen.tscn" id="5_if5td"]
 [ext_resource type="PackedScene" uid="uid://yp3pgkr0r0ee" path="res://ui/dialog_box/dialog_box.tscn" id="6_y25lx"]
 
@@ -20,7 +23,17 @@ shader_parameter/near_stars_color = Color(1, 1, 1, 1)
 shader_parameter/base_scroll_speed = 0.19
 shader_parameter/additional_scroll_speed = 0.19
 
-[node name="CutSceneI" type="Node2D" groups=["World"]]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qrcl"]
+shader = ExtResource("3_x4s8l")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/is_on = false
+
+[node name="CutSceneI" type="Node2D" node_paths=PackedStringArray("dialog_box", "backdrops", "props") groups=["World"]]
+script = ExtResource("1_wsmqk")
+dialog_box = NodePath("DialogBox")
+backdrops = [NodePath("InteriorSpaceStation"), NodePath("InteriorQuackersShipI")]
+dialog = Array[String](["I'm Ready General", "Don't Forget to prime...", "*HANCK*", "...the engine boost converter!!", "Boost converter primed!", "Squack!", "Squack!", "SQUUUUACK!"])
+props = [NodePath("QuackersShip")]
 
 [node name="Starfield" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ncr50")
@@ -33,12 +46,53 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="QuackersShip" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_6qrcl")
+position = Vector2(271, 149)
+texture = ExtResource("4_xa7x7")
+region_enabled = true
+region_rect = Rect2(69, 155, 25, 16)
+
 [node name="InteriorSpaceStation" parent="." instance=ExtResource("2_3d335")]
-visible = true
 
 [node name="InteriorQuackersShipI" parent="." instance=ExtResource("3_e3tpa")]
 
 [node name="DialogBox" parent="." instance=ExtResource("6_y25lx")]
+visible = false
+
+[node name="RaceCountdown" type="CanvasLayer" parent="."]
+
+[node name="CountDown" type="HBoxContainer" parent="RaceCountdown"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Ready" type="Label" parent="RaceCountdown/CountDown"]
+visible = false
+layout_mode = 2
+text = "Squack!"
+
+[node name="Set" type="Label" parent="RaceCountdown/CountDown"]
+visible = false
+layout_mode = 2
+text = "Squack!"
+
+[node name="Go" type="Label" parent="RaceCountdown/CountDown"]
+visible = false
+layout_mode = 2
+text = "SQUUAAAACK!"
 
 [node name="MenuScreen" parent="." instance=ExtResource("5_if5td")]
 visible = false

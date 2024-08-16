@@ -5,7 +5,7 @@ extends VBoxContainer
 
 func _on_start_pressed():
 
-	StageLoader.load_new_stage(0)
+	StageLoader.load_new_stage(2)
 	GameState.unpause_stage()
 
 

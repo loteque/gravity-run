@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Stages" load_steps=4 format=3 uid="uid://dgq0rycv614m5"]
+[gd_resource type="Resource" script_class="Stages" load_steps=5 format=3 uid="uid://dgq0rycv614m5"]
 
 [ext_resource type="Script" path="res://stages/stages.gd" id="1_j8qw6"]
 [ext_resource type="PackedScene" uid="uid://dmvt268l4rxob" path="res://stages/start.tscn" id="2_c11ku"]
 [ext_resource type="PackedScene" uid="uid://b6bgb1kkgovqa" path="res://stages/stage_demo.tscn" id="2_w3o57"]
+[ext_resource type="PackedScene" uid="uid://dxku4vtbp8jdw" path="res://stages/cut_scene_i.tscn" id="4_wiwwv"]
 
 [resource]
 script = ExtResource("1_j8qw6")
-stages = Array[PackedScene]([ExtResource("2_w3o57"), ExtResource("2_c11ku")])
+stages = Array[PackedScene]([ExtResource("2_w3o57"), ExtResource("2_c11ku"), ExtResource("4_wiwwv")])

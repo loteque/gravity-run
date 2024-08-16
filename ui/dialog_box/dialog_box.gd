@@ -23,8 +23,9 @@ var dialog: String:
         dialog_display.text = new_dialog
         dialog = new_dialog
 
-func _ready():
+
+# func _ready():
     
-    portrait = preload("res://ui/dialog_box/portraits/goose.tscn").instantiate()
-    char_name = "Sir Quacks Alot"
-    dialog = "Quack!"
+#     portrait = preload("res://ui/dialog_box/portraits/goose.tscn").instantiate()
+#     char_name = "Sir Quacks Alot"
+#     dialog = "Quack!"
