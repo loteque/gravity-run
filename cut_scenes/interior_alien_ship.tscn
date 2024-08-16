@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhy5wajggheka"]
+
+[ext_resource type="Texture2D" uid="uid://bsehmpsxw6xqw" path="res://interior_alien_ship.png" id="1_bc553"]
+
+[node name="InteriorAlienShip" type="TextureRect"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_bc553")

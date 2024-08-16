@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqv83dng3q1y2"]
+
+[ext_resource type="Texture2D" uid="uid://ban4ekyg8doum" path="res://interior_quackers_ship.png" id="1_m7r7x"]
+
+[node name="InteriorQuackersShipI" type="TextureRect"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_m7r7x")

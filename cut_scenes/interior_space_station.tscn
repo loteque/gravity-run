@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://01wlvylcex6u"]
+
+[ext_resource type="Texture2D" uid="uid://8g0i2ha00h0n" path="res://interior_space_station.png" id="1_0g8m2"]
+
+[node name="InteriorSpaceStation" type="TextureRect"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0g8m2")
