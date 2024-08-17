@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d0rxes24ugjl" path="res://ui/hearts/hearts.tscn" id="1_q66vd"]
 [ext_resource type="PackedScene" uid="uid://dl2htgjrw0710" path="res://ui/player_ui/total_kills_counter/TotalKillsCounter.tscn" id="1_yuab5"]
-[ext_resource type="PackedScene" uid="uid://dlhuc3rk04sxd" path="res://ui/level_progress_bar/level_progress_bar.tscn" id="3_o6d62"]
+[ext_resource type="PackedScene" uid="uid://dlhuc3rk04sxd" path="res://ui/player_ui/level_progress_bar/level_progress_bar.tscn" id="3_o6d62"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 

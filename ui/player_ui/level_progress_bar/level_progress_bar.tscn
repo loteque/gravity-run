@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlhuc3rk04sxd"]
 
-[ext_resource type="Script" path="res://ui/level_progress_bar/level_progress_bar.gd" id="1_beipc"]
+[ext_resource type="Script" path="res://ui/player_ui/level_progress_bar/level_progress_bar.gd" id="1_beipc"]
 
 [sub_resource type="Theme" id="Theme_bvwb1"]
 default_font_size = 9
