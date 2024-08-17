@@ -32,7 +32,7 @@ enum Status {
 
 func execute_event(event_idx: int):
         
-        _exit_if_seq_done()
+        if _check_seq_done(): return
 
         status = Status.INPUT_PAUSED
         
@@ -44,7 +44,7 @@ func execute_event(event_idx: int):
         var next_event_idx = event_idx + 1
         current_event_idx = next_event_idx
 
-        _exit_if_seq_done()
+        if _check_seq_done(): return
         
         var next_event = sequence[next_event_idx]
         if next_event.autostart:
@@ -52,15 +52,17 @@ func execute_event(event_idx: int):
             if event.status == Event.Status.BUSY:
                 await event.done
                 
-            execute_event(next_event)
+            execute_event(next_event_idx)
 
 
-func _exit_if_seq_done():
+func _check_seq_done():
 
-    if status == Status.DONE: return
+    if status == Status.DONE: return true
 
 
 func _on_event_done():
+
+    if _check_seq_done(): return
 
     status = Status.OK        
     
