@@ -29,8 +29,9 @@ signal done()
 var status = Status.OK
 enum Status {
     OK = 0,
-    DONE = 1,
-    ERROR = 2,
+    INPUT_PAUSED = 1,
+    DONE = 2,
+    ERROR = 10,
 }
 
 
@@ -38,7 +39,7 @@ func execute_event(event_idx: int):
         
         if status == Status.DONE: return
 
-        is_awaiting_user_input = false
+        status = Status.INPUT_PAUSED
         sequence[event_idx].done.connect(_on_event_done)
         sequence[event_idx].execute()
         
@@ -51,7 +52,6 @@ func execute_event(event_idx: int):
 
         if status == Status.DONE:
             
-            is_awaiting_user_input = true
             return
 
         
@@ -62,7 +62,7 @@ func execute_event(event_idx: int):
                 
             execute_event(current_event_idx)
         
-        is_awaiting_user_input = true
+        status = Status.OK
 
 
 func _unhandled_input(event):
@@ -71,7 +71,7 @@ func _unhandled_input(event):
         
         return
 
-    if !is_awaiting_user_input:
+    if status == Status.INPUT_PAUSED:
         
         return
 
@@ -88,7 +88,7 @@ func _unhandled_input(event):
         
 func _on_event_done():
 
-    is_awaiting_user_input = true        
+    status = Status.OK        
 
 
 func _ready():
@@ -102,6 +102,10 @@ func _ready():
         
         event.event_sequencer = self        
 
+    if !sequence.is_empty():
+
+        status = Status.INPUT_PAUSED
+    
     if sequence[current_event_idx].autostart:
 
         execute_event(current_event_idx)
