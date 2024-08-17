@@ -8,12 +8,7 @@ class_name EventSequencer
 @export var sequence: Array[Event]
 
 
-@onready var backdrop_display: TextureRect = TextureRect.new()
-@onready var wait_timer: Timer = Timer.new()
 
-
-var dialog_display: DialogBox
-var is_awaiting_user_input: bool = true
 
 var current_event_idx: int = 0:
     set(value):
@@ -37,32 +32,41 @@ enum Status {
 
 func execute_event(event_idx: int):
         
-        if status == Status.DONE: return
+        _exit_if_seq_done()
 
         status = Status.INPUT_PAUSED
-        sequence[event_idx].done.connect(_on_event_done)
-        sequence[event_idx].execute()
         
-        if sequence[event_idx].done.is_connected(_on_event_done):
-            
-            sequence[event_idx].done.disconnect(_on_event_done)
+        var event: Event = sequence[event_idx]
+        event.done.connect(_on_event_done)
+        
+        event.execute()
         
         var next_event_idx = event_idx + 1
         current_event_idx = next_event_idx
 
-        if status == Status.DONE:
-            
-            return
-
+        _exit_if_seq_done()
         
-        if sequence[current_event_idx].autostart:
+        var next_event = sequence[next_event_idx]
+        if next_event.autostart:
             
-            if sequence[event_idx].status == Event.Status.BUSY:
-                await sequence[event_idx].done
+            if event.status == Event.Status.BUSY:
+                await event.done
                 
-            execute_event(current_event_idx)
+            execute_event(next_event)
+
+
+func _exit_if_seq_done():
+
+    if status == Status.DONE: return
+
+
+func _on_event_done():
+
+    status = Status.OK        
+    
+    if sequence[current_event_idx].done.is_connected(_on_event_done):
         
-        status = Status.OK
+        sequence[current_event_idx].done.disconnect(_on_event_done)
 
 
 func _unhandled_input(event):
@@ -85,12 +89,10 @@ func _unhandled_input(event):
 
         execute_event(current_event_idx)
 
-        
-func _on_event_done():
 
-    status = Status.OK        
-
-
+var dialog_display: DialogBox
+@onready var backdrop_display: TextureRect = TextureRect.new()
+@onready var wait_timer: Timer = Timer.new()
 func _ready():
     
     add_child(wait_timer)
