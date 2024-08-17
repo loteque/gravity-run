@@ -46,8 +46,8 @@ func execute_event(event_idx: int):
             
             sequence[event_idx].done.disconnect(_on_event_done)
         
-        event_idx += 1
-        current_event_idx = event_idx
+        var next_event_idx = event_idx + 1
+        current_event_idx = next_event_idx
 
         if status == Status.DONE:
             
@@ -56,7 +56,10 @@ func execute_event(event_idx: int):
 
         
         if sequence[current_event_idx].autostart:
-        
+            
+            if sequence[event_idx].status == Event.Status.BUSY:
+                await sequence[event_idx].done
+                
             execute_event(current_event_idx)
         
         is_awaiting_user_input = true
@@ -84,6 +87,7 @@ func _unhandled_input(event):
 
         
 func _on_event_done():
+
     is_awaiting_user_input = true        
 
 

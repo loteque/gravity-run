@@ -30,7 +30,9 @@ func set_display_name():
 
 func execute():
     
+    status = Status.BUSY
     set_display_name()
     set_display_portrait()
     event_sequencer.dialog_display.dialog = text
+    status = Status.DONE
     done.emit()
