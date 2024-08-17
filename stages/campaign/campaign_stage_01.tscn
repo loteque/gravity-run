@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5pnnvf5at7ks"]
+
+[ext_resource type="PackedScene" uid="uid://difwun7nekgce" path="res://stages/backgrounds/starfield.tscn" id="1_jb6q3"]
+[ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player_ship/player_ship.tscn" id="2_q0k8h"]
+[ext_resource type="Script" path="res://lib/event_sequencer/event_sequencer.gd" id="3_uniu8"]
+[ext_resource type="PackedScene" uid="uid://yp3pgkr0r0ee" path="res://ui/dialog_box/dialog_box.tscn" id="4_6qyi8"]
+[ext_resource type="PackedScene" uid="uid://bhje7dgy8o8r3" path="res://ui/announce/announce_center.tscn" id="5_1wqwo"]
+[ext_resource type="Script" path="res://stages/campaign/event/countdown.gd" id="6_8o4kg"]
+
+[sub_resource type="Resource" id="Resource_ihdp6"]
+script = ExtResource("6_8o4kg")
+wait_time = 1.0
+ready_text = "Quack!"
+set_text = "QUACK!"
+go_text = "QUAAAACK!"
+announce_center_container = ExtResource("5_1wqwo")
+autostart = true
+
+[node name="CampaignStage01" type="Node2D" groups=["World"]]
+
+[node name="Starfield" parent="." instance=ExtResource("1_jb6q3")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Player" parent="." instance=ExtResource("2_q0k8h")]
+position = Vector2(224, 183)
+
+[node name="EventSequencer" type="Node" parent="."]
+script = ExtResource("3_uniu8")
+dialog_box = ExtResource("4_6qyi8")
+sequence = Array[Resource("res://lib/event_sequencer/event.gd")]([SubResource("Resource_ihdp6")])
