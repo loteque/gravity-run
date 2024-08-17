@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://difwun7nekgce"]
+
+[ext_resource type="Shader" path="res://third_party/star_field_shader/starfield_shader_v5.gdshader" id="1_nb6ii"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncr50"]
+shader = ExtResource("1_nb6ii")
+shader_parameter/dimensions = Vector2(640, 380)
+shader_parameter/small_stars = 50.0
+shader_parameter/small_stars_far_size = 0.5
+shader_parameter/small_stars_near_size = 0.6
+shader_parameter/large_stars = 8.0
+shader_parameter/large_stars_far_size = 0.2
+shader_parameter/large_stars_near_size = 0.3
+shader_parameter/far_stars_color = Color(1, 1, 1, 1)
+shader_parameter/near_stars_color = Color(1, 1, 1, 1)
+shader_parameter/base_scroll_speed = 0.19
+shader_parameter/additional_scroll_speed = 0.19
+
+[node name="Starfield" type="ColorRect"]
+material = SubResource("ShaderMaterial_ncr50")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

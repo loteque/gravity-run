@@ -1,0 +1,69 @@
+[gd_scene load_steps=17 format=3 uid="uid://deue4arjtr6qx"]
+
+[ext_resource type="Script" path="res://lib/event_sequencer/event_sequencer.gd" id="1_m4n1a"]
+[ext_resource type="PackedScene" uid="uid://yp3pgkr0r0ee" path="res://ui/dialog_box/dialog_box.tscn" id="2_mfei4"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="3_v5cfv"]
+[ext_resource type="Script" path="res://lib/event_sequencer/character.gd" id="4_7uxnp"]
+[ext_resource type="Script" path="res://lib/event_sequencer/backdrop.gd" id="5_vb3vo"]
+[ext_resource type="Texture2D" uid="uid://8g0i2ha00h0n" path="res://interior_space_station.png" id="6_bumb2"]
+[ext_resource type="Script" path="res://lib/event_sequencer/dialog.gd" id="7_0mo1k"]
+[ext_resource type="PackedScene" uid="uid://difwun7nekgce" path="res://stages/backgrounds/starfield.tscn" id="8_ooh5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1nih"]
+atlas = ExtResource("3_v5cfv")
+region = Rect2(0, 295, 64, 53)
+
+[sub_resource type="Resource" id="Resource_ocvq0"]
+script = ExtResource("4_7uxnp")
+display_name = "General Goose"
+portrait = SubResource("AtlasTexture_n1nih")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye8ia"]
+atlas = ExtResource("3_v5cfv")
+region = Rect2(65, 295, 47, 53)
+
+[sub_resource type="Resource" id="Resource_elxcu"]
+script = ExtResource("4_7uxnp")
+display_name = "Comdr. Quackers"
+portrait = SubResource("AtlasTexture_ye8ia")
+
+[sub_resource type="Resource" id="Resource_nfdo0"]
+script = ExtResource("5_vb3vo")
+texture = ExtResource("6_bumb2")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_eujjj"]
+script = ExtResource("7_0mo1k")
+text = "I'm ready General!"
+character = SubResource("Resource_elxcu")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_18q8m"]
+script = ExtResource("7_0mo1k")
+text = "Don't forget your peas!"
+character = SubResource("Resource_ocvq0")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_aqc1o"]
+script = ExtResource("7_0mo1k")
+text = "Bread is bad for ducks."
+autostart = false
+
+[node name="EventSequencer" type="Node"]
+script = ExtResource("1_m4n1a")
+dialog_box = ExtResource("2_mfei4")
+characters = Array[ExtResource("4_7uxnp")]([SubResource("Resource_ocvq0"), SubResource("Resource_elxcu")])
+sequence = Array[Resource("res://lib/event_sequencer/event.gd")]([SubResource("Resource_nfdo0"), SubResource("Resource_eujjj"), SubResource("Resource_18q8m"), SubResource("Resource_aqc1o")])
+
+[node name="Starfield" parent="." instance=ExtResource("8_ooh5w")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -190.0
+offset_right = 320.0
+offset_bottom = 190.0
+size_flags_horizontal = 4
+size_flags_vertical = 4

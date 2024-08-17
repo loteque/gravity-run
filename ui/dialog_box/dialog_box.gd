@@ -1,16 +1,13 @@
 extends CanvasLayer
 class_name DialogBox
 
-@export var portrait_display: MarginContainer
+@export var portrait_display: TextureRect
 @export var name_display: Label
 @export var dialog_display: Label
 
-var portrait: TextureRect:
+var portrait: Texture2D:
     set(new_portrait):
-        if portrait_display.get_child_count() != 0:
-            portrait_display.get_child(0).queue_free()
-        
-        portrait_display.add_child(new_portrait)
+        portrait_display.texture = new_portrait
         portrait = new_portrait
 
 var char_name: String:
@@ -23,6 +20,15 @@ var dialog: String:
         dialog_display.text = new_dialog
         dialog = new_dialog
 
+
+func show_box():
+    
+    get_node("HBoxContainer").show()
+
+
+func hide_box():
+    
+    get_node("HBoxContainer").hide()
 
 # func _ready():
     

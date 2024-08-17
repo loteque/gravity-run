@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://yp3pgkr0r0ee"]
+[gd_scene load_steps=4 format=3 uid="uid://yp3pgkr0r0ee"]
 
-[ext_resource type="PackedScene" uid="uid://bfue0yp4ytlbr" path="res://ui/dialog_box/portraits/quacker.tscn" id="1_kn8n6"]
 [ext_resource type="Script" path="res://ui/dialog_box/dialog_box.gd" id="1_s6hlh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrmk2"]
@@ -11,7 +10,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="DialogBox" type="CanvasLayer" node_paths=PackedStringArray("portrait_display", "name_display", "dialog_display")]
 script = ExtResource("1_s6hlh")
-portrait_display = NodePath("HBoxContainer/PanelContainer/PortraitDisplay")
+portrait_display = NodePath("HBoxContainer/PanelContainer/PortraitMargins/PortraitDisplay")
 name_display = NodePath("HBoxContainer/DialogPanel/MarginContainer/VBoxContainer/NameDisplay")
 dialog_display = NodePath("HBoxContainer/DialogPanel/MarginContainer/VBoxContainer/DialogDisplay")
 
@@ -26,15 +25,15 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_yrmk2")
 
-[node name="PortraitDisplay" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
-unique_name_in_owner = true
+[node name="PortraitMargins" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Quacker" parent="HBoxContainer/PanelContainer/PortraitDisplay" instance=ExtResource("1_kn8n6")]
+[node name="PortraitDisplay" type="TextureRect" parent="HBoxContainer/PanelContainer/PortraitMargins"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="DialogPanel" type="PanelContainer" parent="HBoxContainer"]
@@ -56,10 +55,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/outline_size = 2
-text = "Comdr. Quacker"
 
 [node name="DialogDisplay" type="Label" parent="HBoxContainer/DialogPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-text = "I'm Ready General!"
