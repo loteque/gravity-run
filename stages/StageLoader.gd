@@ -40,10 +40,11 @@ func _on_stage_done():
 		
 		current_stage.disconnect("done", loader_node._on_stage_done)
 
-	# var next_stage = current_stage_idx + 1
+	var next_stage = current_stage_idx + 1
 
-	# if next_stage >= stages.stages.size():
+	if next_stage >= stages.stages.size():
 		
-	# 	return
-
-	StageLoader.load_new_stage(0)
+		StageLoader.load_new_stage(1)
+		return
+	
+	StageLoader.load_new_stage(next_stage)
