@@ -102,9 +102,10 @@ func _ready():
         
         event.event_sequencer = self        
 
-    if !sequence.is_empty():
+    if sequence.is_empty():
 
         status = Status.INPUT_PAUSED
+        return
     
     if sequence[current_event_idx].autostart:
 
