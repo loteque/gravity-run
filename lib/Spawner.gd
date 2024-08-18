@@ -5,6 +5,15 @@ class_name Spawner
 @export var wait_max: float
 @export var spawn_object: PackedScene
 
+var is_paused: bool
+func pause(spawner):
+
+	spawner.is_paused = true
+
+func start(spawner):
+
+	spawner.is_paused = false
+
 
 class SpawnTimer extends Timer:
 
@@ -32,6 +41,8 @@ class SpawnTimer extends Timer:
 
 func _ready():
 	
+	State.spawner_state.merge({&"asteroid_spawner": self})
+
 	var spawn_timer := SpawnTimer.new(timer_name, wait_max)
 	spawn_timer.timeout.connect(_on_timeout)
 	add_child(spawn_timer)
@@ -44,6 +55,8 @@ func get_rand_spawn_point():
 
 
 func spawn(_init_args: Array[Variant] = []):
+
+	if is_paused: return
 
 	var spawn_point: Marker2D = get_rand_spawn_point()
 	var spawn_node: Node2D = spawn_object.instantiate()

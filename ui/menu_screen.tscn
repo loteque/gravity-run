@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://ui/menu_screen.gd" id="1_huh3c"]
 [ext_resource type="Texture2D" uid="uid://g5gkm34j8s3x" path="res://greybox_sheet_texture_2d.tres" id="1_iar14"]
 [ext_resource type="PackedScene" uid="uid://dqbx2jm6rivgn" path="res://ui/menu.tscn" id="2_a47f8"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="2_mphjc"]
 
 [sub_resource type="Gradient" id="Gradient_yu6rl"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -10,12 +11,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_h0ear"]
 gradient = SubResource("Gradient_yu6rl")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wpsr3"]
-load_path = "res://.godot/imported/greybox_texture_sheet.png-dcf74daa823ea5eef1d995e7e63f9b40.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqywt"]
-atlas = SubResource("CompressedTexture2D_wpsr3")
-region = Rect2(0, 236, 380, 50)
+atlas = ExtResource("2_mphjc")
+region = Rect2(154, 176, 261, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7gyp"]
 atlas = ExtResource("1_iar14")
@@ -55,6 +53,8 @@ alignment = 1
 
 [node name="Title" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = SubResource("AtlasTexture_aqywt")
 stretch_mode = 4
 

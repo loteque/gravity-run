@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqbx2jm6rivgn"]
+[gd_scene load_steps=8 format=3 uid="uid://dqbx2jm6rivgn"]
 
 [ext_resource type="Script" path="res://ui/menu.gd" id="1_0laoj"]
 [ext_resource type="Texture2D" uid="uid://g5gkm34j8s3x" path="res://greybox_sheet_texture_2d.tres" id="1_g55yp"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="3_wx4rm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynr00"]
 atlas = ExtResource("1_g55yp")
@@ -15,13 +16,17 @@ region = Rect2(30, 201, 24, 9)
 atlas = ExtResource("1_g55yp")
 region = Rect2(55, 201, 51, 9)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ewuc"]
+atlas = ExtResource("3_wx4rm")
+region = Rect2(75, 211, 74, 9)
+
 [node name="Menu" type="VBoxContainer" node_paths=PackedStringArray("buttons")]
 offset_right = 59.0
 offset_bottom = 59.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_0laoj")
-buttons = [NodePath("Start"), NodePath("Quit"), NodePath("Continue")]
+buttons = [NodePath("Start"), NodePath("Quit"), NodePath("Continue"), NodePath("Endless")]
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 2
@@ -38,6 +43,13 @@ layout_mode = 2
 icon = SubResource("AtlasTexture_s0jrk")
 icon_alignment = 1
 
+[node name="Endless" type="Button" parent="."]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+icon = SubResource("AtlasTexture_0ewuc")
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Endless" to="." method="_on_endless_pressed"]

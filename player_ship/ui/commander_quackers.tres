@@ -5,9 +5,9 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1nih"]
 atlas = ExtResource("1_e3g17")
-region = Rect2(0, 295, 64, 53)
+region = Rect2(65, 295, 47, 53)
 
 [resource]
 script = ExtResource("2_y6ods")
-display_name = "General Goose"
+display_name = "Comdr, Quacker"
 portrait = SubResource("AtlasTexture_n1nih")

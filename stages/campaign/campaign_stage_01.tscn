@@ -1,11 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5pnnvf5at7ks"]
+[gd_scene load_steps=60 format=3 uid="uid://b5pnnvf5at7ks"]
 
 [ext_resource type="PackedScene" uid="uid://difwun7nekgce" path="res://stages/backgrounds/starfield.tscn" id="1_jb6q3"]
 [ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player_ship/player_ship.tscn" id="2_q0k8h"]
 [ext_resource type="Script" path="res://lib/event_sequencer/event_sequencer.gd" id="3_uniu8"]
 [ext_resource type="PackedScene" uid="uid://yp3pgkr0r0ee" path="res://ui/dialog_box/dialog_box.tscn" id="4_6qyi8"]
+[ext_resource type="Script" path="res://player_ship/event/pause_controls.gd" id="5_1qgbh"]
 [ext_resource type="PackedScene" uid="uid://bhje7dgy8o8r3" path="res://ui/announce/announce_center.tscn" id="5_1wqwo"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/backdrop.gd" id="5_jn0l8"]
 [ext_resource type="Script" path="res://stages/campaign/event/countdown.gd" id="6_8o4kg"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="8_4ot5w"]
+[ext_resource type="Script" path="res://player_ship/event/await_player_level.gd" id="8_58wp4"]
+[ext_resource type="PackedScene" uid="uid://6yn6dyhq16qf" path="res://characters/alien/alien_ship_enter_anim.tscn" id="9_nvspm"]
+[ext_resource type="Script" path="res://lib/event_sequencer/event/play_animation.gd" id="10_ojg1g"]
+[ext_resource type="PackedScene" uid="uid://byexshvj16hy0" path="res://asteroid/asteriod_spawner.tscn" id="10_r0vw4"]
+[ext_resource type="Script" path="res://asteroid/event/toggle_spawner.gd" id="11_oq5s3"]
+[ext_resource type="Script" path="res://lib/event_sequencer/event/wait.gd" id="11_pni2r"]
+[ext_resource type="Texture2D" uid="uid://bsehmpsxw6xqw" path="res://interior_alien_ship.png" id="14_1fa4j"]
+[ext_resource type="Resource" uid="uid://mubpqiwfot6b" path="res://characters/alien/Tnafelleh_the_Porlg.tres" id="15_s6y1n"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/character.gd" id="16_qidvu"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/dialog.gd" id="17_vdwru"]
+[ext_resource type="Texture2D" uid="uid://ban4ekyg8doum" path="res://interior_quackers_ship.png" id="18_fpsnm"]
+[ext_resource type="Resource" uid="uid://uvb4mspf06ob" path="res://player_ship/ui/commander_quackers.tres" id="19_wsjwn"]
+[ext_resource type="PackedScene" uid="uid://dtf4nsxhkunfm" path="res://ui/menu_screen.tscn" id="22_o2lvl"]
+[ext_resource type="Script" path="res://cut_scenes/cut_scene_ii/ToBeContinued.gd" id="22_pt7qk"]
+
+[sub_resource type="Resource" id="Resource_earuo"]
+script = ExtResource("5_1qgbh")
+player = &"player1"
+autostart = true
 
 [sub_resource type="Resource" id="Resource_ihdp6"]
 script = ExtResource("6_8o4kg")
@@ -15,6 +37,180 @@ set_text = "QUACK!"
 go_text = "QUAAAACK!"
 announce_center_container = ExtResource("5_1wqwo")
 autostart = true
+
+[sub_resource type="Resource" id="Resource_57lcy"]
+script = ExtResource("5_1qgbh")
+player = &"player1"
+autostart = true
+
+[sub_resource type="Resource" id="Resource_22kq6"]
+script = ExtResource("8_58wp4")
+target_level = 4
+autostart = true
+
+[sub_resource type="Resource" id="Resource_3g1up"]
+script = ExtResource("10_ojg1g")
+animation_packed = ExtResource("9_nvspm")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_qsiny"]
+script = ExtResource("11_oq5s3")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_335jl"]
+script = ExtResource("11_pni2r")
+wait_time_secs = 3.5
+autostart = true
+
+[sub_resource type="Resource" id="Resource_5m5y5"]
+script = ExtResource("5_1qgbh")
+player = &"player1"
+autostart = true
+
+[sub_resource type="Resource" id="Resource_08iyg"]
+script = ExtResource("5_jn0l8")
+texture = ExtResource("14_1fa4j")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_v8eg4"]
+script = ExtResource("11_pni2r")
+wait_time_secs = 0.75
+autostart = true
+
+[sub_resource type="Resource" id="Resource_gn6oo"]
+script = ExtResource("17_vdwru")
+text = "\"Impressive. You are fast..."
+character = ExtResource("15_s6y1n")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_v7pnv"]
+script = ExtResource("17_vdwru")
+text = "...for a duck"
+autostart = false
+
+[sub_resource type="Resource" id="Resource_avny4"]
+script = ExtResource("17_vdwru")
+text = "We have been watching your planet."
+autostart = false
+
+[sub_resource type="Resource" id="Resource_y1jsy"]
+script = ExtResource("5_jn0l8")
+texture = ExtResource("18_fpsnm")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_5vmk7"]
+script = ExtResource("17_vdwru")
+text = "I am the fastest in all of the migratory systems!"
+character = ExtResource("19_wsjwn")
+autostart = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqv3g"]
+atlas = ExtResource("8_4ot5w")
+region = Rect2(0, 296, 64, 52)
+
+[sub_resource type="Resource" id="Resource_1sk5q"]
+script = ExtResource("16_qidvu")
+display_name = "General Goose"
+portrait = SubResource("AtlasTexture_jqv3g")
+
+[sub_resource type="Resource" id="Resource_mtenm"]
+script = ExtResource("17_vdwru")
+text = "Quackers!"
+character = SubResource("Resource_1sk5q")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_kxbat"]
+script = ExtResource("17_vdwru")
+text = "Your Goose is cooked!"
+autostart = false
+
+[sub_resource type="Resource" id="Resource_x7vtp"]
+script = ExtResource("17_vdwru")
+text = "General, with all due respect:"
+character = ExtResource("19_wsjwn")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_k5iav"]
+script = ExtResource("17_vdwru")
+text = "I'm a Quacker,"
+autostart = false
+
+[sub_resource type="Resource" id="Resource_52hdv"]
+script = ExtResource("17_vdwru")
+text = "quacking is what I do."
+autostart = false
+
+[sub_resource type="Resource" id="Resource_j215i"]
+script = ExtResource("5_jn0l8")
+texture = ExtResource("14_1fa4j")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_kyjy5"]
+script = ExtResource("17_vdwru")
+text = "ehem"
+character = ExtResource("15_s6y1n")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_700bg"]
+script = ExtResource("17_vdwru")
+text = "You shall race to save your kind!"
+autostart = false
+
+[sub_resource type="Resource" id="Resource_2r3cs"]
+script = ExtResource("5_jn0l8")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_a3m0y"]
+script = ExtResource("17_vdwru")
+text = "And what if I refuse!"
+character = ExtResource("19_wsjwn")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_ub8q6"]
+script = ExtResource("5_jn0l8")
+texture = ExtResource("14_1fa4j")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_kenfn"]
+script = ExtResource("17_vdwru")
+text = "Then you shall all be forced..."
+character = ExtResource("15_s6y1n")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_4mdcm"]
+script = ExtResource("17_vdwru")
+text = "...to become resident ducks of Portland, Oregon!"
+autostart = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7abed"]
+atlas = ExtResource("8_4ot5w")
+region = Rect2(0, 296, 64, 52)
+
+[sub_resource type="Resource" id="Resource_pvmin"]
+script = ExtResource("16_qidvu")
+display_name = "General Goose"
+portrait = SubResource("AtlasTexture_7abed")
+
+[sub_resource type="Resource" id="Resource_e0avc"]
+script = ExtResource("17_vdwru")
+text = "*HONK*"
+character = SubResource("Resource_pvmin")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_35ufv"]
+script = ExtResource("5_jn0l8")
+texture = ExtResource("18_fpsnm")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_1nij2"]
+script = ExtResource("17_vdwru")
+text = "..."
+character = ExtResource("19_wsjwn")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_q7ra5"]
+script = ExtResource("5_jn0l8")
+autostart = false
 
 [node name="CampaignStage01" type="Node2D" groups=["World"]]
 
@@ -28,4 +224,33 @@ position = Vector2(224, 183)
 [node name="EventSequencer" type="Node" parent="."]
 script = ExtResource("3_uniu8")
 dialog_box = ExtResource("4_6qyi8")
-sequence = Array[Resource("res://lib/event_sequencer/event.gd")]([SubResource("Resource_ihdp6")])
+sequence = Array[Resource("res://lib/event_sequencer/event.gd")]([SubResource("Resource_earuo"), SubResource("Resource_ihdp6"), SubResource("Resource_57lcy"), SubResource("Resource_22kq6"), SubResource("Resource_3g1up"), SubResource("Resource_qsiny"), SubResource("Resource_335jl"), SubResource("Resource_5m5y5"), SubResource("Resource_08iyg"), SubResource("Resource_v8eg4"), SubResource("Resource_gn6oo"), SubResource("Resource_v7pnv"), SubResource("Resource_avny4"), SubResource("Resource_y1jsy"), SubResource("Resource_5vmk7"), SubResource("Resource_mtenm"), SubResource("Resource_kxbat"), SubResource("Resource_x7vtp"), SubResource("Resource_k5iav"), SubResource("Resource_52hdv"), SubResource("Resource_j215i"), SubResource("Resource_kyjy5"), SubResource("Resource_700bg"), SubResource("Resource_2r3cs"), SubResource("Resource_a3m0y"), SubResource("Resource_ub8q6"), SubResource("Resource_kenfn"), SubResource("Resource_4mdcm"), SubResource("Resource_e0avc"), SubResource("Resource_35ufv"), SubResource("Resource_1nij2"), SubResource("Resource_q7ra5")])
+
+[node name="AsteroidSpawner" parent="." instance=ExtResource("10_r0vw4")]
+position = Vector2(672, 0)
+
+[node name="ToBeContinued" type="CanvasLayer" parent="." node_paths=PackedStringArray("event_sequencer")]
+visible = false
+script = ExtResource("22_pt7qk")
+event_sequencer = NodePath("../EventSequencer")
+
+[node name="Label" type="Label" parent="ToBeContinued"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -16.0
+offset_right = 113.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "TO BE CONTINUED..."
+
+[node name="MenuScreen" parent="." instance=ExtResource("22_o2lvl")]
+visible = false

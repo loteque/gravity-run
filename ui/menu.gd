@@ -19,3 +19,9 @@ func _on_continue_pressed():
 
 	MenuScreen.hide_menu_screen()
 	GameState.unpause_stage()
+
+
+func _on_endless_pressed():
+	
+	StageLoader.load_new_stage(0)
+	GameState.unpause_stage()

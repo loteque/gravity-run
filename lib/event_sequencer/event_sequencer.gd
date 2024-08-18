@@ -8,8 +8,6 @@ class_name EventSequencer
 @export var sequence: Array[Event]
 
 
-
-
 var current_event_idx: int = 0:
     set(value):
         
@@ -37,7 +35,8 @@ func execute_event(event_idx: int):
         status = Status.INPUT_PAUSED
         
         var event: Event = sequence[event_idx]
-        event.done.connect(_on_event_done)
+        if !event.done.is_connected(_on_event_done):
+            event.done.connect(_on_event_done)
         
         event.execute()
         
@@ -57,7 +56,8 @@ func execute_event(event_idx: int):
 
 func _check_seq_done():
 
-    if status == Status.DONE: return true
+    if status == Status.DONE: 
+        return true
 
 
 func _on_event_done():
@@ -72,7 +72,7 @@ func _on_event_done():
 
 
 func _unhandled_input(event):
-    
+
     if !(event is InputEventKey):
         
         return
@@ -86,6 +86,7 @@ func _unhandled_input(event):
         
         if status == Status.DONE:
 
+            print("done ", status)
             done.emit()
             return
 

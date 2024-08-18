@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://mubpqiwfot6b"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_umbti"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/character.gd" id="2_052gq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y17jg"]
+atlas = ExtResource("1_umbti")
+region = Rect2(113, 295, 61, 54)
+
+[resource]
+script = ExtResource("2_052gq")
+display_name = "Tnafelleh the Porlg"
+portrait = SubResource("AtlasTexture_y17jg")

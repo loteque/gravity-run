@@ -79,10 +79,11 @@ shape = SubResource("RectangleShape2D_3xr2u")
 [node name="Flash" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("6_mnedk")]
 target_node = NodePath("../Sprite2D")
 
-[node name="Muzzle" type="Marker2D" parent="."]
+[node name="Muzzle" type="Marker2D" parent="." node_paths=PackedStringArray("player_state")]
 position = Vector2(10, 0)
 script = ExtResource("8_oqag3")
 bullet = ExtResource("9_t6dfb")
+player_state = NodePath("../PlayerState")
 
 [node name="PlayerUI" parent="." instance=ExtResource("8_6t3di")]
 

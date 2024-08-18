@@ -26,5 +26,7 @@ static func end_stage(game_over: bool = true):
         is_game_over = true
 
 
-var player_state: Dictionary = {"player1": null, "player2": null,}
+var campaign_completed: bool
+var player_state: Dictionary = {&"player1": null, &"player2": null,}
+var spawner_state: Dictionary = {}
 signal player_state_changed(state: PlayerState)

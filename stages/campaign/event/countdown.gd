@@ -21,9 +21,11 @@ func execute():
     announce_display.text = set_text
     await event_sequencer.get_tree().create_timer(wait_time).timeout
     announce_display.text = go_text
-    await event_sequencer.get_tree().create_timer(wait_time + (wait_time * .5)).timeout
-    announce_container.queue_free()
 
     status = Status.DONE
     done.emit()
+
+    await event_sequencer.get_tree().create_timer(wait_time + (wait_time * .5)).timeout
+    announce_container.queue_free()
+
     
