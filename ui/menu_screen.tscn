@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtf4nsxhkunfm"]
+[gd_scene load_steps=12 format=3 uid="uid://dtf4nsxhkunfm"]
 
 [ext_resource type="Script" path="res://ui/menu_screen.gd" id="1_huh3c"]
 [ext_resource type="Texture2D" uid="uid://g5gkm34j8s3x" path="res://greybox_sheet_texture_2d.tres" id="1_iar14"]
+[ext_resource type="Texture2D" uid="uid://b0mgw0fkxd6ns" path="res://title_screen.png" id="2_30l5p"]
 [ext_resource type="PackedScene" uid="uid://dqbx2jm6rivgn" path="res://ui/menu.tscn" id="2_a47f8"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="2_mphjc"]
 
@@ -13,7 +14,7 @@ gradient = SubResource("Gradient_yu6rl")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqywt"]
 atlas = ExtResource("2_mphjc")
-region = Rect2(154, 176, 261, 38)
+region = Rect2(153, 175, 268, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7gyp"]
 atlas = ExtResource("1_iar14")
@@ -23,11 +24,16 @@ region = Rect2(0, 211, 74, 24)
 atlas = ExtResource("1_iar14")
 region = Rect2(0, 176, 144, 24)
 
-[node name="MenuScreen" type="CanvasLayer" node_paths=PackedStringArray("menu", "titles")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m36f"]
+atlas = ExtResource("2_mphjc")
+region = Rect2(150, 216, 37, 19)
+
+[node name="MenuScreen" type="CanvasLayer" node_paths=PackedStringArray("menu", "titles", "title_texture_rect")]
 process_mode = 3
 script = ExtResource("1_huh3c")
 menu = NodePath("VBoxContainer/Menu")
 titles = [NodePath("VBoxContainer/Title"), NodePath("VBoxContainer/Pause"), NodePath("VBoxContainer/GameOver")]
+title_texture_rect = NodePath("TitleImage")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -36,6 +42,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_h0ear")
+
+[node name="TitleImage" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_30l5p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -74,3 +89,9 @@ stretch_mode = 4
 
 [node name="Menu" parent="VBoxContainer" instance=ExtResource("2_a47f8")]
 layout_mode = 2
+
+[node name="Controls" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_1m36f")
