@@ -13,7 +13,6 @@ func _ready():
 
 func flash():
 	
-	print("flash")
 	target_node.material.set_shader_parameter("is_on", true)
 	await get_tree().create_timer(flash_duration).timeout
 	target_node.material.set_shader_parameter("is_on", false)

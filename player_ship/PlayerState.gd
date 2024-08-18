@@ -11,6 +11,7 @@ var kills_this_level: int = 0
 var level: int = 0
 var total_kills: int = 0
 var health: int
+var input_paused: bool
 
 var next_level_kills_modifier: Callable = func(next_level) -> int:
     return next_level

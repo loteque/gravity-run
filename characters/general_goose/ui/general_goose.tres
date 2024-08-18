@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://dnxby8wqkyuor"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_fiqll"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/character.gd" id="2_shdaj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye8ia"]
+atlas = ExtResource("1_fiqll")
+region = Rect2(0, 296, 64, 52)
+
+[resource]
+script = ExtResource("2_shdaj")
+display_name = "General Goose"
+portrait = SubResource("AtlasTexture_ye8ia")

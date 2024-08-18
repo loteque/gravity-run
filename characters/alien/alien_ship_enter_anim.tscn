@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://6yn6dyhq16qf"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_jai40"]
+
+[sub_resource type="Animation" id="Animation_s1ed7"]
+resource_name = "new_enter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 2),
+"transitions": PackedFloat32Array(1, 0.406126, 2.07053),
+"update": 0,
+"values": [Vector2(-92, 168), Vector2(13, 173), Vector2(94, 176)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4qus"]
+_data = {
+"enter": SubResource("Animation_s1ed7")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3juk"]
+atlas = ExtResource("1_jai40")
+region = Rect2(65, 101, 95, 37)
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_k4qus")
+}
+autoplay = "enter"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-92, 168)
+texture = SubResource("AtlasTexture_e3juk")

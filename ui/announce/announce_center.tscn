@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhje7dgy8o8r3"]
+
+[ext_resource type="Script" path="res://ui/announce/announce.gd" id="1_psl15"]
+
+[node name="AnnounceCenter" type="CanvasLayer" node_paths=PackedStringArray("announcement")]
+script = ExtResource("1_psl15")
+announcement = NodePath("CenterContainer/Announcement")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Announcement" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2

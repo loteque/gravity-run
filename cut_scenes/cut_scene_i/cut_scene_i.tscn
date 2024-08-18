@@ -1,0 +1,101 @@
+[gd_scene load_steps=24 format=3 uid="uid://deue4arjtr6qx"]
+
+[ext_resource type="Script" path="res://lib/event_sequencer/event_sequencer.gd" id="1_m4n1a"]
+[ext_resource type="PackedScene" uid="uid://yp3pgkr0r0ee" path="res://ui/dialog_box/dialog_box.tscn" id="2_mfei4"]
+[ext_resource type="Resource" uid="uid://uvb4mspf06ob" path="res://player_ship/ui/commander_quackers.tres" id="3_nuvwy"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="3_v5cfv"]
+[ext_resource type="Resource" uid="uid://dnxby8wqkyuor" path="res://characters/general_goose/ui/general_goose.tres" id="4_bi71a"]
+[ext_resource type="Script" path="res://lib/event_sequencer/event/wait.gd" id="5_6tmry"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/backdrop.gd" id="5_vb3vo"]
+[ext_resource type="Texture2D" uid="uid://8g0i2ha00h0n" path="res://interior_space_station.png" id="6_bumb2"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/dialog.gd" id="7_0mo1k"]
+[ext_resource type="PackedScene" uid="uid://difwun7nekgce" path="res://stages/backgrounds/starfield.tscn" id="8_ooh5w"]
+[ext_resource type="PackedScene" uid="uid://dtf4nsxhkunfm" path="res://ui/menu_screen.tscn" id="11_5nxbh"]
+
+[sub_resource type="Resource" id="Resource_fgl8k"]
+script = ExtResource("5_6tmry")
+wait_time_secs = 1.5
+autostart = true
+
+[sub_resource type="Resource" id="Resource_eujjj"]
+script = ExtResource("7_0mo1k")
+text = "I'm ready General!"
+character = ExtResource("3_nuvwy")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_nfdo0"]
+script = ExtResource("5_vb3vo")
+texture = ExtResource("6_bumb2")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_qcx4p"]
+script = ExtResource("5_6tmry")
+wait_time_secs = 0.7
+autostart = true
+
+[sub_resource type="Resource" id="Resource_18q8m"]
+script = ExtResource("7_0mo1k")
+text = "Don't forget to prime..."
+character = ExtResource("4_bi71a")
+autostart = true
+
+[sub_resource type="Resource" id="Resource_aqc1o"]
+script = ExtResource("7_0mo1k")
+text = "*HUACK*"
+autostart = false
+
+[sub_resource type="Resource" id="Resource_23bhw"]
+script = ExtResource("7_0mo1k")
+text = "...the engine boost converter!"
+autostart = false
+
+[sub_resource type="Resource" id="Resource_fmhm1"]
+script = ExtResource("7_0mo1k")
+text = "I got it, I got it..."
+character = ExtResource("3_nuvwy")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_o8p46"]
+script = ExtResource("5_vb3vo")
+autostart = false
+
+[sub_resource type="Resource" id="Resource_4ojyd"]
+script = ExtResource("7_0mo1k")
+text = "The race is about to Start!"
+autostart = true
+
+[sub_resource type="Resource" id="Resource_qv36m"]
+script = ExtResource("7_0mo1k")
+text = "Good Luck!"
+character = ExtResource("4_bi71a")
+autostart = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcdut"]
+atlas = ExtResource("3_v5cfv")
+region = Rect2(69, 155, 25, 16)
+
+[node name="EventSequencer" type="Node"]
+script = ExtResource("1_m4n1a")
+dialog_box = ExtResource("2_mfei4")
+characters = Array[Resource("res://cut_scenes/sequencer_event/character.gd")]([ExtResource("3_nuvwy"), ExtResource("4_bi71a")])
+sequence = Array[Resource("res://lib/event_sequencer/event.gd")]([SubResource("Resource_fgl8k"), SubResource("Resource_eujjj"), SubResource("Resource_nfdo0"), SubResource("Resource_qcx4p"), SubResource("Resource_18q8m"), SubResource("Resource_aqc1o"), SubResource("Resource_23bhw"), SubResource("Resource_fmhm1"), SubResource("Resource_o8p46"), SubResource("Resource_qcx4p"), SubResource("Resource_4ojyd"), SubResource("Resource_qv36m")])
+
+[node name="Starfield" parent="." instance=ExtResource("8_ooh5w")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -190.0
+offset_right = 320.0
+offset_bottom = 190.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(296, 171)
+texture = SubResource("AtlasTexture_jcdut")
+
+[node name="MenuScreen" parent="." instance=ExtResource("11_5nxbh")]
+visible = false

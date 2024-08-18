@@ -44,6 +44,8 @@ static func show_game_over():
 	show_title(title_textures[2])
 	hide_title(title_textures[0])
 	hide_title(title_textures[1])
+
+	menu_buttons[1].grab_focus()
 	menu_screen.visible = true
 
 
@@ -55,6 +57,20 @@ static func show_start_screen():
 	show_title(title_textures[0])
 	hide_title(title_textures[1])
 	hide_title(title_textures[2])
+	
+	if State.campaign_completed:
+
+		show_button(menu_buttons[3])
+
+		menu_buttons[0].focus_neighbor_bottom = menu_buttons[3].get_path()
+		menu_buttons[3].focus_neighbor_top = menu_buttons[0].get_path()
+
+		menu_buttons[3].grab_focus()
+	
+	else:
+
+		menu_buttons[0].grab_focus()
+
 	menu_screen.visible = true
 
 
@@ -63,8 +79,15 @@ static func show_pause():
 	show_button(menu_buttons[1])
 	show_button(menu_buttons[2])
 	hide_button(menu_buttons[0])
+	hide_button(menu_buttons[3])
 	show_title(title_textures[1])
 	hide_title(title_textures[0])
 	hide_title(title_textures[2])
+	
+	menu_buttons[2].focus_neighbor_top = menu_buttons[1].get_path()
+	menu_buttons[1].focus_neighbor_bottom = menu_buttons[2].get_path()
+
+	menu_buttons[2].grab_focus()
+
 	menu_screen.visible = true
 

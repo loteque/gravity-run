@@ -5,7 +5,7 @@ extends VBoxContainer
 
 func _on_start_pressed():
 
-	StageLoader.load_new_stage(0)
+	StageLoader.load_new_stage(2)
 	GameState.unpause_stage()
 
 
@@ -18,4 +18,10 @@ func _on_quit_pressed():
 func _on_continue_pressed():
 
 	MenuScreen.hide_menu_screen()
+	GameState.unpause_stage()
+
+
+func _on_endless_pressed():
+	
+	StageLoader.load_new_stage(0)
 	GameState.unpause_stage()

@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oiw53"]
 atlas = ExtResource("1_2oq66")
-region = Rect2(1, 287, 8, 7)
+region = Rect2(1, 287, 10, 9)
 
 [node name="Hearts" type="HBoxContainer"]
 offset_right = 32.0

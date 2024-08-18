@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://uvb4mspf06ob"]
+
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_e3g17"]
+[ext_resource type="Script" path="res://cut_scenes/sequencer_event/character.gd" id="2_y6ods"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1nih"]
+atlas = ExtResource("1_e3g17")
+region = Rect2(65, 295, 47, 53)
+
+[resource]
+script = ExtResource("2_y6ods")
+display_name = "Comdr, Quacker"
+portrait = SubResource("AtlasTexture_n1nih")

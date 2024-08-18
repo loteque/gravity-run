@@ -2,7 +2,7 @@ extends Marker2D
 
 
 @export var bullet: PackedScene
-
+@export var player_state: PlayerState
 
 func shoot():
 	
@@ -23,6 +23,10 @@ func _unhandled_input(event):
 
 	if !(event is InputEventKey):
 		
+		return
+
+	if player_state.input_paused == true:
+
 		return
 
 	handle_shoot_event(event)

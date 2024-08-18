@@ -37,6 +37,11 @@ func update_actor():
 
 func _physics_process(_delta):
 
+	# REFACTOR: this hardcoded value to take a reference to the atctor's state
+	if !State.player_state[&"player1"]: return
+	
+	if State.player_state[&"player1"].input_paused: return
+
 	update_actor()
 	
 	
