@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8g0i2ha00h0n"
-path="res://.godot/imported/interior_space_station.png-0d33134a9c9003add01e95e85f34d3d5.ctex"
+uid="uid://bsehmpsxw6xqw"
+path="res://.godot/imported/interior_alien_ship.png-28de092bfdd0a8eda94119277b00c87c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interior_space_station.png"
-dest_files=["res://.godot/imported/interior_space_station.png-0d33134a9c9003add01e95e85f34d3d5.ctex"]
+source_file="res://cut_scenes/backdrops/interior_alien_ship.png"
+dest_files=["res://.godot/imported/interior_alien_ship.png-28de092bfdd0a8eda94119277b00c87c.ctex"]
 
 [params]
 

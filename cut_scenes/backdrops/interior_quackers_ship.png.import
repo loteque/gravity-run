@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ban4ekyg8doum"
-path="res://.godot/imported/interior_quackers_ship.png-8aecdebb5b9657f05c88c3b9aaa84029.ctex"
+path="res://.godot/imported/interior_quackers_ship.png-ec054d37fb1337b7f62429f662a4d1ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interior_quackers_ship.png"
-dest_files=["res://.godot/imported/interior_quackers_ship.png-8aecdebb5b9657f05c88c3b9aaa84029.ctex"]
+source_file="res://cut_scenes/backdrops/interior_quackers_ship.png"
+dest_files=["res://.godot/imported/interior_quackers_ship.png-ec054d37fb1337b7f62429f662a4d1ec.ctex"]
 
 [params]
 

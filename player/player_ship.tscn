@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="4_xs4ys"]
 [ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_3qqbp"]
 [ext_resource type="PackedScene" uid="uid://76ek6csd6uyu" path="res://third_party/color_flash_effect/flash_effect.tscn" id="6_mnedk"]
-[ext_resource type="PackedScene" uid="uid://7ol42fgfnbpr" path="res://ui/player_ui/player_ui.tscn" id="8_6t3di"]
-[ext_resource type="Script" path="res://player_ship/Muzzle.gd" id="8_oqag3"]
-[ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player_ship/bullet.tscn" id="9_t6dfb"]
-[ext_resource type="Script" path="res://player_ship/PlayerState.gd" id="11_a02nr"]
+[ext_resource type="PackedScene" uid="uid://7ol42fgfnbpr" path="res://player/ui/player_ui.tscn" id="8_6t3di"]
+[ext_resource type="Script" path="res://player/Muzzle.gd" id="8_oqag3"]
+[ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player/bullet.tscn" id="9_t6dfb"]
+[ext_resource type="Script" path="res://player/PlayerState.gd" id="11_a02nr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
 size = Vector2(12, 4)

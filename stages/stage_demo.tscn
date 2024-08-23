@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6bgb1kkgovqa"]
 
-[ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player_ship/player_ship.tscn" id="1_jftv1"]
+[ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player/player_ship.tscn" id="1_jftv1"]
 [ext_resource type="Shader" path="res://third_party/star_field_shader/starfield_shader_v5.gdshader" id="1_ucyh5"]
 [ext_resource type="PackedScene" uid="uid://bd2u34b3po55s" path="res://black_hole/black_hole.tscn" id="2_6grln"]
 [ext_resource type="PackedScene" uid="uid://byexshvj16hy0" path="res://asteroid/asteriod_spawner.tscn" id="3_ebcw6"]

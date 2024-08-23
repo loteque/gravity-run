@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0mgw0fkxd6ns"
-path="res://.godot/imported/title_screen.png-313ce7b4d54942f2c09de8bbf40bab8d.ctex"
+uid="uid://8g0i2ha00h0n"
+path="res://.godot/imported/interior_space_station.png-bdd963083f2aa81e6428068de97f4200.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://title_screen.png"
-dest_files=["res://.godot/imported/title_screen.png-313ce7b4d54942f2c09de8bbf40bab8d.ctex"]
+source_file="res://cut_scenes/backdrops/interior_space_station.png"
+dest_files=["res://.godot/imported/interior_space_station.png-bdd963083f2aa81e6428068de97f4200.ctex"]
 
 [params]
 
