@@ -41,7 +41,7 @@ func damage(hitbox: Area2D):
 
 	if self.actor.is_in_group("Player"):
 		
-		State.player_state["player1"].health_updated.emit(health)
+		GameState.player_state["player1"].health_updated.emit(health)
 
 	if flash_effect:
 		

@@ -9,6 +9,6 @@ func _ready():
 func _on_sequence_done():
     
     show()
-    State.campaign_completed = true
+    GameState.campaign_completed = true
     await get_tree().create_timer(3).timeout
     StageLoader.load_new_stage(1)

@@ -1,5 +1,4 @@
 extends Node
-class_name GameState
 
 static var is_paused: bool = false
 static var is_game_over: bool = false

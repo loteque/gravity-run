@@ -3,7 +3,7 @@ extends ProgressBar
 
 func _ready():
 	
-	State.player_state_changed.connect(_on_player_state_changed)
+	GameState.player_state_changed.connect(_on_player_state_changed)
 
 	%CurrentKills.text = "0"
 

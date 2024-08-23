@@ -51,8 +51,8 @@ func _ready():
     health = hurtbox.health
 
     asteroid_killed.connect(_on_asteroid_killed)
-    State.player_state["player1"] = self
-    State.player_state_changed.emit(State.player_state["player1"])
+    GameState.player_state["player1"] = self
+    GameState.player_state_changed.emit(GameState.player_state["player1"])
 
 
 func _on_asteroid_killed():

@@ -68,7 +68,7 @@ static func show_start_screen():
 	hide_title(title_textures[1])
 	hide_title(title_textures[2])
 	
-	if State.campaign_completed:
+	if GameState.campaign_completed:
 
 		show_button(menu_buttons[3])
 

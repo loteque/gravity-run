@@ -41,7 +41,7 @@ class SpawnTimer extends Timer:
 
 func _ready():
 	
-	State.spawner_state.merge({&"asteroid_spawner": self})
+	GameState.spawner_state.merge({&"asteroid_spawner": self})
 
 	var spawn_timer := SpawnTimer.new(timer_name, wait_max)
 	spawn_timer.timeout.connect(_on_timeout)

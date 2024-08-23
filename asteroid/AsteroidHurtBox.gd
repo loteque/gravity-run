@@ -14,7 +14,7 @@ func die(area: Area2D):
 	
 	if is_hitbox_valid(area):
 
-		State.player_state.get("player1").asteroid_killed.emit()
+		GameState.player_state.get("player1").asteroid_killed.emit()
 	
 	super.die(area)
 

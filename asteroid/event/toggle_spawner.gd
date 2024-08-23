@@ -4,7 +4,7 @@ class_name ToggleAsteroidSpawner
 
 func execute():
 
-    var spawner: Spawner = State.spawner_state[&"asteroid_spawner"]
+    var spawner: Spawner = GameState.spawner_state[&"asteroid_spawner"]
     
     status = Status.BUSY
 

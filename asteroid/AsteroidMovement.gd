@@ -22,5 +22,5 @@ func set_rand_speed(player_level):
 
 func _ready():
 
-	set_rand_speed(State.player_state["player1"].level)
+	set_rand_speed(GameState.player_state["player1"].level)
 

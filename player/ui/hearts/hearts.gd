@@ -3,7 +3,7 @@ extends HBoxContainer
 
 func _ready():
 	
-	State.player_state_changed.connect(_on_player_state_changed)
+	GameState.player_state_changed.connect(_on_player_state_changed)
 
 
 func _on_player_state_changed(state):
