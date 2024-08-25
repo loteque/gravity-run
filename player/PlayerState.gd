@@ -3,15 +3,16 @@ class_name PlayerState
 
 @export var hurtbox: HurtBox
 
-var id: String
-var spawn_rate: float
-var asteriod_velocity: float
+var id: StringName = "player1"
 var kills_until_next_level: int = 1
 var kills_this_level: int = 0
 var level: int = 0
 var total_kills: int = 0
 var health: int
 var input_paused: bool
+# TODO: These properties belong to asteroid or asteroid_spawner
+var spawn_rate: float
+var asteriod_velocity: float
 
 var next_level_kills_modifier: Callable = func(next_level) -> int:
     return next_level
@@ -51,8 +52,12 @@ func _ready():
     health = hurtbox.health
 
     asteroid_killed.connect(_on_asteroid_killed)
-    GameState.player_state["player1"] = self
-    GameState.player_state_changed.emit(GameState.player_state["player1"])
+    var player_state:Dictionary = {id: self,}
+    GameState.player_state.merge(player_state)
+
+    #TODO: Don't like this, signal should be on PlayerState
+    GameState.player_state_changed.emit(GameState.player_state[id])
+
 
 
 func _on_asteroid_killed():

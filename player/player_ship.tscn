@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://lib/Movement.gd" id="2_ldb40"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="3_cc2tu"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="4_xs4ys"]
-[ext_resource type="Script" path="res://lib/HurtBox.gd" id="5_3qqbp"]
 [ext_resource type="PackedScene" uid="uid://76ek6csd6uyu" path="res://third_party/color_flash_effect/flash_effect.tscn" id="6_mnedk"]
+[ext_resource type="Script" path="res://player/PlayerHurtBox.gd" id="6_q23ky"]
 [ext_resource type="PackedScene" uid="uid://7ol42fgfnbpr" path="res://player/ui/player_ui.tscn" id="8_6t3di"]
 [ext_resource type="Script" path="res://player/Muzzle.gd" id="8_oqag3"]
 [ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player/bullet.tscn" id="9_t6dfb"]
@@ -66,11 +66,12 @@ script = ExtResource("4_xs4ys")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 shape = SubResource("CircleShape2D_1ouwe")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect")]
-script = ExtResource("5_3qqbp")
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect", "actor_state")]
+script = ExtResource("6_q23ky")
 actor = NodePath("..")
 health = 3
 flash_effect = NodePath("../Flash")
+actor_state = NodePath("../PlayerState")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 0)
