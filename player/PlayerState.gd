@@ -56,6 +56,7 @@ func _ready():
     GameState.player_state.merge(player_state)
     GameState.player_state_added.emit(GameState.player_state[id])
 
+    tree_exiting.connect(_on_tree_exiting)
 
 
 func _on_asteroid_killed():
@@ -65,3 +66,8 @@ func _on_asteroid_killed():
     if kills_this_level >= kills_until_next_level:
         
         level_up()
+
+
+func _on_tree_exiting():
+    
+    GameState.player_state.erase(id)
