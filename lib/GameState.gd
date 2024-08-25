@@ -28,4 +28,4 @@ static func end_stage(game_over: bool = true):
 var campaign_completed: bool
 var player_state: Dictionary = {}
 var spawner_state: Dictionary = {}
-signal player_state_changed(state: PlayerState)
+signal player_state_added(player_state: PlayerState)

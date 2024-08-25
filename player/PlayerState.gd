@@ -54,9 +54,7 @@ func _ready():
     asteroid_killed.connect(_on_asteroid_killed)
     var player_state:Dictionary = {id: self,}
     GameState.player_state.merge(player_state)
-
-    #TODO: Don't like this, signal should be on PlayerState
-    GameState.player_state_changed.emit(GameState.player_state[id])
+    GameState.player_state_added.emit(GameState.player_state[id])
 
 
 
