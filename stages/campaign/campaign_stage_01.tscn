@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b5pnnvf5at7ks"]
+[gd_scene load_steps=61 format=3 uid="uid://b5pnnvf5at7ks"]
 
 [ext_resource type="PackedScene" uid="uid://difwun7nekgce" path="res://stages/backgrounds/starfield.tscn" id="1_jb6q3"]
 [ext_resource type="PackedScene" uid="uid://dit028henhvgo" path="res://player/player_ship.tscn" id="2_q0k8h"]
@@ -23,10 +23,10 @@
 [ext_resource type="Resource" uid="uid://uvb4mspf06ob" path="res://player/ui/commander_quackers.tres" id="19_wsjwn"]
 [ext_resource type="PackedScene" uid="uid://dtf4nsxhkunfm" path="res://ui/menu_screen.tscn" id="22_o2lvl"]
 [ext_resource type="Script" path="res://cut_scenes/cut_scene_ii/ToBeContinued.gd" id="22_pt7qk"]
+[ext_resource type="AudioStream" uid="uid://b48n723dgpinf" path="res://stages/2d-explorer-169184.mp3" id="24_oei46"]
 
 [sub_resource type="Resource" id="Resource_earuo"]
 script = ExtResource("5_1qgbh")
-player = &"player1"
 autostart = true
 
 [sub_resource type="Resource" id="Resource_ihdp6"]
@@ -40,7 +40,6 @@ autostart = true
 
 [sub_resource type="Resource" id="Resource_57lcy"]
 script = ExtResource("5_1qgbh")
-player = &"player1"
 autostart = true
 
 [sub_resource type="Resource" id="Resource_22kq6"]
@@ -64,7 +63,6 @@ autostart = true
 
 [sub_resource type="Resource" id="Resource_5m5y5"]
 script = ExtResource("5_1qgbh")
-player = &"player1"
 autostart = true
 
 [sub_resource type="Resource" id="Resource_08iyg"]
@@ -254,3 +252,7 @@ text = "TO BE CONTINUED..."
 
 [node name="MenuScreen" parent="." instance=ExtResource("22_o2lvl")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_oei46")
+autoplay = true
