@@ -5,7 +5,8 @@ class_name HurtBox
 @export var health: int
 @export var flash_effect: Node
 @export var actor_state: Node
-
+@export var sprite: Sprite2D
+@export var animations: Node
 
 func _ready():
 	area_entered.connect(_on_area_entered)

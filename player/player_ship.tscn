@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dit028henhvgo"]
+[gd_scene load_steps=21 format=3 uid="uid://dit028henhvgo"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_367l1"]
 [ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_dwyfn"]
@@ -26,6 +26,42 @@ radius = 22.0227
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xr2u"]
 size = Vector2(16, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc7mq"]
+atlas = ExtResource("1_367l1")
+region = Rect2(112, 150, 55, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dl02"]
+atlas = ExtResource("1_367l1")
+region = Rect2(168, 150, 55, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww2va"]
+atlas = ExtResource("1_367l1")
+region = Rect2(224, 150, 55, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vremk"]
+atlas = ExtResource("1_367l1")
+region = Rect2(280, 150, 55, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mq5k"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_pc7mq")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5dl02")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ww2va")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vremk")
+}],
+"loop": false,
+"name": &"death",
+"speed": 15.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 slide_on_ceiling = false
@@ -38,9 +74,11 @@ shape = SubResource("RectangleShape2D_2yx3h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_q2dak")
+position = Vector2(0.25, 0)
+scale = Vector2(0.98, 1)
 texture = ExtResource("1_367l1")
 region_enabled = true
-region_rect = Rect2(69, 155, 25, 16)
+region_rect = Rect2(68, 155, 25, 16)
 
 [node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_state", "actor", "input", "gravity")]
 script = ExtResource("3_ko3dr")
@@ -67,12 +105,14 @@ script = ExtResource("4_xs4ys")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 shape = SubResource("CircleShape2D_1ouwe")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect", "actor_state")]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect", "actor_state", "sprite", "animations")]
 script = ExtResource("6_q23ky")
 actor = NodePath("..")
 health = 3
 flash_effect = NodePath("../Flash")
 actor_state = NodePath("../PlayerState")
+sprite = NodePath("../Sprite2D")
+animations = NodePath("../ShipSnimations")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 0)
@@ -92,3 +132,9 @@ player_state = NodePath("../PlayerState")
 [node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("11_a02nr")
 hurtbox = NodePath("../HurtBox")
+
+[node name="ShipSnimations" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_5mq5k")
+animation = &"death"

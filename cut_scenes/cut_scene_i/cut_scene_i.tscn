@@ -72,7 +72,7 @@ autostart = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcdut"]
 atlas = ExtResource("3_v5cfv")
-region = Rect2(69, 155, 25, 16)
+region = Rect2(68, 155, 25, 16)
 
 [node name="EventSequencer" type="Node"]
 script = ExtResource("1_m4n1a")
