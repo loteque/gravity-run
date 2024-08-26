@@ -7,6 +7,7 @@ class_name Movement
 @export var input: ActorInput
 @export var gravity: Gravity
 
+
 func has_actor():
 	
 	if actor: return true
@@ -24,9 +25,6 @@ func update_actor():
 		push_warning("wating for actor")
 		return
 
-	if actor.is_in_group("Player"):
-		
-		update_actor_velocity(input.get_vector_from_inputs())
 
 	if actor.is_in_group("Obstacle"):
 
@@ -37,12 +35,5 @@ func update_actor():
 
 func _physics_process(_delta):
 
-	# TODO: REFACTOR: this hardcoded value to take a reference to the atctor's state
-	if !GameState.player_state[&"player1"]: return
-	
-	if GameState.player_state[&"player1"].input_paused: return
-
-	update_actor()
-	
-	
+	update_actor()	
 

@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_367l1"]
 [ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_dwyfn"]
-[ext_resource type="Script" path="res://lib/Movement.gd" id="2_ldb40"]
 [ext_resource type="Script" path="res://lib/ActorInput.gd" id="3_cc2tu"]
+[ext_resource type="Script" path="res://player/PlayerMovement.gd" id="3_ko3dr"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="4_xs4ys"]
 [ext_resource type="PackedScene" uid="uid://76ek6csd6uyu" path="res://third_party/color_flash_effect/flash_effect.tscn" id="6_mnedk"]
 [ext_resource type="Script" path="res://player/PlayerHurtBox.gd" id="6_q23ky"]
@@ -42,8 +42,9 @@ texture = ExtResource("1_367l1")
 region_enabled = true
 region_rect = Rect2(69, 155, 25, 16)
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
-script = ExtResource("2_ldb40")
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_state", "actor", "input", "gravity")]
+script = ExtResource("3_ko3dr")
+player_state = NodePath("../PlayerState")
 actor = NodePath("..")
 speed = 200.0
 input = NodePath("../ActorInput")

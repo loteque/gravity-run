@@ -1,20 +1,20 @@
 extends Event
 class_name ToggleControls
 
-@export var player: StringName
-
 
 func execute():
     
     status = Status.BUSY
 
-    if GameState.player_state[player].input_paused == false:
+    for player_state_prop in GameState.player_state:
+
+        if GameState.player_state[player_state_prop].input_paused == false:
         
-        GameState.player_state[player].input_paused = true
+            GameState.player_state[player_state_prop].input_paused = true
 
-    else:
+        else:
 
-        GameState.player_state[player].input_paused = false
+            GameState.player_state[player_state_prop].input_paused = false
 
     done.emit()
     status = Status.DONE
