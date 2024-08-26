@@ -18,7 +18,7 @@ func die(area: Area2D):
 	
 		hit_box.process_mode = PROCESS_MODE_DISABLED
 
-	if is_hitbox_valid(area):
+	if is_hitbox_valid(area) and area.is_in_group("Player"):
 
 		GameState.player_state.get(area.owner_id).asteroid_killed.emit()
 	
