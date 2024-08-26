@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ban08y7b71u11"]
+[gd_scene load_steps=15 format=3 uid="uid://ban08y7b71u11"]
 
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_ho20o"]
 [ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_r0pvp"]
@@ -26,6 +26,10 @@ radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvxgp"]
 radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q40j"]
+atlas = ExtResource("1_ho20o")
+region = Rect2(13, 0, 12, 12)
 
 [node name="Asteroid" type="CharacterBody2D" groups=["Obstacle"]]
 motion_mode = 1
@@ -65,12 +69,15 @@ shape = SubResource("CircleShape2D_t0yai")
 [node name="ActorInput" type="Node" parent="."]
 script = ExtResource("4_k2jfy")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect")]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor", "flash_effect", "sprite", "hit_box", "death_particles")]
 monitorable = false
 script = ExtResource("5_5487i")
 actor = NodePath("..")
 health = 3
 flash_effect = NodePath("../Flash")
+sprite = NodePath("../Sprite2D")
+hit_box = NodePath("../HitBox")
+death_particles = NodePath("../CPUParticles2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_n1i3s")
@@ -85,3 +92,21 @@ shape = SubResource("CircleShape2D_qvxgp")
 
 [node name="Flash" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("7_cgx0p")]
 target_node = NodePath("../Sprite2D")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 6
+lifetime = 4.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 15
+texture = SubResource("AtlasTexture_8q40j")
+direction = Vector2(-0.001, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+angular_velocity_min = -19.86
+angle_min = -307.8
+angle_max = 248.3

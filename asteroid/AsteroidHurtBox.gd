@@ -12,6 +12,12 @@ func is_hitbox_valid(hitbox: Area2D) -> bool:
 
 func die(area: Area2D):
 	
+	sprite.hide()
+
+	if hit_box:
+	
+		hit_box.process_mode = PROCESS_MODE_DISABLED
+
 	if is_hitbox_valid(area):
 
 		GameState.player_state.get(area.owner_id).asteroid_killed.emit()
