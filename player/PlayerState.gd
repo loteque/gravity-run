@@ -13,6 +13,7 @@ var input_paused: bool
 # TODO: These properties belong to asteroid or asteroid_spawner
 var spawn_rate: float
 var asteriod_velocity: float
+var is_actor_player: bool
 
 var next_level_kills_modifier: Callable = func(next_level) -> int:
     return next_level
@@ -49,6 +50,7 @@ func level_up():
 
 func _ready():
 
+    is_actor_player = get_parent().is_in_group("Player")
     health = hurtbox.health
 
     asteroid_killed.connect(_on_asteroid_killed)

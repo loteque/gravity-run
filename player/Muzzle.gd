@@ -3,6 +3,7 @@ extends Marker2D
 
 @export var bullet: PackedScene
 @export var player_state: PlayerState
+@export var firing_sfx: AudioStreamPlayer
 
 func shoot():
 	
@@ -10,6 +11,7 @@ func shoot():
 	var world = get_tree().get_first_node_in_group("World")
 	bullet_node.global_position = global_position
 	bullet_node.hit_box.owner_id = player_state.id
+	firing_sfx.play()
 	world.add_child(bullet_node)
 	
 
