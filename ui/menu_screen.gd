@@ -5,17 +5,20 @@ class_name MenuScreen
 @export var menu: VBoxContainer
 @export var titles: Array[TextureRect]
 @export var title_texture_rect: TextureRect
+@export var announcements: CanvasLayer
 
 static var menu_buttons: Array[Button]
 static var title_textures: Array[TextureRect]
 static var menu_screen: MenuScreen
 static var title_image: TextureRect
+static var announcement_panel: CanvasLayer
 
 func _ready():
 	MenuScreen.menu_buttons = menu.buttons
 	MenuScreen.title_textures = titles
 	MenuScreen.menu_screen = self
 	MenuScreen.title_image = title_texture_rect
+	MenuScreen.announcement_panel = announcements
 
 static func hide_button(button):
 	button.visible = false
@@ -74,8 +77,11 @@ static func show_start_screen():
 
 		menu_buttons[0].focus_neighbor_bottom = menu_buttons[3].get_path()
 		menu_buttons[3].focus_neighbor_top = menu_buttons[0].get_path()
-
+		
+		announcement_panel.show_announcement(announcement_panel.endless_unlock, 0.7)
 		menu_buttons[3].grab_focus()
+		
+		
 	
 	else:
 

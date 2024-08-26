@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtf4nsxhkunfm"]
+[gd_scene load_steps=13 format=3 uid="uid://dtf4nsxhkunfm"]
 
 [ext_resource type="Script" path="res://ui/menu_screen.gd" id="1_huh3c"]
 [ext_resource type="Texture2D" uid="uid://g5gkm34j8s3x" path="res://greybox_sheet_texture_2d.tres" id="1_iar14"]
 [ext_resource type="Texture2D" uid="uid://b0mgw0fkxd6ns" path="res://ui/title_screen.png" id="2_30l5p"]
 [ext_resource type="PackedScene" uid="uid://dqbx2jm6rivgn" path="res://ui/menu.tscn" id="2_a47f8"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="2_mphjc"]
+[ext_resource type="PackedScene" uid="uid://bhje7dgy8o8r3" path="res://ui/announce/announce_center.tscn" id="3_08xtv"]
 
 [sub_resource type="Gradient" id="Gradient_yu6rl"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -28,12 +29,13 @@ region = Rect2(0, 176, 144, 24)
 atlas = ExtResource("2_mphjc")
 region = Rect2(150, 216, 37, 19)
 
-[node name="MenuScreen" type="CanvasLayer" node_paths=PackedStringArray("menu", "titles", "title_texture_rect")]
+[node name="MenuScreen" type="CanvasLayer" node_paths=PackedStringArray("menu", "titles", "title_texture_rect", "announcements")]
 process_mode = 3
 script = ExtResource("1_huh3c")
 menu = NodePath("VBoxContainer/Menu")
 titles = [NodePath("VBoxContainer/Title"), NodePath("VBoxContainer/Pause"), NodePath("VBoxContainer/GameOver")]
 title_texture_rect = NodePath("TitleImage")
+announcements = NodePath("Announce")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -51,6 +53,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_30l5p")
+
+[node name="Announce" parent="." instance=ExtResource("3_08xtv")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
