@@ -1,5 +1,6 @@
 extends HurtBox
 
+@export var explode_sfx: AudioStreamPlayer
 
 func is_hitbox_valid(hitbox: Area2D) -> bool:
 
@@ -13,6 +14,10 @@ func is_hitbox_valid(hitbox: Area2D) -> bool:
 func die(area: Area2D):
 	
 	sprite.hide()
+	
+	if !explode_sfx.playing:
+		
+		explode_sfx.play()
 
 	if hit_box:
 	
