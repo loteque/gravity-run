@@ -1,6 +1,7 @@
 extends Node
 class_name Main
 
+@export var unlock_endless: bool
 
 static func handle_game_over():
 
@@ -31,4 +32,8 @@ func _unhandled_input(event):
 
 	handle_pause_event(event)
         
-
+func _ready():
+	
+	if unlock_endless and OS.is_debug_build():
+		GameState.campaign_completed = true
+		MenuScreen.show_start_screen()
