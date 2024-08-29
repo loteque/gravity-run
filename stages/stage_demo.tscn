@@ -40,8 +40,9 @@ position = Vector2(686, 0)
 [node name="Player" parent="." instance=ExtResource("1_jftv1")]
 position = Vector2(391, 186)
 
-[node name="BlackHole" parent="." instance=ExtResource("2_6grln")]
-position = Vector2(-1, 186)
+[node name="BlackHole" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6grln")]
+position = Vector2(0, 180)
+player = NodePath("../Player")
 
 [node name="MenuScreen" parent="." instance=ExtResource("4_hl086")]
 visible = false

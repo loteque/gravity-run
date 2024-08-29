@@ -1,11 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd2u34b3po55s"]
+[gd_scene load_steps=7 format=3 uid="uid://bd2u34b3po55s"]
 
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_bqxve"]
+[ext_resource type="Script" path="res://black_hole/black_hole.gd" id="1_xgw5w"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="2_gdhim"]
-[ext_resource type="PackedScene" uid="uid://bogs8ssdogpsr" path="res://black_hole/black_hole_modular.tscn" id="3_4f83c"]
 [ext_resource type="Script" path="res://lib/HitBox.gd" id="3_ny24m"]
-[ext_resource type="Shader" path="res://black_hole/invert_gradient.gdshader" id="5_gw8rx"]
-[ext_resource type="Script" path="res://black_hole/follow_node2d.gd" id="6_skumi"]
+[ext_resource type="PackedScene" uid="uid://dt4uiqb6vyph3" path="res://black_hole/fx/black_hole_effect.tscn" id="4_qxhxc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqi4q"]
 radius = 218.112
@@ -13,46 +11,8 @@ radius = 218.112
 [sub_resource type="CircleShape2D" id="CircleShape2D_otral"]
 radius = 14.0
 
-[sub_resource type="Gradient" id="Gradient_8aurr"]
-offsets = PackedFloat32Array(0, 0.532787, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0.00392157)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ej8fe"]
-gradient = SubResource("Gradient_8aurr")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhg4g"]
-shader = ExtResource("5_gw8rx")
-shader_parameter/scale = Vector2(1, 1)
-shader_parameter/y_zoom = 0.0
-shader_parameter/fadeGradient = SubResource("GradientTexture2D_ej8fe")
-
-[sub_resource type="Gradient" id="Gradient_ha6lg"]
-offsets = PackedFloat32Array(0, 0.67, 0.678)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d7bqq"]
-gradient = SubResource("Gradient_ha6lg")
-width = 512
-height = 512
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_dnoxs"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1r00f"]
-gradient = SubResource("Gradient_dnoxs")
-width = 128
-height = 128
-
 [node name="BlackHole" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_bqxve")
-region_enabled = true
-region_rect = Rect2(0, 93, 55, 56)
+script = ExtResource("1_xgw5w")
 
 [node name="GravityArea" type="Area2D" parent="." groups=["BlackHole"]]
 collision_layer = 0
@@ -74,21 +34,4 @@ damage = 50
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_otral")
 
-[node name="InvertLayer" type="Sprite2D" parent="." node_paths=PackedStringArray("follow_target")]
-top_level = true
-material = SubResource("ShaderMaterial_bhg4g")
-texture = SubResource("GradientTexture2D_d7bqq")
-script = ExtResource("6_skumi")
-follow_target = NodePath("../Sprite2D")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="BlackHoleEventhorizonShader" parent="CanvasLayer" node_paths=PackedStringArray("follow_target") instance=ExtResource("3_4f83c")]
-top_level = true
-z_index = 5
-position = Vector2(1.52588e-05, 6.10352e-05)
-scale = Vector2(2, 2)
-texture = SubResource("GradientTexture2D_1r00f")
-script = ExtResource("6_skumi")
-follow_target = NodePath("../../Sprite2D")
+[node name="BlackHoleEffect" parent="." instance=ExtResource("4_qxhxc")]
