@@ -20,7 +20,7 @@ func die(area: Area2D):
 		explode_sfx.play()
 	
 	if area.is_in_group("BlackHole"):
-		print("hello")
+
 		area.get_parent().enlarge()
 
 	if hit_box:

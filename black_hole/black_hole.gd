@@ -27,6 +27,9 @@ extends Node2D
             hit_box.scale = Vector2(factor, factor)
 
 
+@export var grow_rate: float = 0.01
+
+
 @onready var effect: CanvasLayer = get_node("BlackHoleEffect"):
     set(new_effect):
         effect = new_effect
@@ -39,8 +42,8 @@ extends Node2D
 
 
 func enlarge():
-    print("nom nom nom")
-    scale_factor += 0.5
+    
+    scale_factor += (((1/pow(scale_factor+1,PI)) + grow_rate) / scale_factor)
 
 
 func is_in_gravity_area(detectable_gravity_area: Gravity) -> bool:

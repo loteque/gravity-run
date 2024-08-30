@@ -43,6 +43,7 @@ position = Vector2(391, 186)
 [node name="BlackHole" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6grln")]
 position = Vector2(0, 180)
 player = NodePath("../Player")
+grow_rate = 0.1
 
 [node name="MenuScreen" parent="." instance=ExtResource("4_hl086")]
 visible = false
