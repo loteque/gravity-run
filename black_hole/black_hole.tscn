@@ -27,7 +27,7 @@ script = ExtResource("2_gdhim")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
 shape = SubResource("CircleShape2D_rqi4q")
 
-[node name="HitBox" type="Area2D" parent="." groups=["Hitbox"]]
+[node name="HitBox" type="Area2D" parent="." groups=["BlackHole", "Hitbox"]]
 script = ExtResource("3_ny24m")
 damage = 50
 

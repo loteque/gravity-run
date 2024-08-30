@@ -38,11 +38,9 @@ extends Node2D
 @onready var hit_box: HitBox = get_node("HitBox")
 
 
-# func _on_hitbox_area_entered(area: Area2D):
-    
-#     if area.is_in_group("Obstacle"):
-
-#         scale_factor += 0.5
+func enlarge():
+    print("nom nom nom")
+    scale_factor += 0.5
 
 
 func is_in_gravity_area(detectable_gravity_area: Gravity) -> bool:

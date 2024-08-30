@@ -18,6 +18,10 @@ func die(area: Area2D):
 	if !explode_sfx.playing:
 		
 		explode_sfx.play()
+	
+	if area.is_in_group("BlackHole"):
+		print("hello")
+		area.get_parent().enlarge()
 
 	if hit_box:
 	
@@ -31,6 +35,7 @@ func die(area: Area2D):
 
 		GameState.player_state.get(area.owner_id).asteroid_killed.emit()
 	
+
 	super.die(area)
 
 
