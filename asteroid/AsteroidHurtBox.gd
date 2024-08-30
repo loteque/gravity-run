@@ -13,6 +13,7 @@ func is_hitbox_valid(hitbox: Area2D) -> bool:
 
 func die(area: Area2D):
 	
+	set_collision_mask_value(1, false)
 	sprite.hide()
 	
 	if !explode_sfx.playing:
@@ -22,6 +23,7 @@ func die(area: Area2D):
 	if area.is_in_group("BlackHole"):
 
 		area.get_parent().enlarge()
+
 
 	if hit_box:
 	
@@ -35,7 +37,6 @@ func die(area: Area2D):
 
 		GameState.player_state.get(area.owner_id).asteroid_killed.emit()
 	
-
 	super.die(area)
 
 
