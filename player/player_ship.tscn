@@ -229,6 +229,7 @@ high_pass_filter/cutoff_frequency = 0.143954
 high_pass_filter/cutoff_sweep = 0.0
 
 [node name="PlayerUI" parent="." instance=ExtResource("8_6t3di")]
+layer = 0
 
 [node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("11_a02nr")

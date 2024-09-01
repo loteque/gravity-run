@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlhuc3rk04sxd"]
+[gd_scene load_steps=7 format=3 uid="uid://dlhuc3rk04sxd"]
 
 [ext_resource type="Script" path="res://player/ui/level_progress_bar/level_progress_bar.gd" id="1_beipc"]
+[ext_resource type="PackedScene" uid="uid://d0rxes24ugjl" path="res://player/ui/hearts/hearts.tscn" id="2_gxr68"]
 
 [sub_resource type="Theme" id="Theme_bvwb1"]
 default_font_size = 9
@@ -21,10 +22,11 @@ default_font_size = 8
 
 [node name="LevelProgressBar" type="HBoxContainer"]
 offset_right = 40.0
-offset_bottom = 13.0
-size_flags_horizontal = 2
+offset_bottom = 20.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 theme = SubResource("Theme_bvwb1")
+alignment = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -57,20 +59,32 @@ step = 1.0
 show_percentage = false
 script = ExtResource("1_beipc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Lev"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Lev"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Hearts" parent="Lev/HBoxContainer2" instance=ExtResource("2_gxr68")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Lev/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Lev/HBoxContainer2/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = SubResource("Theme_ag1af")
+alignment = 1
 
-[node name="CurrentKills" type="Label" parent="Lev/HBoxContainer"]
+[node name="CurrentKills" type="Label" parent="Lev/HBoxContainer2/CenterContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Delimiter" type="Label" parent="Lev/HBoxContainer"]
+[node name="Delimiter" type="Label" parent="Lev/HBoxContainer2/CenterContainer/HBoxContainer"]
 layout_mode = 2
 text = "/"
 
-[node name="KillsNeeded" type="Label" parent="Lev/HBoxContainer"]
+[node name="KillsNeeded" type="Label" parent="Lev/HBoxContainer2/CenterContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

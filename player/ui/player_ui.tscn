@@ -7,6 +7,7 @@
 [node name="PlayerUI" type="CanvasLayer"]
 
 [node name="Hearts" parent="." instance=ExtResource("1_q66vd")]
+visible = false
 offset_left = 94.0
 offset_top = 9.0
 offset_right = 134.0
@@ -32,4 +33,3 @@ grow_horizontal = 2
 [node name="ProgressBar" parent="MarginContainer" instance=ExtResource("3_o6d62")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-size_flags_horizontal = 4
