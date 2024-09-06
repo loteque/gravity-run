@@ -1,4 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 art_source/
-gravity-run.excalidraw.json.vscode/
+gravity-run.excalidraw.json
+.vscode/
