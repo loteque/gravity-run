@@ -74,3 +74,7 @@ func _process(_delta):
     if player:
         
         update_screen_glitch()
+
+func _ready():
+
+    scale_factor = 1.0
