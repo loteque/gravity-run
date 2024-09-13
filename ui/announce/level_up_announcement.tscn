@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b58kbxv6143me"]
+[gd_scene load_steps=7 format=3 uid="uid://b58kbxv6143me"]
+
+[ext_resource type="Script" path="res://ui/announce/level_up_announcement.gd" id="1_nr1pe"]
 
 [sub_resource type="Gradient" id="Gradient_obu24"]
 colors = PackedColorArray(0, 0, 0, 1, 0.241156, 0.241156, 0.241156, 1)
@@ -36,7 +38,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_p684i"]
 resource_name = "slide_in"
-length = 0.3
+length = 1.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -45,10 +47,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.34151, 7.72749),
+"times": PackedFloat32Array(0, 0.3, 1.1, 1.5),
+"transitions": PackedFloat32Array(0.34151, 7.72749, 3.4822, 7.72751),
 "update": 0,
-"values": [Vector2(644, 148), Vector2(245, 148)]
+"values": [Vector2(644, 148), Vector2(245, 148), Vector2(245, 148), Vector2(-153, 148)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -70,25 +72,24 @@ _data = {
 }
 
 [node name="LevelUpAnnouncement" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nr1pe")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 324.0
+offset_left = 644.0
 offset_top = -32.0
-offset_right = 474.001
+offset_right = 794.001
 offset_bottom = 32.0
-grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CenterContainer"]
@@ -110,6 +111,7 @@ angular_velocity_max = 157.5
 scale_amount_max = 16.63
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+visible = false
 layout_mode = 2
 texture = SubResource("GradientTexture2D_pon0h")
 

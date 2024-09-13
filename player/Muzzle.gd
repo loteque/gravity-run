@@ -10,7 +10,7 @@ func shoot():
 	var bullet_node = bullet.instantiate()
 	var world = get_tree().get_first_node_in_group("World")
 	bullet_node.global_position = global_position
-	bullet_node.hit_box.owner_id = player_state.id
+	bullet_node.hit_box.owner_id = player_state.ID
 	firing_sfx.play()
 	world.add_child(bullet_node)
 	

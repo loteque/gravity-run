@@ -3,7 +3,7 @@ class_name PlayerState
 
 @export var hurtbox: HurtBox
 
-var id: StringName = "player1"
+const ID: StringName = "player1"
 var kills_until_next_level: int = 1
 var kills_this_level: int = 0
 var level: int = 0
@@ -54,9 +54,9 @@ func _ready():
     health = hurtbox.health
 
     asteroid_killed.connect(_on_asteroid_killed)
-    var player_state:Dictionary = {id: self,}
+    var player_state:Dictionary = {ID: self,}
     GameState.player_state.merge(player_state)
-    GameState.player_state_added.emit(GameState.player_state[id])
+    GameState.player_state_added.emit(GameState.player_state[ID])
 
     tree_exiting.connect(_on_tree_exiting)
 
@@ -72,4 +72,4 @@ func _on_asteroid_killed():
 
 func _on_tree_exiting():
     
-    GameState.player_state.erase(id)
+    GameState.player_state.erase(ID)

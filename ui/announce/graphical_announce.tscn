@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bndkrytmia56l"]
+
+[ext_resource type="PackedScene" uid="uid://b58kbxv6143me" path="res://ui/announce/level_up_announcement.tscn" id="1_enhr4"]
+
+[node name="GraphicalAnnounce" type="CanvasLayer"]
+
+[node name="LevelUpAnnouncement" parent="." instance=ExtResource("1_enhr4")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CenterContainer" parent="LevelUpAnnouncement" index="0"]
+offset_left = 644.0
+offset_top = 148.0
+offset_right = 794.001
+offset_bottom = 212.0
+
+[editable path="LevelUpAnnouncement"]
