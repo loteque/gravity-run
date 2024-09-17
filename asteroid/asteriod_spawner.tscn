@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://byexshvj16hy0"]
+[gd_scene load_steps=4 format=3 uid="uid://byexshvj16hy0"]
 
 [ext_resource type="Script" path="res://asteroid/asteriod_spawner.gd" id="1_dfhry"]
 [ext_resource type="PackedScene" uid="uid://ban08y7b71u11" path="res://asteroid/asteroid.tscn" id="2_vhbno"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_syvi3"]
+radius = 51.0392
 
 [node name="AsteroidSpawner" type="Node2D"]
 script = ExtResource("1_dfhry")
@@ -10,25 +13,154 @@ wait_max = 5.0
 spawn_object = ExtResource("2_vhbno")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(0, 6)
 
-[node name="Marker2D5" type="Marker2D" parent="."]
-position = Vector2(0, 120)
+[node name="Gravity" type="Area2D" parent="Marker2D" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(0, 74)
+position = Vector2(0, 95)
+
+[node name="Gravity" type="Area2D" parent="Marker2D2" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(0, 164)
+position = Vector2(0, 179)
+
+[node name="Gravity" type="Area2D" parent="Marker2D3" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D3/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
 
 [node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(0, 210)
+position = Vector2(0, 264)
+
+[node name="Gravity" type="Area2D" parent="Marker2D4" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D4/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(0, 350)
+
+[node name="Gravity" type="Area2D" parent="Marker2D5" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D5/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
 
 [node name="Marker2D6" type="Marker2D" parent="."]
-position = Vector2(0, 254)
+position = Vector2(98, 49)
+
+[node name="Gravity" type="Area2D" parent="Marker2D6" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D6/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
 
 [node name="Marker2D7" type="Marker2D" parent="."]
-position = Vector2(0, 296)
+position = Vector2(98, 138)
+
+[node name="Gravity" type="Area2D" parent="Marker2D7" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D7/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
 
 [node name="Marker2D8" type="Marker2D" parent="."]
-position = Vector2(0, 341)
+position = Vector2(98, 222)
+
+[node name="Gravity" type="Area2D" parent="Marker2D8" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D8/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(98, 307)
+
+[node name="Gravity" type="Area2D" parent="Marker2D9" groups=["Grav"]]
+collision_layer = 16
+collision_mask = 16
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 1.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D9/Gravity"]
+shape = SubResource("CircleShape2D_syvi3")
+disabled = true
