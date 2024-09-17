@@ -15,7 +15,7 @@ void fragment() {
     vec4 reflection = texture(screen, reflected_screenuv) / 2.0;
     vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
     vec4 gradient= texture(fadeGradient, UV);
-	
+
 	COLOR.rgb = mix(color.rgb, color.rgb, gradient.a);
 	COLOR = vec4(1.0 - COLOR.rgb, COLOR.a);
 }
