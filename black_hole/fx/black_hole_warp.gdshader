@@ -1,7 +1,9 @@
 shader_type canvas_item;
 
-uniform float strength = 0.01;
+uniform float strength = 0.1;
 uniform float black_radius = 0.65;
+uniform float fuzziness = 0.01;
+
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
 void fragment() {
@@ -15,12 +17,12 @@ void fragment() {
 	// for a seamless transition between the effect's area and the unaffected world pixels.
 	float shelf = smoothstep(0, 1, f);
 	// Calculate displacement amount
-	float displacement = strength / (d*d + 0.01);
+	float displacement = strength / (d*d);
 
 	// Calculate distorted screen-space texture coordinates
 	vec2 uv = SCREEN_UV + dir * (displacement * shelf);
 
 	// Output pixels from the screen using distorted UVs
 	vec3 col = texture(SCREEN_TEXTURE, uv).xyz;
-	COLOR.rgb = mix(col, vec3(0,0,0), smoothstep(black_radius-0.01, black_radius+0.01, f));
+	COLOR.rgb = mix(col, vec3(0,0,0), smoothstep(black_radius-fuzziness, black_radius+fuzziness, f));
 }

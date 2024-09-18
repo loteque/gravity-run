@@ -1,6 +1,7 @@
 extends Node2D
 class_name Spawner
 
+@export var active: bool
 @export var timer_name: StringName
 @export var wait_max: float
 @export var spawn_object: PackedScene
@@ -64,8 +65,8 @@ func spawn(_init_args: Array[Variant] = []):
 
 
 func _on_timeout():
-
-	spawn()
+	if active:
+		spawn()
 
 	
 

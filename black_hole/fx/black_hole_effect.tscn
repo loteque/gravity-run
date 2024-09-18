@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dt4uiqb6vyph3"]
+[gd_scene load_steps=18 format=3 uid="uid://dt4uiqb6vyph3"]
 
 [ext_resource type="Script" path="res://black_hole/fx/BlackHoleEffect.gd" id="1_0ql6y"]
 [ext_resource type="Shader" path="res://black_hole/fx/invert_gradient.gdshader" id="2_pr13w"]
@@ -37,8 +37,19 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1r00f"]
 gradient = SubResource("Gradient_dnoxs")
-width = 128
-height = 128
+
+[sub_resource type="Gradient" id="Gradient_vei0o"]
+interpolation_mode = 2
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.137441, 0.521327, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_17xrv"]
+gradient = SubResource("Gradient_vei0o")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Shader" id="Shader_sasnm"]
 code = "/*
@@ -115,7 +126,7 @@ follow_viewport_enabled = true
 [node name="Invert" type="Sprite2D" parent="InvertLayer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_bhg4g")
-position = Vector2(0, 180)
+position = Vector2(10, 180)
 texture = SubResource("GradientTexture2D_d7bqq")
 script = ExtResource("3_hfu3w")
 
@@ -126,15 +137,32 @@ follow_viewport_enabled = true
 unique_name_in_owner = true
 z_index = 5
 material = ExtResource("4_c82ft")
-position = Vector2(0, 180)
+position = Vector2(1, 180)
+rotation = 3.14159
+scale = Vector2(8, 8)
 texture = SubResource("GradientTexture2D_1r00f")
 script = ExtResource("3_hfu3w")
+
+[node name="TextureRect" type="TextureRect" parent="EventHorizonLayer"]
+offset_left = 58.0
+offset_top = 134.0
+offset_right = 90.0
+offset_bottom = 166.0
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture2D_17xrv")
+metadata/_edit_use_anchors_ = true
 
 [node name="GlitchLayer" type="CanvasLayer" parent="."]
 
 [node name="Glitch" parent="GlitchLayer" instance=ExtResource("5_lpoa0")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_l6m2w")
+offset_left = 2.0
+offset_right = 642.0
 script = ExtResource("6_3o1c2")
 shake_power = 0.0
 color_rate = 0.0

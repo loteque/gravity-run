@@ -32,8 +32,8 @@ func _unhandled_input(event):
 
 	handle_pause_event(event)
         
-# func _ready():
+func _ready():
 	
-# 	# if unlock_endless and OS.is_debug_build():
-# 	# 	GameState.campaign_completed = true
-# 	# 	MenuScreen.show_start_screen()
+	if unlock_endless and OS.is_debug_build():
+		GameState.campaign_completed = true
+		MenuScreen.show_start_screen()

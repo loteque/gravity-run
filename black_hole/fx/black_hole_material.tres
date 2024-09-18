@@ -4,5 +4,6 @@
 
 [resource]
 shader = ExtResource("1_flks3")
-shader_parameter/strength = 0.09
-shader_parameter/black_radius = 0.65
+shader_parameter/strength = 0.002
+shader_parameter/black_radius = 0.95
+shader_parameter/fuzziness = 0.03
