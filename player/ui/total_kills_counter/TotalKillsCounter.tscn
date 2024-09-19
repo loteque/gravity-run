@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl2htgjrw0710"]
 
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_25kbp"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_25kbp"]
 [ext_resource type="Script" path="res://player/ui/total_kills_counter/TotalKillsLabel.gd" id="2_quimn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysxk2"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ban08y7b71u11"]
 
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_ho20o"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_ho20o"]
 [ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_r0pvp"]
 [ext_resource type="Script" path="res://asteroid/AsteroidMovement.gd" id="3_6slht"]
 [ext_resource type="Script" path="res://lib/Gravity.gd" id="3_7q004"]

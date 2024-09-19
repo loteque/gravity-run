@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://6yn6dyhq16qf"]
 
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_jai40"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_jai40"]
 
 [sub_resource type="Animation" id="Animation_s1ed7"]
 resource_name = "new_enter"

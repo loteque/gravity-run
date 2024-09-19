@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bhje7dgy8o8r3" path="res://ui/announce/announce_center.tscn" id="5_1wqwo"]
 [ext_resource type="Script" path="res://cut_scenes/sequencer_event/backdrop.gd" id="5_jn0l8"]
 [ext_resource type="Script" path="res://stages/campaign/event/countdown.gd" id="6_8o4kg"]
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="8_4ot5w"]
 [ext_resource type="Script" path="res://player/event/await_player_level.gd" id="8_58wp4"]
 [ext_resource type="PackedScene" uid="uid://6yn6dyhq16qf" path="res://characters/alien/alien_ship_enter_anim.tscn" id="9_nvspm"]
 [ext_resource type="Script" path="res://lib/event_sequencer/event/play_animation.gd" id="10_ojg1g"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" path="res://cut_scenes/sequencer_event/character.gd" id="16_qidvu"]
 [ext_resource type="Script" path="res://cut_scenes/sequencer_event/dialog.gd" id="17_vdwru"]
 [ext_resource type="Texture2D" uid="uid://ban4ekyg8doum" path="res://cut_scenes/backdrops/interior_quackers_ship.png" id="18_fpsnm"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="19_3ddfw"]
 [ext_resource type="Resource" uid="uid://uvb4mspf06ob" path="res://player/ui/commander_quackers.tres" id="19_wsjwn"]
 [ext_resource type="PackedScene" uid="uid://dtf4nsxhkunfm" path="res://ui/menu_screen.tscn" id="22_o2lvl"]
 [ext_resource type="Script" path="res://cut_scenes/cut_scene_ii/ToBeContinued.gd" id="22_pt7qk"]
@@ -103,7 +103,7 @@ character = ExtResource("19_wsjwn")
 autostart = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqv3g"]
-atlas = ExtResource("8_4ot5w")
+atlas = ExtResource("19_3ddfw")
 region = Rect2(0, 296, 64, 52)
 
 [sub_resource type="Resource" id="Resource_1sk5q"]
@@ -181,7 +181,7 @@ text = "...to become resident ducks of Portland, Oregon!"
 autostart = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7abed"]
-atlas = ExtResource("8_4ot5w")
+atlas = ExtResource("19_3ddfw")
 region = Rect2(0, 296, 64, 52)
 
 [sub_resource type="Resource" id="Resource_pvmin"]
@@ -226,6 +226,7 @@ sequence = Array[Resource("res://lib/event_sequencer/event.gd")]([SubResource("R
 
 [node name="AsteroidSpawner" parent="." instance=ExtResource("10_r0vw4")]
 position = Vector2(672, 0)
+active = true
 
 [node name="ToBeContinued" type="CanvasLayer" parent="." node_paths=PackedStringArray("event_sequencer")]
 visible = false

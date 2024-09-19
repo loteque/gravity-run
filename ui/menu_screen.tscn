@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://g5gkm34j8s3x" path="res://greybox_sheet_texture_2d.tres" id="1_iar14"]
 [ext_resource type="Texture2D" uid="uid://b0mgw0fkxd6ns" path="res://ui/title_screen.png" id="2_30l5p"]
 [ext_resource type="PackedScene" uid="uid://dqbx2jm6rivgn" path="res://ui/menu.tscn" id="2_a47f8"]
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="2_mphjc"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="2_mphjc"]
 [ext_resource type="PackedScene" uid="uid://bhje7dgy8o8r3" path="res://ui/announce/announce_center.tscn" id="3_08xtv"]
 
 [sub_resource type="Gradient" id="Gradient_yu6rl"]

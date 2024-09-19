@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bnyleqcusyak5"]
 
-[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://greybox_texture_sheet.png" id="1_rutrj"]
+[ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_rutrj"]
 [ext_resource type="Script" path="res://player/bullet.gd" id="1_ttfp0"]
 [ext_resource type="Script" path="res://lib/HitBox.gd" id="2_ll05p"]
 [ext_resource type="Script" path="res://player/BulletMovement.gd" id="3_i376n"]
