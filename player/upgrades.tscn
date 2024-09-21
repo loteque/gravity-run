@@ -1,26 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://dl5q4sxdam73k"]
+[gd_scene load_steps=21 format=3 uid="uid://dl5q4sxdam73k"]
 
+[ext_resource type="Script" path="res://player/upgrades.gd" id="1_3g23n"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_8vccx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uphqk"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(426, 152, 9, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t40t0"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(426, 178, 9, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_his3s"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(426, 143, 13, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u8pta"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(426, 185, 13, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhk6v"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(457, 185, 8, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aurnw"]
 atlas = ExtResource("1_8vccx")
@@ -29,30 +10,6 @@ region = Rect2(442, 152, 6, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bua2g"]
 atlas = ExtResource("1_8vccx")
 region = Rect2(443, 183, 6, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_llyuh"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(450, 181, 8, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kuswi"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(440, 194, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vjewo"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(427, 194, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_saanp"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(427, 194, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4n7b"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(447, 195, 6, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dacui"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(434, 194, 7, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyqor"]
 atlas = ExtResource("1_8vccx")
@@ -74,237 +31,113 @@ region = Rect2(401, 163, 6, 12)
 atlas = ExtResource("1_8vccx")
 region = Rect2(452, 165, 5, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhk6v"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(457, 185, 8, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4n7b"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(447, 195, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dacui"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(434, 194, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uphqk"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(426, 152, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t40t0"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(426, 178, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llyuh"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(450, 181, 8, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuswi"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(440, 194, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjewo"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(427, 194, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saanp"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(427, 194, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_his3s"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(426, 143, 13, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8pta"]
+atlas = ExtResource("1_8vccx")
+region = Rect2(426, 185, 13, 10)
+
 [node name="Upgrades" type="Node2D"]
-
-[node name="Wings" type="Node2D" parent="."]
-
-[node name="WingPortMed" type="Sprite2D" parent="Wings"]
-visible = false
-position = Vector2(-9, -12)
-texture = SubResource("AtlasTexture_uphqk")
-centered = false
-
-[node name="WingStarboardMed" type="Sprite2D" parent="Wings"]
-visible = false
-position = Vector2(-9, 4)
-texture = SubResource("AtlasTexture_t40t0")
-centered = false
-
-[node name="WingPortLarge" type="Sprite2D" parent="Wings"]
-visible = false
-position = Vector2(-9, -14)
-texture = SubResource("AtlasTexture_his3s")
-centered = false
-
-[node name="WingStarboardLarge" type="Sprite2D" parent="Wings"]
-visible = false
-position = Vector2(-9, 4)
-texture = SubResource("AtlasTexture_u8pta")
-centered = false
-
-[node name="Weapons" type="Node2D" parent="Wings"]
-
-[node name="TorpedoesLargeWing" type="Node2D" parent="Wings/Weapons"]
-
-[node name="TorpedoPortI" type="Sprite2D" parent="Wings/Weapons/TorpedoesLargeWing"]
-visible = false
-position = Vector2(0, -11)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoPortII" type="Sprite2D" parent="Wings/Weapons/TorpedoesLargeWing"]
-visible = false
-position = Vector2(-1, -13)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoPortIII" type="Sprite2D" parent="Wings/Weapons/TorpedoesLargeWing"]
-visible = false
-position = Vector2(-2, -15)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoStarboardI" type="Sprite2D" parent="Wings/Weapons/TorpedoesLargeWing"]
-visible = false
-position = Vector2(0, 6)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoStarboardII" type="Sprite2D" parent="Wings/Weapons/TorpedoesLargeWing"]
-visible = false
-position = Vector2(-1, 8)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoStarboardIII" type="Sprite2D" parent="Wings/Weapons/TorpedoesLargeWing"]
-visible = false
-position = Vector2(-2, 10)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoesMediumWing" type="Node2D" parent="Wings/Weapons"]
-
-[node name="TorpedoPortI" type="Sprite2D" parent="Wings/Weapons/TorpedoesMediumWing"]
-visible = false
-position = Vector2(-3, -11)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoPortII" type="Sprite2D" parent="Wings/Weapons/TorpedoesMediumWing"]
-visible = false
-position = Vector2(-4, -13)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoStarboardI" type="Sprite2D" parent="Wings/Weapons/TorpedoesMediumWing"]
-visible = false
-position = Vector2(-3, 6)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="TorpedoStarboardII" type="Sprite2D" parent="Wings/Weapons/TorpedoesMediumWing"]
-visible = false
-position = Vector2(-4, 8)
-texture = SubResource("AtlasTexture_lhk6v")
-centered = false
-
-[node name="CannonPort" type="Sprite2D" parent="Wings/Weapons"]
-visible = false
-position = Vector2(-5, -8)
-texture = SubResource("AtlasTexture_aurnw")
-
-[node name="CannonStarboard" type="Sprite2D" parent="Wings/Weapons"]
-visible = false
-position = Vector2(-5, 8)
-texture = SubResource("AtlasTexture_bua2g")
-
-[node name="SpreadPort" type="Sprite2D" parent="Wings/Weapons"]
-visible = false
-position = Vector2(-3, -13)
-texture = SubResource("AtlasTexture_llyuh")
-centered = false
-flip_v = true
-
-[node name="SpreadStarboard" type="Sprite2D" parent="Wings/Weapons"]
-visible = false
-position = Vector2(-3, 1)
-texture = SubResource("AtlasTexture_llyuh")
-centered = false
-
-[node name="Drones" type="Node2D" parent="Wings/Weapons"]
-
-[node name="DroneCannonPortLargeWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-10, -20)
-texture = SubResource("AtlasTexture_kuswi")
-centered = false
-
-[node name="DroneCannonStarboardLargeWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-10, 12)
-texture = SubResource("AtlasTexture_kuswi")
-centered = false
-flip_h = true
-
-[node name="DroneLazerPortLargeWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-10, -20)
-texture = SubResource("AtlasTexture_vjewo")
-centered = false
-
-[node name="DroneLazerStarboardLargeWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-10, 12)
-texture = SubResource("AtlasTexture_saanp")
-centered = false
-flip_h = true
-
-[node name="DroneCannonPortMediumWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-14, -14)
-texture = SubResource("AtlasTexture_f4n7b")
-centered = false
-
-[node name="DroneCannonStarboardMediumWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-14, 8)
-texture = SubResource("AtlasTexture_f4n7b")
-centered = false
-flip_v = true
-
-[node name="DroneLazerPortMediumWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-15, -15)
-texture = SubResource("AtlasTexture_dacui")
-centered = false
-
-[node name="DroneLazerStarboardMediumWing" type="Sprite2D" parent="Wings/Weapons/Drones"]
-visible = false
-position = Vector2(-15, 7)
-texture = SubResource("AtlasTexture_dacui")
-centered = false
+script = ExtResource("1_3g23n")
 
 [node name="StandardIssue" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Weapons" type="Node2D" parent="StandardIssue"]
-
-[node name="CannonPort" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="CannonPort" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(0, -3)
 texture = SubResource("AtlasTexture_aurnw")
 
-[node name="CannonStarboard" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="CannonStarboard" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(0, 3)
 texture = SubResource("AtlasTexture_bua2g")
 
-[node name="LaunchTubeSmall" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LaunchTubeSmall" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-2, 0)
 texture = SubResource("AtlasTexture_gyqor")
 
-[node name="LaunchTubePortSmall" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LaunchTubePortSmall" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-3, -5)
 rotation = 1.5708
 texture = SubResource("AtlasTexture_gyqor")
 
-[node name="LaunchTubeStarboardSmall" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LaunchTubeStarboardSmall" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-3, 5)
 rotation = 1.5708
 texture = SubResource("AtlasTexture_gyqor")
 flip_h = true
 
-[node name="LaunchTubeMed" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LaunchTubeMed" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-2, 0)
 texture = SubResource("AtlasTexture_6p717")
 
-[node name="SpreadBow" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="SpreadBow" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(10, 0)
 texture = SubResource("AtlasTexture_eml2n")
 
-[node name="SpreadStern" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="SpreadStern" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-3, 0)
 texture = SubResource("AtlasTexture_n5p75")
 
-[node name="LazerBow" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LazerBow" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(7, -4)
 texture = SubResource("AtlasTexture_kayl2")
 centered = false
 
-[node name="LazerStern" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LazerStern" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-8, -4)
 texture = SubResource("AtlasTexture_kayl2")
 centered = false
 flip_h = true
 
-[node name="LazerPort" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LazerPort" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(5, -6)
 rotation = 1.5708
@@ -312,21 +145,195 @@ texture = SubResource("AtlasTexture_kayl2")
 centered = false
 flip_h = true
 
-[node name="LazerStarboard" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="LazerStarboard" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(5, 1)
 rotation = 1.5708
 texture = SubResource("AtlasTexture_kayl2")
 centered = false
 
-[node name="TorpedoPort" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="TorpedoPort" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-7, 6)
 texture = SubResource("AtlasTexture_lhk6v")
 centered = false
 
-[node name="TorpedoStarboard" type="Sprite2D" parent="StandardIssue/Weapons"]
+[node name="TorpedoStarboard" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-7, -11)
 texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="MedWing" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CannonPort" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-5, -8)
+texture = SubResource("AtlasTexture_aurnw")
+
+[node name="CannonStarboard" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-5, 8)
+texture = SubResource("AtlasTexture_bua2g")
+
+[node name="DroneCannonPortMediumWing" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-14, -14)
+texture = SubResource("AtlasTexture_f4n7b")
+centered = false
+
+[node name="DroneCannonStarboardMediumWing" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-14, 8)
+texture = SubResource("AtlasTexture_f4n7b")
+centered = false
+flip_v = true
+
+[node name="DroneLazerPortMediumWing" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-15, -15)
+texture = SubResource("AtlasTexture_dacui")
+centered = false
+
+[node name="DroneLazerStarboardMediumWing" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-15, 7)
+texture = SubResource("AtlasTexture_dacui")
+centered = false
+
+[node name="TorpedoPortI" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-3, -11)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoPortII" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-4, -13)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoStarboardI" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-3, 6)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoStarboardII" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-4, 8)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="WingPortMed" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-9, -12)
+texture = SubResource("AtlasTexture_uphqk")
+centered = false
+
+[node name="WingStarboardMed" type="Sprite2D" parent="MedWing"]
+visible = false
+position = Vector2(-9, 4)
+texture = SubResource("AtlasTexture_t40t0")
+centered = false
+
+[node name="LargeWing" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CannonPort" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-5, -8)
+texture = SubResource("AtlasTexture_aurnw")
+
+[node name="CannonStarboard" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-5, 8)
+texture = SubResource("AtlasTexture_bua2g")
+
+[node name="SpreadPort" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-3, -13)
+texture = SubResource("AtlasTexture_llyuh")
+centered = false
+flip_v = true
+
+[node name="SpreadStarboard" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-3, 1)
+texture = SubResource("AtlasTexture_llyuh")
+centered = false
+
+[node name="DroneCannonPortLargeWing" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-10, -20)
+texture = SubResource("AtlasTexture_kuswi")
+centered = false
+
+[node name="DroneCannonStarboardLargeWing" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-10, 12)
+texture = SubResource("AtlasTexture_kuswi")
+centered = false
+flip_h = true
+
+[node name="DroneLazerPortLargeWing" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-10, -20)
+texture = SubResource("AtlasTexture_vjewo")
+centered = false
+
+[node name="DroneLazerStarboardLargeWing" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-10, 12)
+texture = SubResource("AtlasTexture_saanp")
+centered = false
+flip_h = true
+
+[node name="TorpedoPortI" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(0, -11)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoPortII" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-1, -13)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoPortIII" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-2, -15)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoStarboardI" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(0, 6)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoStarboardII" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-1, 8)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="TorpedoStarboardIII" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-2, 10)
+texture = SubResource("AtlasTexture_lhk6v")
+centered = false
+
+[node name="WingPortLarge" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-9, -14)
+texture = SubResource("AtlasTexture_his3s")
+centered = false
+
+[node name="WingStarboardLarge" type="Sprite2D" parent="LargeWing"]
+visible = false
+position = Vector2(-9, 4)
+texture = SubResource("AtlasTexture_u8pta")
 centered = false

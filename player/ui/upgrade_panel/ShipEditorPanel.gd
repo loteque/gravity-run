@@ -6,6 +6,7 @@ func _ready():
     GameState.player_state_added.connect(_on_player_state_added)
     %CloseButton.pressed.connect(_on_close_button_pressed)
 
+
 func _on_player_state_added(player_state):
 
     player_state.level_updated.connect(_on_level_updated)

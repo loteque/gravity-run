@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://7ol42fgfnbpr"]
+[gd_scene load_steps=16 format=3 uid="uid://7ol42fgfnbpr"]
 
+[ext_resource type="Script" path="res://player/ui/player_ui.gd" id="1_51wwd"]
 [ext_resource type="PackedScene" uid="uid://dl2htgjrw0710" path="res://player/ui/total_kills_counter/TotalKillsCounter.tscn" id="1_yuab5"]
 [ext_resource type="PackedScene" uid="uid://dlhuc3rk04sxd" path="res://player/ui/level_progress_bar/level_progress_bar.tscn" id="3_o6d62"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="4_0vcc7"]
 [ext_resource type="PackedScene" uid="uid://b58kbxv6143me" path="res://ui/announce/level_up_announcement.tscn" id="4_7x624"]
-[ext_resource type="Script" path="res://player/ui/upgrade_panel/ShipEditorPanel.gd" id="4_xrdkc"]
-[ext_resource type="Script" path="res://player/ui/upgrade_panel/UpgradePoint.gd" id="6_y6rno"]
-[ext_resource type="Script" path="res://player/ui/upgrade_panel/UpgradeCard.gd" id="7_hv744"]
+[ext_resource type="Script" path="res://player/ui/upgrade_panel/ShipEditorPanel.gd" id="4_ojf84"]
+[ext_resource type="Script" path="res://player/ui/upgrade_panel/UpgradePoint.gd" id="6_or1v3"]
+[ext_resource type="Script" path="res://player/ui/upgrade_panel/UpgradeCard.gd" id="7_wksxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pm2vn"]
 atlas = ExtResource("4_0vcc7")
@@ -38,6 +39,7 @@ region = Rect2(503, 225, 16, 14)
 
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 5
+script = ExtResource("1_51wwd")
 
 [node name="TotalKills" parent="." instance=ExtResource("1_yuab5")]
 anchors_preset = 1
@@ -87,7 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("4_xrdkc")
+script = ExtResource("4_ojf84")
 
 [node name="MarginContainer2" type="MarginContainer" parent="ShipEditorPanel"]
 layout_mode = 2
@@ -180,7 +182,7 @@ alignment = 1
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/WingType"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fnlvq")
-script = ExtResource("6_y6rno")
+script = ExtResource("6_or1v3")
 
 [node name="LeadingEdge" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
 visible = false
@@ -367,7 +369,7 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 0
 texture = SubResource("AtlasTexture_rl1yj")
-script = ExtResource("7_hv744")
+script = ExtResource("7_wksxf")
 
 [node name="ColorRect" type="ColorRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/UpgradesRow/Upgrade1"]
 layout_mode = 1
@@ -436,7 +438,7 @@ stretch_mode = 3
 layout_mode = 2
 mouse_filter = 0
 texture = SubResource("AtlasTexture_rl1yj")
-script = ExtResource("7_hv744")
+script = ExtResource("7_wksxf")
 
 [node name="ColorRect" type="ColorRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/UpgradesRow/Upgrade2"]
 layout_mode = 1
@@ -505,7 +507,7 @@ stretch_mode = 3
 layout_mode = 2
 mouse_filter = 0
 texture = SubResource("AtlasTexture_rl1yj")
-script = ExtResource("7_hv744")
+script = ExtResource("7_wksxf")
 
 [node name="ColorRect" type="ColorRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/UpgradesRow/Upgrade3"]
 layout_mode = 1

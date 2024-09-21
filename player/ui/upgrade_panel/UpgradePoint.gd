@@ -6,8 +6,6 @@ extends TextureRect
 var type_match: bool
 var point_match: bool
 
-signal upgrade_applied(id)
-
 
 func _can_drop_data(_at_position, data):
     
@@ -39,7 +37,7 @@ func _can_drop_data(_at_position, data):
 
 func _drop_data(_at_position, data):
 
-    upgrade_applied.emit(data[&"id"])
+    owner.upgrade_applied.emit(data[&"wing_type"], data[&"id"])
     data[&"object"].tree_exiting.connect(_on_card_tree_exiting)
     data[&"object"].queue_free()
     print(data)
