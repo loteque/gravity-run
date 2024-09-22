@@ -5,6 +5,8 @@ extends Marker2D
 @export var player_state: PlayerState
 @export var firing_sfx: AudioStreamPlayer
 
+var is_active: bool
+
 func shoot():
 	
 	var bullet_node = bullet.instantiate()
@@ -29,8 +31,16 @@ func _unhandled_input(event):
 		
 		return
 
-	if player_state.input_paused == true:
+	if player_state.input_paused:
+
+		return
+
+	if !is_active:
 
 		return
 
 	handle_shoot_event(event)
+
+func _ready():
+	if get_parent().visible:
+		is_active = true

@@ -50,5 +50,6 @@ grow_rate = 0.1
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_xc2s4")
 autoplay = true

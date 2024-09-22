@@ -244,4 +244,12 @@ animation = &"death"
 
 [node name="Upgrades" parent="." instance=ExtResource("13_gsix2")]
 
+[node name="Muzzle" parent="Upgrades/StandardIssue/CannonPort" index="0" node_paths=PackedStringArray("player_state", "firing_sfx")]
+player_state = NodePath("../../../../PlayerState")
+firing_sfx = NodePath("SfxrStreamPlayer")
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/CannonStarboard" index="0" node_paths=PackedStringArray("player_state", "firing_sfx")]
+player_state = NodePath("../../../../PlayerState")
+firing_sfx = NodePath("SfxrStreamPlayer")
+
 [editable path="Upgrades"]
