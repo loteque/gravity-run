@@ -1,13 +1,14 @@
 extends TextureRect
 
 @onready var cost_tray: BoxContainer = %Cost
-@onready var part_image: TextureRect = %PartImage
+@onready var part_image: GridContainer = %PartImage
 @onready var return_tray: BoxContainer = %Gain
 
 var all_cards = [
 
     preload("res://player/ui/upgrade_panel/cards/cannon_port.tres"),
-    preload("res://player/ui/upgrade_panel/cards/cannon_starboard.tres")
+    preload("res://player/ui/upgrade_panel/cards/cannon_starboard.tres"),
+    preload("res://player/ui/upgrade_panel/cards/spread_bow.tres")
 
 ]
 
@@ -28,6 +29,7 @@ func compile_card():
         
         var cost_tex_rect = TextureRect.new()
         cost_tex_rect.texture = card.cost_rect
+        cost_tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
         cost_tray.add_child(cost_tex_rect)
 
     for i in card.return_value:
@@ -37,7 +39,10 @@ func compile_card():
         return_tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
         return_tray.add_child(return_tex_rect)
 
-    part_image.texture = card.part_image
+    var part_tex_rect = TextureRect.new()
+    part_tex_rect.texture = card.part_image
+    part_tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+    part_image.add_child(part_tex_rect)
 
 
 func _ready():
