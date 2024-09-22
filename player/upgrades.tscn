@@ -1,19 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dl5q4sxdam73k"]
+[gd_scene load_steps=22 format=3 uid="uid://dl5q4sxdam73k"]
 
 [ext_resource type="Script" path="res://player/upgrades.gd" id="1_3g23n"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_8vccx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aurnw"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(442, 152, 6, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bua2g"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(443, 183, 6, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyqor"]
-atlas = ExtResource("1_8vccx")
-region = Rect2(389, 165, 6, 8)
+[ext_resource type="Texture2D" uid="uid://c8t6fty606pa2" path="res://player/atlas_textures/upgrades/StandardIssue/CannonPort.tres" id="2_fmh4v"]
+[ext_resource type="Texture2D" uid="uid://xhovi0cdb8ly" path="res://player/atlas_textures/upgrades/StandardIssue/CannonStarboard.tres" id="3_0xit8"]
+[ext_resource type="Script" path="res://player/ShipUpgrade.gd" id="3_tf2kj"]
+[ext_resource type="Texture2D" uid="uid://b1n4wkv8vxuey" path="res://player/atlas_textures/upgrades/StandardIssue/LaunchTubeSmall.tres" id="4_2ecs8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p717"]
 atlas = ExtResource("1_8vccx")
@@ -84,29 +76,31 @@ unique_name_in_owner = true
 [node name="CannonPort" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(0, -3)
-texture = SubResource("AtlasTexture_aurnw")
+texture = ExtResource("2_fmh4v")
+script = ExtResource("3_tf2kj")
 
 [node name="CannonStarboard" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(0, 3)
-texture = SubResource("AtlasTexture_bua2g")
+texture = ExtResource("3_0xit8")
+script = ExtResource("3_tf2kj")
 
 [node name="LaunchTubeSmall" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-2, 0)
-texture = SubResource("AtlasTexture_gyqor")
+texture = ExtResource("4_2ecs8")
 
 [node name="LaunchTubePortSmall" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-3, -5)
 rotation = 1.5708
-texture = SubResource("AtlasTexture_gyqor")
+texture = ExtResource("4_2ecs8")
 
 [node name="LaunchTubeStarboardSmall" type="Sprite2D" parent="StandardIssue"]
 visible = false
 position = Vector2(-3, 5)
 rotation = 1.5708
-texture = SubResource("AtlasTexture_gyqor")
+texture = ExtResource("4_2ecs8")
 flip_h = true
 
 [node name="LaunchTubeMed" type="Sprite2D" parent="StandardIssue"]
@@ -170,12 +164,12 @@ unique_name_in_owner = true
 [node name="CannonPort" type="Sprite2D" parent="MedWing"]
 visible = false
 position = Vector2(-5, -8)
-texture = SubResource("AtlasTexture_aurnw")
+texture = ExtResource("2_fmh4v")
 
 [node name="CannonStarboard" type="Sprite2D" parent="MedWing"]
 visible = false
 position = Vector2(-5, 8)
-texture = SubResource("AtlasTexture_bua2g")
+texture = ExtResource("3_0xit8")
 
 [node name="DroneCannonPortMediumWing" type="Sprite2D" parent="MedWing"]
 visible = false
@@ -244,12 +238,12 @@ unique_name_in_owner = true
 [node name="CannonPort" type="Sprite2D" parent="LargeWing"]
 visible = false
 position = Vector2(-5, -8)
-texture = SubResource("AtlasTexture_aurnw")
+texture = ExtResource("2_fmh4v")
 
 [node name="CannonStarboard" type="Sprite2D" parent="LargeWing"]
 visible = false
 position = Vector2(-5, 8)
-texture = SubResource("AtlasTexture_bua2g")
+texture = ExtResource("3_0xit8")
 
 [node name="SpreadPort" type="Sprite2D" parent="LargeWing"]
 visible = false

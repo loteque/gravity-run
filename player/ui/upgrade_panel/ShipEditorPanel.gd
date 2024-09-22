@@ -1,10 +1,17 @@
 extends PanelContainer
 
+@onready var card: PackedScene = preload("res://player/ui/upgrade_panel/cards/card.tscn")
+@onready var card_tray: BoxContainer = %UpgradesRow
 
 func _ready():
     
     GameState.player_state_added.connect(_on_player_state_added)
     %CloseButton.pressed.connect(_on_close_button_pressed)
+
+    for i in 2:
+
+        var new_card = card.instantiate()
+        card_tray.add_child(new_card)
 
 
 func _on_player_state_added(player_state):
