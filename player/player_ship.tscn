@@ -257,9 +257,6 @@ visible = false
 [node name="Muzzle" parent="Upgrades/StandardIssue/CannonStarboard" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
-[node name="LaunchTubeSmall" parent="Upgrades/StandardIssue" index="2"]
-visible = false
-
 [node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeSmall" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
@@ -275,27 +272,30 @@ visible = false
 [node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeStarboardSmall" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
+[node name="LaunchTubeMed" parent="Upgrades/StandardIssue" index="5"]
+visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeMed" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
 [node name="SpreadBow" parent="Upgrades/StandardIssue" index="6"]
 visible = false
 
-[node name="Muzzle" parent="Upgrades/StandardIssue/SpreadBow" index="0" node_paths=PackedStringArray("player_state", "firing_sfx")]
+[node name="Muzzle" parent="Upgrades/StandardIssue/SpreadBow" index="0" node_paths=PackedStringArray("player_state")]
 position = Vector2(0, 0)
 player_state = NodePath("../../../../PlayerState")
-firing_sfx = NodePath("SfxrStreamPlayer")
-fire_direction = 1
 
-[node name="Muzzle2" parent="Upgrades/StandardIssue/SpreadBow" index="1" node_paths=PackedStringArray("player_state", "firing_sfx")]
+[node name="Muzzle2" parent="Upgrades/StandardIssue/SpreadBow" index="1" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-firing_sfx = NodePath("SfxrStreamPlayer")
-fire_direction = 21
 
-[node name="Muzzle3" parent="Upgrades/StandardIssue/SpreadBow" index="2" node_paths=PackedStringArray("player_state", "firing_sfx")]
+[node name="Muzzle3" parent="Upgrades/StandardIssue/SpreadBow" index="2" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-firing_sfx = NodePath("SfxrStreamPlayer")
-fire_direction = 20
 
 [node name="LazerBow" parent="Upgrades/StandardIssue" index="7"]
 visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LazerBow" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
 
 [node name="LazerPort" parent="Upgrades/StandardIssue" index="9"]
 visible = false

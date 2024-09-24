@@ -3,7 +3,8 @@ class_name ShipUpgrade
 
 var is_active: bool:
     set(b):
-        get_node("Muzzle").is_active = b
+        for muzzle in get_children():
+            muzzle.is_active = b
 
 func _ready():
     

@@ -246,25 +246,39 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="SternPoints2" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+value_max = 4
+value = 3
+ship_section = 2
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+value_max = 4
+value = 3
+ship_section = 2
 
 [node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+value_max = 4
+value = 3
+ship_section = 2
 
 [node name="SternPoints1" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
 layout_mode = 2
@@ -292,18 +306,24 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+value = 3
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+value = 3
 
 [node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+value = 3
 
 [node name="Starboard" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
 layout_mode = 2

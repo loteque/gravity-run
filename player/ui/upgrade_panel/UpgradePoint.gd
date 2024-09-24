@@ -3,10 +3,7 @@ class_name UpgradePointUI
 
 @export var type: UpgradeData.PointType
 @export var value_max: int = 3
-@export var value: int = 1:
-    set(value):
-        set_neighbor_values(value)
-
+@export var value: int = 1
 @export var wing_type: UpgradeData.WingType
 @export var ship_section: UpgradeData.ShipSection
 
@@ -14,6 +11,7 @@ class_name UpgradePointUI
 
 func set_neighbor_values(new_value):
     
+    await get_parent().ready
     for point in get_parent().get_children():
         
         if point == self:
@@ -83,9 +81,11 @@ func _drop_data(_at_position, data):
 
     var new_value: int = value + data[&"return_value"]
 
+    print("upgrading mount points")
+
     await upgrade_points(data[&"id"])
     value = new_value
-
+    set_neighbor_values(value)
 
     owner.upgrade_applied.emit(data[&"wing_type"], data[&"id"])
     data[&"object"].tree_exiting.connect(_on_card_tree_exiting)
@@ -114,13 +114,23 @@ func upgrade_points(id):
             )
         
         UpgradeData.Validator.ValidPartName.CANNON_PORT:
-            editor_control.show_points(
+            await editor_control.show_points(
                 editor_control.port_fuselage_upgrade
             )
 
         UpgradeData.Validator.ValidPartName.CANNON_STARBOARD:
-            editor_control.show_points(
+            await editor_control.show_points(
                 editor_control.star_fuselage_upgrade
+            )
+
+        UpgradeData.Validator.ValidPartName.LAUNCH_TUBE_SMALL:
+            await editor_control.show_points(
+                editor_control.stern_upgrade
+            )
+
+        UpgradeData.Validator.ValidPartName.LAZER_BOW:
+            await editor_control.show_points(
+                editor_control.bow_upgrade
             )
 
         _:

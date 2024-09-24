@@ -186,7 +186,14 @@ class Validator:
 
             UpgradeData.ShipSection.STERN: [
 
-                ValidPartName.LAUNCH_TUBE_SMALL
+                ValidPartName.LAUNCH_TUBE_SMALL,
+                ValidPartName.LAUNCH_TUBE_MED
+
+            ],
+            UpgradeData.ShipSection.BOW: [
+
+                ValidPartName.SPREAD_BOW,
+                ValidPartName.LAZER_BOW
 
             ],
         
@@ -211,7 +218,7 @@ class Validator:
         print("Validator: Validating part id: ", part_id)
         if parts_class[wing_type][ship_section].find(part_id) == -1:
 
-            print("Validator: part id not found")
+            print("Validator: part id not found for ship class")
             return false
 
         return true

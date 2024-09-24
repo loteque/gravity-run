@@ -10,7 +10,10 @@ var all_cards = [
     preload("res://player/ui/upgrade_panel/cards/cannon_starboard.tres"),
     preload("res://player/ui/upgrade_panel/cards/spread_bow.tres"),
     preload("res://player/ui/upgrade_panel/cards/launch_tube_port_small.tres"),
-    preload("res://player/ui/upgrade_panel/cards/launch_tube_small.tres")
+    preload("res://player/ui/upgrade_panel/cards/launch_tube_starboard_small.tres"),
+    preload("res://player/ui/upgrade_panel/cards/launch_tube_small.tres"),
+    preload("res://player/ui/upgrade_panel/cards/launch_tube_med.tres"),
+    preload("res://player/ui/upgrade_panel/cards/lazer_bow.tres")
 
 ]
 
