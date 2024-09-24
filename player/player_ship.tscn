@@ -199,6 +199,7 @@ script = ExtResource("8_oqag3")
 bullet = ExtResource("9_t6dfb")
 player_state = NodePath("../PlayerState")
 firing_sfx = NodePath("SfxrStreamPlayer")
+fire_direction = 1
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="Muzzle"]
 stream = SubResource("AudioStreamWAV_s4rj7")
@@ -244,12 +245,68 @@ animation = &"death"
 
 [node name="Upgrades" parent="." instance=ExtResource("13_gsix2")]
 
-[node name="Muzzle" parent="Upgrades/StandardIssue/CannonPort" index="0" node_paths=PackedStringArray("player_state", "firing_sfx")]
-player_state = NodePath("../../../../PlayerState")
-firing_sfx = NodePath("SfxrStreamPlayer")
+[node name="CannonPort" parent="Upgrades/StandardIssue" index="0"]
+visible = false
 
-[node name="Muzzle" parent="Upgrades/StandardIssue/CannonStarboard" index="0" node_paths=PackedStringArray("player_state", "firing_sfx")]
+[node name="Muzzle" parent="Upgrades/StandardIssue/CannonPort" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="CannonStarboard" parent="Upgrades/StandardIssue" index="1"]
+visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/CannonStarboard" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="LaunchTubeSmall" parent="Upgrades/StandardIssue" index="2"]
+visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeSmall" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="LaunchTubePortSmall" parent="Upgrades/StandardIssue" index="3"]
+visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubePortSmall" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="LaunchTubeStarboardSmall" parent="Upgrades/StandardIssue" index="4"]
+visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeStarboardSmall" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="SpreadBow" parent="Upgrades/StandardIssue" index="6"]
+visible = false
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/SpreadBow" index="0" node_paths=PackedStringArray("player_state", "firing_sfx")]
+position = Vector2(0, 0)
 player_state = NodePath("../../../../PlayerState")
 firing_sfx = NodePath("SfxrStreamPlayer")
+fire_direction = 1
+
+[node name="Muzzle2" parent="Upgrades/StandardIssue/SpreadBow" index="1" node_paths=PackedStringArray("player_state", "firing_sfx")]
+player_state = NodePath("../../../../PlayerState")
+firing_sfx = NodePath("SfxrStreamPlayer")
+fire_direction = 21
+
+[node name="Muzzle3" parent="Upgrades/StandardIssue/SpreadBow" index="2" node_paths=PackedStringArray("player_state", "firing_sfx")]
+player_state = NodePath("../../../../PlayerState")
+firing_sfx = NodePath("SfxrStreamPlayer")
+fire_direction = 20
+
+[node name="LazerBow" parent="Upgrades/StandardIssue" index="7"]
+visible = false
+
+[node name="LazerPort" parent="Upgrades/StandardIssue" index="9"]
+visible = false
+
+[node name="LazerStarboard" parent="Upgrades/StandardIssue" index="10"]
+visible = false
+
+[node name="TorpedoPort" parent="Upgrades/StandardIssue" index="11"]
+visible = false
+
+[node name="TorpedoStarboard" parent="Upgrades/StandardIssue" index="12"]
+visible = false
 
 [editable path="Upgrades"]

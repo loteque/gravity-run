@@ -6,10 +6,11 @@
 
 [resource]
 script = ExtResource("1_hpsd5")
-upgrade_type = 0
+upgrade_type = 1
 cost = 1
-id = &"CannonStarboard"
-wing_type = &"standard"
+id = 1
+wing_type = 0
+ship_section = 1
 return_type = 1
 return_value = 1
 part_image = ExtResource("2_s6ehx")

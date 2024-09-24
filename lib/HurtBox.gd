@@ -15,7 +15,7 @@ func _ready():
 
 
 func die(_area: Area2D):
-
+	
 	if !actor: return
 
 	if animations:
@@ -31,9 +31,10 @@ func die(_area: Area2D):
 	
 	actor.queue_free()
 
-	if actor.is_in_group("Player"):
+	if !actor.is_in_group("Bullet"):
+		if actor.is_in_group("Player"):
 
-		Main.handle_game_over()
+			Main.handle_game_over()
 		
 
 func is_hitbox_valid(hitbox: Area2D) -> bool:
@@ -41,6 +42,17 @@ func is_hitbox_valid(hitbox: Area2D) -> bool:
 	if hitbox.get_parent() == self.get_parent():
 		
 		return false
+
+	# HACK to make sure the player's bullets don't damage player stuff
+	if actor.is_in_group("Player") and hitbox.is_in_group("Player"):
+
+		return false
+
+	if actor.is_in_group("Bullet") and hitbox.is_in_group("Player"):
+
+
+		return false
+	#
 
 	if !hitbox.is_in_group("Hitbox"):
 

@@ -2,16 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://cwyq5ndn7q1j8" path="res://player/ui/upgrade_panel/cards/symbols/point_type_1.tres" id="1_jj3bh"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/cards/UpgradeCardTemplate.gd" id="1_xvocy"]
-[ext_resource type="Texture2D" uid="uid://c8t6fty606pa2" path="res://player/atlas_textures/upgrades/StandardIssue/CannonPort.tres" id="2_7j2vq"]
+[ext_resource type="Texture2D" uid="uid://c8t6fty606pa2" path="res://player/atlas_textures/upgrades/StandardIssue/CannonPort.tres" id="2_twiri"]
 
 [resource]
 script = ExtResource("1_xvocy")
 upgrade_type = 1
 cost = 1
-id = &"CannonPort"
-wing_type = &"standard"
+id = 0
+wing_type = 0
+ship_section = 3
 return_type = 1
 return_value = 1
-part_image = ExtResource("2_7j2vq")
+part_image = ExtResource("2_twiri")
 cost_rect = ExtResource("1_jj3bh")
 return_rect = ExtResource("1_jj3bh")

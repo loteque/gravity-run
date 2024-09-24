@@ -133,19 +133,23 @@ mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
-visible = false
+[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
+type = 1
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
+[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="WingLeadingTrailing" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
 layout_mode = 2
@@ -163,6 +167,7 @@ alignment = 1
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_sys2o")
+script = ExtResource("6_or1v3")
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones"]
 visible = false
@@ -171,6 +176,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_rfcm1")
 stretch_mode = 2
+script = ExtResource("6_or1v3")
 
 [node name="WingType" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
 layout_mode = 2
@@ -194,28 +200,24 @@ alignment = 1
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Fuselage" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
-
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
-visible = false
-layout_mode = 2
-texture = SubResource("AtlasTexture_pm2vn")
-script = ExtResource("6_or1v3")
-value_max = 2
 
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
 layout_mode = 2
@@ -223,6 +225,16 @@ texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 value_max = 2
+ship_section = 3
+
+[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
+type = 1
+value_max = 2
+ship_section = 3
 
 [node name="BowStern" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
 layout_mode = 2
@@ -242,14 +254,17 @@ alignment = 1
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="SternPoints1" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
 layout_mode = 2
@@ -258,6 +273,10 @@ alignment = 1
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints1"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
+type = 1
+value_max = 4
+ship_section = 2
 
 [node name="Ship" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
 layout_mode = 2
@@ -272,16 +291,19 @@ alignment = 1
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
+script = ExtResource("6_or1v3")
 
 [node name="Starboard" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
 layout_mode = 2
@@ -296,12 +318,16 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+ship_section = 1
 
 [node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
+type = 1
+ship_section = 1
 
 [node name="WingLeadingTrailing" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
 layout_mode = 2

@@ -1,69 +1,90 @@
 extends TextureRect
+class_name UpgradePointUI
 
-@export var type: int = 0
+@export var type: UpgradeData.PointType
 @export var value_max: int = 3
 @export var value: int = 1:
     set(value):
         set_neighbor_values(value)
 
+@export var wing_type: UpgradeData.WingType
+@export var ship_section: UpgradeData.ShipSection
+
 @onready var editor_control: Control = %ShipEditorControl
 
-
 func set_neighbor_values(new_value):
-        for point in get_parent().get_children():
-            
-            if point == self:
-            
-                continue
-
-            await point.ready
-            point.value = new_value
-            print("set value on: ", self.name, value)
-
-
-var type_match: bool = false
-var point_match: bool = false
-
-func _can_drop_data(_at_position, data):
     
+    for point in get_parent().get_children():
+        
+        if point == self:
+        
+            continue
+
+        await point.ready
+        point.value = new_value
+        print("set value on: ", self.name, value)
+
+
+func validate_upgrade_point(data) -> bool:
+
+    var type_match: bool = false
     if data[&"type"] == type:
         
         type_match = true
 
     else:
 
-        print("wrong type for mount point")
+        print("wrong value rect type for mount point rect")
 
+    var point_match: bool = false
     if data[&"cost"] <= value:
 
         point_match = true
 
     else:
 
-        print("cost exceeds available mount points")
+        print("cost exceeds available mount points: ", data[&"cost"], value)
 
-    if type_match and value:
 
-        return true
+    var section_match: bool = false
+    if data[&"ship_section"] == ship_section:
+        
+        section_match = true
 
     else:
 
-        print("not the correct type")
-        return false
+        print(
+        
+            "part cannot be applied to " 
+            + UpgradeData.ship_section[data[&"ship_section"]] 
+            + " section of ship"
+        
+        )
+    
+    return type_match and point_match and section_match
+
+
+func _can_drop_data(_at_position, data):
+    
+    var is_valid_upgrade_point: bool = validate_upgrade_point(data)
+
+    var is_valid_part: bool = UpgradeData.Validator.validate(
+         
+        data[&"wing_type"],
+        data[&"ship_section"], 
+        data[&"id"]
+    
+    )
+
+    return is_valid_upgrade_point and is_valid_part
 
 
 func _drop_data(_at_position, data):
 
     var new_value: int = value + data[&"return_value"]
 
-    if !type_match or !value:
-        
-        return
-
-    if new_value <= value_max:
-
-        upgrade_points(data[&"id"])
-        value = new_value
+    await upgrade_points(data[&"id"])
+    value = new_value
 
 
     owner.upgrade_applied.emit(data[&"wing_type"], data[&"id"])
@@ -79,24 +100,25 @@ func _on_card_tree_exiting():
 
 
 func upgrade_points(id):
+    
     print("upgraded points on: ", id)
     match id:
-        &"WingPortMed":
+        UpgradeData.Validator.ValidPartName.WING_PORT_MED:
             await editor_control.show_points(
                 editor_control.port_wing_upgrade_1
             )
         
-        &"WingStarboardMed":
+        UpgradeData.Validator.ValidPartName.WING_STARBOARD_MED:
             await editor_control.show_points(
                 editor_control.star_wing_upgrade_1
             )
         
-        &"CannonPort":
+        UpgradeData.Validator.ValidPartName.CANNON_PORT:
             editor_control.show_points(
                 editor_control.port_fuselage_upgrade
             )
 
-        &"CannonStarboard":
+        UpgradeData.Validator.ValidPartName.CANNON_STARBOARD:
             editor_control.show_points(
                 editor_control.star_fuselage_upgrade
             )

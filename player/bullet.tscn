@@ -18,7 +18,7 @@ size = Vector2(4, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp62h"]
 size = Vector2(4, 2)
 
-[node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_box")]
+[node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_box") groups=["Bullet"]]
 script = ExtResource("1_ttfp0")
 hit_box = NodePath("BulletHitBox")
 
@@ -34,8 +34,8 @@ shape = SubResource("RectangleShape2D_fg13y")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
 script = ExtResource("3_i376n")
-speed = 750.0
 actor = NodePath("..")
+speed = 750.0
 input = NodePath("../ActorInput")
 gravity = NodePath("../Gravity")
 

@@ -8,7 +8,9 @@ var all_cards = [
 
     preload("res://player/ui/upgrade_panel/cards/cannon_port.tres"),
     preload("res://player/ui/upgrade_panel/cards/cannon_starboard.tres"),
-    preload("res://player/ui/upgrade_panel/cards/spread_bow.tres")
+    preload("res://player/ui/upgrade_panel/cards/spread_bow.tres"),
+    preload("res://player/ui/upgrade_panel/cards/launch_tube_port_small.tres"),
+    preload("res://player/ui/upgrade_panel/cards/launch_tube_small.tres")
 
 ]
 
@@ -64,8 +66,9 @@ func _get_drag_data(_at_position):
         
         &"type": card.upgrade_type, 
         &"cost": card.cost, 
-        &"wing_type": card.wing_type, 
         &"id": card.id, 
+        &"wing_type": card.wing_type,
+        &"ship_section": card.ship_section, 
         &"return_type": card.return_type, 
         &"return_value": card.return_value,
         &"object": self,

@@ -7,8 +7,9 @@ func _ready():
     
     GameState.player_state_added.connect(_on_player_state_added)
     %CloseButton.pressed.connect(_on_close_button_pressed)
+    visibility_changed.connect(_on_visibility_changed)
 
-    for i in 2:
+    for i in 3:
 
         var new_card = card.instantiate()
         card_tray.add_child(new_card)
@@ -31,3 +32,16 @@ func _on_close_button_pressed():
     print("pressed close button")
     GameState.unpause_stage()
     hide()
+
+func _on_visibility_changed():
+
+    if visible:
+
+        for child in card_tray.get_children():
+            
+            child.free()
+
+        for i in 3:
+
+            var new_card = card.instantiate()
+            card_tray.add_child(new_card)

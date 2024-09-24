@@ -49,11 +49,15 @@ func compile_upgrade_catalog():
 
 
 func add_upgrade(wing_type, id):
-    
-    upgrade_catalog[wing_type][id].show()
+    var wing_type_str_name = UpgradeData.wing_type[wing_type]
+    var part_str_name = UpgradeData.Validator.valid_part_name[id]
+    upgrade_catalog[wing_type_str_name][part_str_name].show()
 
 
 func _ready():
     
     compile_upgrade_catalog()
-    # print(upgrade_catalog)
+    
+    print(upgrade_catalog["standard"].keys())
+    print(upgrade_catalog["medium_wing"].keys())
+    print(upgrade_catalog["large_wing"].keys())
