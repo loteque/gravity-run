@@ -163,6 +163,7 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_l6m2w")
 offset_left = 2.0
 offset_right = 642.0
+mouse_filter = 2
 script = ExtResource("6_3o1c2")
 shake_power = 0.0
 color_rate = 0.0

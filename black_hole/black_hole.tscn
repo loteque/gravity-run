@@ -36,3 +36,4 @@ damage = 50
 shape = SubResource("CircleShape2D_otral")
 
 [node name="BlackHoleEffect" parent="." instance=ExtResource("4_qxhxc")]
+layer = 0

@@ -1,13 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://7ol42fgfnbpr"]
+[gd_scene load_steps=19 format=3 uid="uid://7ol42fgfnbpr"]
 
 [ext_resource type="Script" path="res://player/ui/player_ui.gd" id="1_51wwd"]
 [ext_resource type="PackedScene" uid="uid://dl2htgjrw0710" path="res://player/ui/total_kills_counter/TotalKillsCounter.tscn" id="1_yuab5"]
 [ext_resource type="PackedScene" uid="uid://dlhuc3rk04sxd" path="res://player/ui/level_progress_bar/level_progress_bar.tscn" id="3_o6d62"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="4_0vcc7"]
 [ext_resource type="PackedScene" uid="uid://b58kbxv6143me" path="res://ui/announce/level_up_announcement.tscn" id="4_7x624"]
+[ext_resource type="Texture2D" uid="uid://dyl5h0aqs12se" path="res://player/atlas_textures/upgrades/StandardIssue/LazerBow.tres" id="4_e4wbs"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/ShipEditorPanel.gd" id="4_ojf84"]
+[ext_resource type="Texture2D" uid="uid://cys3lmvx8q6m1" path="res://player/atlas_textures/upgrades/StandardIssue/TorpedoPort.tres" id="5_gxkcl"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/ship_editor_control.gd" id="6_8rnnf"]
+[ext_resource type="Texture2D" uid="uid://bav278krrdjl0" path="res://player/atlas_textures/upgrades/StandardIssue/SmallBomb.tres" id="6_25c1v"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/UpgradePoint.gd" id="6_or1v3"]
+
+[sub_resource type="Gradient" id="Gradient_lq2s2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j7akb"]
+gradient = SubResource("Gradient_lq2s2")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pm2vn"]
 atlas = ExtResource("4_0vcc7")
@@ -30,10 +39,12 @@ atlas = ExtResource("4_0vcc7")
 region = Rect2(594, 92, 40, 32)
 
 [node name="PlayerUI" type="CanvasLayer"]
-layer = 5
+layer = 0
 script = ExtResource("1_51wwd")
 
 [node name="TotalKills" parent="." instance=ExtResource("1_yuab5")]
+z_index = -5
+z_as_relative = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -41,7 +52,9 @@ offset_left = -26.0
 offset_right = 0.0
 grow_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ShipStats" type="MarginContainer" parent="."]
+z_index = -5
+z_as_relative = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -50,27 +63,130 @@ offset_right = 250.0
 offset_bottom = 20.0
 grow_horizontal = 2
 
-[node name="ProgressBar" parent="MarginContainer" instance=ExtResource("3_o6d62")]
+[node name="ProgressBar" parent="ShipStats" instance=ExtResource("3_o6d62")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="LevelUpAnnouncement" parent="." instance=ExtResource("4_7x624")]
+[node name="AbilitySlots" type="MarginContainer" parent="."]
+z_index = -5
+z_as_relative = false
+offset_right = 126.0
+offset_bottom = 86.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 45
 
-[node name="ShipEditorPanel" type="PanelContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilitySlots"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilitySlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_e4wbs")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer/AbilityIcon"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_j7akb")
+expand_mode = 1
+
+[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Lazer"
+
+[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "X"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AbilitySlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_gxkcl")
+stretch_mode = 3
+
+[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Torpedo"
+
+[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "C"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="AbilitySlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_25c1v")
+stretch_mode = 3
+
+[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SM Bomb"
+
+[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "V"
+
+[node name="Menus" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ShipEditorPanel" type="PanelContainer" parent="Menus"]
 unique_name_in_owner = true
 process_mode = 3
+z_index = -5
+z_as_relative = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -47.5
+offset_right = 37.0
+offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+mouse_filter = 2
 script = ExtResource("4_ojf84")
 
-[node name="ShipEditorControl" type="Control" parent="ShipEditorPanel" node_paths=PackedStringArray("stern_2", "stern_1", "bow", "port_wing_top", "port_wing_drones", "port_wing_leading", "port_fuselage", "star_wing_top", "star_wing_drones", "star_wing_leading", "star_fuselage")]
+[node name="ShipEditorControl" type="Control" parent="Menus/ShipEditorPanel" node_paths=PackedStringArray("stern_2", "stern_1", "bow", "port_wing_top", "port_wing_drones", "port_wing_leading", "port_fuselage", "star_wing_top", "star_wing_drones", "star_wing_leading", "star_fuselage")]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 2
@@ -89,12 +205,12 @@ star_wing_leading = [NodePath("../MarginContainer/ShipEditor/ShipLayout/Starboar
 star_fuselage = [NodePath("../MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage/Point2"), NodePath("../MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage/Point1")]
 metadata/_edit_lock_ = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="ShipEditorPanel"]
+[node name="MarginContainer2" type="MarginContainer" parent="Menus/ShipEditorPanel"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_right = 5
 
-[node name="CloseButton" type="Button" parent="ShipEditorPanel/MarginContainer2"]
+[node name="CloseButton" type="Button" parent="Menus/ShipEditorPanel/MarginContainer2"]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
@@ -104,7 +220,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "x"
 
-[node name="MarginContainer" type="MarginContainer" parent="ShipEditorPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Menus/ShipEditorPanel"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 10
@@ -112,65 +228,65 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ShipEditor" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer"]
+[node name="ShipEditor" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="ShipLayout" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor"]
+[node name="ShipLayout" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = -1
 
-[node name="Port" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
+[node name="Port" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="WingTopSurface" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
+[node name="WingTopSurface" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
+[node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="WingLeadingTrailing" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
+[node name="WingLeadingTrailing" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Drones" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
+[node name="Drones" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_sys2o")
 script = ExtResource("6_or1v3")
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8
@@ -179,49 +295,50 @@ texture = SubResource("AtlasTexture_rfcm1")
 stretch_mode = 2
 script = ExtResource("6_or1v3")
 
-[node name="WingType" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
+[node name="WingType" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/WingType"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/WingType"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fnlvq")
 script = ExtResource("6_or1v3")
 value_max = 1
 
-[node name="LeadingEdge" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
+[node name="LeadingEdge" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 ship_section = 4
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
+[node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="Fuselage" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
+[node name="Fuselage" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
@@ -229,7 +346,7 @@ type = 1
 value_max = 2
 ship_section = 3
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Port/Fuselage"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -238,21 +355,21 @@ type = 1
 value_max = 2
 ship_section = 3
 
-[node name="BowStern" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
+[node name="BowStern" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
 layout_mode = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="SternPoints" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
+[node name="SternPoints" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SternPoints2" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
+[node name="SternPoints2" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -262,7 +379,7 @@ value_max = 4
 value = 3
 ship_section = 2
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -272,7 +389,7 @@ value_max = 4
 value = 3
 ship_section = 2
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
+[node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -282,11 +399,11 @@ value_max = 4
 value = 3
 ship_section = 2
 
-[node name="SternPoints1" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
+[node name="SternPoints1" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints"]
 layout_mode = 2
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints1"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints1"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
@@ -294,24 +411,24 @@ type = 1
 value_max = 4
 ship_section = 2
 
-[node name="Ship" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
+[node name="Ship" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_woxtt")
 stretch_mode = 3
 
-[node name="BowPoints" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
+[node name="BowPoints" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 value = 3
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -319,7 +436,7 @@ script = ExtResource("6_or1v3")
 type = 1
 value = 3
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
+[node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -327,23 +444,23 @@ script = ExtResource("6_or1v3")
 type = 1
 value = 3
 
-[node name="Starboard" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
+[node name="Starboard" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Fuselage" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
+[node name="Fuselage" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 ship_section = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
@@ -351,18 +468,18 @@ script = ExtResource("6_or1v3")
 type = 1
 ship_section = 1
 
-[node name="WingLeadingTrailing" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
+[node name="WingLeadingTrailing" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
 layout_mode = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Drones" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing"]
+[node name="Drones" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/Drones"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/Drones"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -370,68 +487,73 @@ texture = SubResource("AtlasTexture_rfcm1")
 stretch_mode = 2
 script = ExtResource("6_or1v3")
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/Drones"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/Drones"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_sys2o")
 script = ExtResource("6_or1v3")
 
-[node name="WingType" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing"]
+[node name="WingType" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/WingType"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/WingType"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fnlvq")
 script = ExtResource("6_or1v3")
 
-[node name="LeadingEdge" type="VBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing"]
+[node name="LeadingEdge" type="VBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 ship_section = 5
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge"]
+[node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="WingTopSurface" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
+[node name="WingTopSurface" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Point3" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface"]
+[node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="Point2" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface"]
+[node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="Point1" type="TextureRect" parent="ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface"]
+[node name="Point1" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface"]
 visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 
-[node name="UpgradesRow" type="HBoxContainer" parent="ShipEditorPanel/MarginContainer/ShipEditor"]
+[node name="UpgradesRow" type="HBoxContainer" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="LevelUpAnnouncement" parent="." instance=ExtResource("4_7x624")]
+z_index = -5
+z_as_relative = false
+mouse_filter = 2
