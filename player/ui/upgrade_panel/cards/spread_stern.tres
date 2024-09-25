@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UpgradeCardTemplate" load_steps=4 format=3 uid="uid://ctij2natpjh5m"]
+
+[ext_resource type="Texture2D" uid="uid://cwyq5ndn7q1j8" path="res://player/ui/upgrade_panel/cards/symbols/point_type_1.tres" id="1_26y7a"]
+[ext_resource type="Texture2D" uid="uid://brgiffg6eoavv" path="res://player/atlas_textures/upgrades/StandardIssue/SpreadStern.tres" id="2_34mb1"]
+[ext_resource type="Script" path="res://player/ui/upgrade_panel/cards/UpgradeCardTemplate.gd" id="3_oy8tl"]
+
+[resource]
+script = ExtResource("3_oy8tl")
+upgrade_type = 1
+cost = 3
+id = 7
+wing_type = 0
+ship_section = 2
+return_type = -1
+return_value = 0
+part_image = ExtResource("2_34mb1")
+cost_rect = ExtResource("1_26y7a")
+return_rect = ExtResource("1_26y7a")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UpgradeCardTemplate" load_steps=4 format=3 uid="uid://d4brtvtunptw8"]
+
+[ext_resource type="Texture2D" uid="uid://cwyq5ndn7q1j8" path="res://player/ui/upgrade_panel/cards/symbols/point_type_1.tres" id="1_2n614"]
+[ext_resource type="Texture2D" uid="uid://d31ld6vll2mqx" path="res://player/atlas_textures/upgrades/StandardIssue/TorpedoStarboard.tres" id="2_f3y2a"]
+[ext_resource type="Script" path="res://player/ui/upgrade_panel/cards/UpgradeCardTemplate.gd" id="3_6cosn"]
+
+[resource]
+script = ExtResource("3_6cosn")
+upgrade_type = 1
+cost = 1
+id = 13
+wing_type = 0
+ship_section = 5
+return_type = -1
+return_value = 0
+part_image = ExtResource("2_f3y2a")
+cost_rect = ExtResource("1_2n614")
+return_rect = ExtResource("1_2n614")

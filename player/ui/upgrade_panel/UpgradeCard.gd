@@ -13,8 +13,13 @@ var all_cards = [
     preload("res://player/ui/upgrade_panel/cards/launch_tube_starboard_small.tres"),
     preload("res://player/ui/upgrade_panel/cards/launch_tube_small.tres"),
     preload("res://player/ui/upgrade_panel/cards/launch_tube_med.tres"),
-    preload("res://player/ui/upgrade_panel/cards/lazer_bow.tres")
-
+    preload("res://player/ui/upgrade_panel/cards/lazer_bow.tres"),
+    preload("res://player/ui/upgrade_panel/cards/lazer_stern.tres"),
+    preload("res://player/ui/upgrade_panel/cards/lazer_port.tres"),
+    preload("res://player/ui/upgrade_panel/cards/lazer_starboard.tres"),
+    preload("res://player/ui/upgrade_panel/cards/torpedo_port.tres"),
+    preload("res://player/ui/upgrade_panel/cards/torpedo_starboard.tres"),
+    preload("res://player/ui/upgrade_panel/cards/spread_stern.tres")
 ]
 
 var card

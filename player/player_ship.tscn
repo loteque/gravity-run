@@ -245,14 +245,8 @@ animation = &"death"
 
 [node name="Upgrades" parent="." instance=ExtResource("13_gsix2")]
 
-[node name="CannonPort" parent="Upgrades/StandardIssue" index="0"]
-visible = false
-
 [node name="Muzzle" parent="Upgrades/StandardIssue/CannonPort" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-
-[node name="CannonStarboard" parent="Upgrades/StandardIssue" index="1"]
-visible = false
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/CannonStarboard" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
@@ -260,26 +254,14 @@ player_state = NodePath("../../../../PlayerState")
 [node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeSmall" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
-[node name="LaunchTubePortSmall" parent="Upgrades/StandardIssue" index="3"]
-visible = false
-
 [node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubePortSmall" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-
-[node name="LaunchTubeStarboardSmall" parent="Upgrades/StandardIssue" index="4"]
-visible = false
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeStarboardSmall" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
-[node name="LaunchTubeMed" parent="Upgrades/StandardIssue" index="5"]
-visible = false
-
 [node name="Muzzle" parent="Upgrades/StandardIssue/LaunchTubeMed" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-
-[node name="SpreadBow" parent="Upgrades/StandardIssue" index="6"]
-visible = false
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/SpreadBow" index="0" node_paths=PackedStringArray("player_state")]
 position = Vector2(0, 0)
@@ -291,22 +273,34 @@ player_state = NodePath("../../../../PlayerState")
 [node name="Muzzle3" parent="Upgrades/StandardIssue/SpreadBow" index="2" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
-[node name="LazerBow" parent="Upgrades/StandardIssue" index="7"]
-visible = false
-
 [node name="Muzzle" parent="Upgrades/StandardIssue/LazerBow" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
-[node name="LazerPort" parent="Upgrades/StandardIssue" index="9"]
+[node name="Muzzle" parent="Upgrades/StandardIssue/LazerStern" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LazerPort" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/LazerStarboard" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/TorpedoPort" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="Muzzle" parent="Upgrades/StandardIssue/TorpedoStarboard" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
+
+[node name="SpreadStern" parent="Upgrades/StandardIssue" index="13"]
 visible = false
 
-[node name="LazerStarboard" parent="Upgrades/StandardIssue" index="10"]
-visible = false
+[node name="Muzzle" parent="Upgrades/StandardIssue/SpreadStern" index="0" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
 
-[node name="TorpedoPort" parent="Upgrades/StandardIssue" index="11"]
-visible = false
+[node name="Muzzle2" parent="Upgrades/StandardIssue/SpreadStern" index="1" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
 
-[node name="TorpedoStarboard" parent="Upgrades/StandardIssue" index="12"]
-visible = false
+[node name="Muzzle3" parent="Upgrades/StandardIssue/SpreadStern" index="2" node_paths=PackedStringArray("player_state")]
+player_state = NodePath("../../../../PlayerState")
 
 [editable path="Upgrades"]

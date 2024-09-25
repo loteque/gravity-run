@@ -1,8 +1,8 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dyl5h0aqs12se"]
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ck5rc3bcdqilh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vmbr"]
 load_path = "res://.godot/imported/grey_box_texture_sheet.png-a2e219a2c500d07e165b1b2ca8c2cca0.ctex"
 
 [resource]
 atlas = SubResource("CompressedTexture2D_4vmbr")
-region = Rect2(555, 251, 8, 14)
+region = Rect2(478, 240, 14, 12)

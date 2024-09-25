@@ -133,5 +133,10 @@ func upgrade_points(id):
                 editor_control.bow_upgrade
             )
 
+        UpgradeData.Validator.ValidPartName.LAZER_STERN:
+            await editor_control.show_points(
+                editor_control.stern_upgrade
+            )
+
         _:
             return

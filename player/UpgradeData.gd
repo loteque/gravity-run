@@ -15,8 +15,17 @@ enum WingType {
     STANDARD,
     MEDIUM_WING,
     LARGE_WING,
+    ANY,
 
 }
+
+
+enum Tools {
+
+    REMOVER,
+
+}
+
 
 static var wing_type: Array[StringName] = [
 
@@ -33,16 +42,21 @@ enum ShipSection {
     STARBOARD,
     STERN,
     PORT,
+    PORT_LEADING_EDGE,
+    STARBOARD_LEADING_EDGE,
+    ANY
 
 }
 
 
-static var ship_section: Array[StringName] =[
+static var ship_section: Array[StringName] = [
 
     &"bow",
     &"starboard",
+    &"starboard_leading_edge",
     &"stern",
-    &"port"
+    &"port",
+    &"port_leading_edge"
 
 
 ]
@@ -164,42 +178,6 @@ static var large_wing: Array[StringName] = [
 
 class Validator:
 
-    static var parts_class: Dictionary = { 
-        
-        UpgradeData.WingType.STANDARD: {
-                
-            UpgradeData.ShipSection.PORT: [
-    
-                ValidPartName.CANNON_PORT,
-                ValidPartName.LAUNCH_TUBE_PORT_SMALL,
-                ValidPartName.LAZER_PORT,
-    
-            ],
-    
-            UpgradeData.ShipSection.STARBOARD: [
-    
-                ValidPartName.CANNON_STARBOARD,
-                ValidPartName.LAUNCH_TUBE_STARTBOARD_SMALL,
-                ValidPartName.LAZER_STARBOARD
-    
-            ],
-
-            UpgradeData.ShipSection.STERN: [
-
-                ValidPartName.LAUNCH_TUBE_SMALL,
-                ValidPartName.LAUNCH_TUBE_MED
-
-            ],
-            UpgradeData.ShipSection.BOW: [
-
-                ValidPartName.SPREAD_BOW,
-                ValidPartName.LAZER_BOW
-
-            ],
-        
-        },
-    }
-
     static func validate(wing_type: WingType, ship_section: ShipSection, part_id: ValidPartName) -> bool:
 
         
@@ -223,6 +201,66 @@ class Validator:
 
         return true
 
+
+    static var parts_class: Dictionary = { 
+        
+        UpgradeData.WingType.ANY: {
+
+            UpgradeData.ShipSection.ANY: [
+                
+                UpgradeData.Tools.REMOVER
+            
+            ],
+        },
+
+        UpgradeData.WingType.STANDARD: {
+                
+            UpgradeData.ShipSection.PORT: [
+    
+                ValidPartName.CANNON_PORT,
+                ValidPartName.LAUNCH_TUBE_PORT_SMALL,
+                ValidPartName.LAZER_PORT
+    
+            ],
+
+            UpgradeData.ShipSection.PORT_LEADING_EDGE: [
+    
+                ValidPartName.TORPEDO_PORT
+    
+            ],
+    
+            UpgradeData.ShipSection.STARBOARD: [
+    
+                ValidPartName.CANNON_STARBOARD,
+                ValidPartName.LAUNCH_TUBE_STARTBOARD_SMALL,
+                ValidPartName.LAZER_STARBOARD
+    
+            ],
+
+            UpgradeData.ShipSection.STARBOARD_LEADING_EDGE: [
+    
+                ValidPartName.TORPEDO_STARBOARD
+    
+            ],
+
+            UpgradeData.ShipSection.STERN: [
+
+                ValidPartName.LAUNCH_TUBE_SMALL,
+                ValidPartName.LAUNCH_TUBE_MED,
+                ValidPartName.LAZER_STERN,
+                ValidPartName.SPREAD_STERN
+
+            ],
+
+            UpgradeData.ShipSection.BOW: [
+
+                ValidPartName.SPREAD_BOW,
+                ValidPartName.LAZER_BOW
+
+            ],
+        
+        },
+    }
 
     enum ValidPartName {
 
