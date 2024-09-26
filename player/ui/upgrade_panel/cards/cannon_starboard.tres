@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cwyq5ndn7q1j8" path="res://player/ui/upgrade_panel/cards/symbols/point_type_1.tres" id="1_2kadh"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/cards/UpgradeCardTemplate.gd" id="1_hpsd5"]
-[ext_resource type="Texture2D" uid="uid://xhovi0cdb8ly" path="res://player/atlas_textures/upgrades/StandardIssue/CannonStarboard.tres" id="2_s6ehx"]
+[ext_resource type="Texture2D" uid="uid://xhovi0cdb8ly" path="res://player/atlas_textures/upgrades/StandardIssue/icons_2x/CannonStarboard.tres" id="2_s6ehx"]
 
 [resource]
 script = ExtResource("1_hpsd5")

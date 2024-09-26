@@ -6,9 +6,18 @@ var is_active: bool:
         for muzzle in get_children():
             muzzle.is_active = b
 
+
 func _ready():
     
     visibility_changed.connect(_on_visibility_changed)
+
+    if visible:
+
+        for muzzle in get_children():
+
+            muzzle.is_active = true
+    
+
 
 func _on_visibility_changed():
 

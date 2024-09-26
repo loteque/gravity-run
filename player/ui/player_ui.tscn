@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://dlhuc3rk04sxd" path="res://player/ui/level_progress_bar/level_progress_bar.tscn" id="3_o6d62"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="4_0vcc7"]
 [ext_resource type="PackedScene" uid="uid://b58kbxv6143me" path="res://ui/announce/level_up_announcement.tscn" id="4_7x624"]
-[ext_resource type="Texture2D" uid="uid://dyl5h0aqs12se" path="res://player/atlas_textures/upgrades/StandardIssue/LazerBow.tres" id="4_e4wbs"]
+[ext_resource type="Texture2D" uid="uid://dyl5h0aqs12se" path="res://player/atlas_textures/upgrades/StandardIssue/icons_2x/LazerBow.tres" id="4_mi1nm"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/ShipEditorPanel.gd" id="4_ojf84"]
 [ext_resource type="Script" path="res://lib/CountdownBar.gd" id="5_eqvx8"]
-[ext_resource type="Texture2D" uid="uid://cys3lmvx8q6m1" path="res://player/atlas_textures/upgrades/StandardIssue/TorpedoPort.tres" id="5_gxkcl"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/ship_editor_control.gd" id="6_8rnnf"]
-[ext_resource type="Texture2D" uid="uid://bav278krrdjl0" path="res://player/atlas_textures/upgrades/StandardIssue/SmallBomb.tres" id="6_25c1v"]
+[ext_resource type="Texture2D" uid="uid://cys3lmvx8q6m1" path="res://player/atlas_textures/upgrades/StandardIssue/icons_2x/TorpedoPort.tres" id="6_mquet"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/UpgradePoint.gd" id="6_or1v3"]
+[ext_resource type="Texture2D" uid="uid://bav278krrdjl0" path="res://player/atlas_textures/upgrades/StandardIssue/icons_2x/SmallBomb.tres" id="7_k2jrx"]
 
 [sub_resource type="Gradient" id="Gradient_lq2s2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -97,7 +97,7 @@ alignment = 1
 
 [node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_e4wbs")
+texture = ExtResource("4_mi1nm")
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="AbilitySlots/VBoxContainer/VBoxContainer/HBoxContainer/AbilityIcon"]
@@ -137,7 +137,7 @@ alignment = 1
 
 [node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("5_gxkcl")
+texture = ExtResource("6_mquet")
 stretch_mode = 3
 
 [node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer2"]
@@ -159,7 +159,7 @@ alignment = 1
 
 [node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-texture = ExtResource("6_25c1v")
+texture = ExtResource("7_k2jrx")
 stretch_mode = 3
 
 [node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]

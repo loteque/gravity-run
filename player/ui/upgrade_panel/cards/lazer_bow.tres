@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeCardTemplate" load_steps=4 format=3 uid="uid://be8okbk2nyy3h"]
 
 [ext_resource type="Texture2D" uid="uid://cwyq5ndn7q1j8" path="res://player/ui/upgrade_panel/cards/symbols/point_type_1.tres" id="1_7vxv7"]
-[ext_resource type="Texture2D" uid="uid://dyl5h0aqs12se" path="res://player/atlas_textures/upgrades/StandardIssue/LazerBow.tres" id="2_23ti3"]
+[ext_resource type="Texture2D" uid="uid://dyl5h0aqs12se" path="res://player/atlas_textures/upgrades/StandardIssue/icons_2x/LazerBow.tres" id="2_23ti3"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/cards/UpgradeCardTemplate.gd" id="3_l54bl"]
 
 [resource]

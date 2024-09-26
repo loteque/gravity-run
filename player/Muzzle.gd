@@ -54,7 +54,7 @@ func shoot():
 	# HACK
 	var upgrades
 	if !get_parent().name == "Player":
-
+	#
 		upgrades = owner
 
 		can_shoot = false
@@ -81,10 +81,18 @@ func handle_shoot_event(event):
 				if bullet_type != BulletType.LAZER: return
 
 				shoot()
-		
+
+			KEY_C:
+				
+				if bullet_type != BulletType.TORPEDO: return
+				
+				shoot()
+
 			_: 
 
 				return
+
+	
 
 func _unhandled_input(event):
 
@@ -98,17 +106,19 @@ func _unhandled_input(event):
 
 	if !is_active:
 
+		print("muzzle is inactive on weapon ", self.get_parent().name)
 		return
 
 	handle_shoot_event(event)
 
 func _ready():
-
-	if get_parent().visible:
 	
+	# HACK
+	if get_parent().name == "Player":
+
 		is_active = true
+		can_shoot = true
 
-	
 	cooldown_timer.wait_time = fire_delay
 	cooldown_timer.one_shot = true
 	add_child(cooldown_timer)

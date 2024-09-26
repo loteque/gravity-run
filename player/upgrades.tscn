@@ -1,14 +1,16 @@
-[gd_scene load_steps=33 format=3 uid="uid://dl5q4sxdam73k"]
+[gd_scene load_steps=35 format=3 uid="uid://dl5q4sxdam73k"]
 
 [ext_resource type="Script" path="res://player/upgrades.gd" id="1_3g23n"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_8vccx"]
-[ext_resource type="Texture2D" uid="uid://qrkh611gfavm" path="res://player/atlas_textures/upgrades/StandardIssue/SpreadBow.tres" id="2_lciwm"]
 [ext_resource type="Script" path="res://player/ShipUpgrade.gd" id="3_tf2kj"]
 [ext_resource type="Script" path="res://player/Muzzle.gd" id="4_53ecp"]
 [ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player/bullet.tscn" id="5_hchhx"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="6_ss1ae"]
 [ext_resource type="PackedScene" uid="uid://c57gyg5t7evqd" path="res://player/h_lazer.tscn" id="7_w6k8d"]
 [ext_resource type="PackedScene" uid="uid://b1h2iabbd3f56" path="res://player/v_lazer.tscn" id="8_ned6q"]
+[ext_resource type="Script" path="res://player/MultiMuzzle.gd" id="9_3ffjg"]
+[ext_resource type="PackedScene" uid="uid://c1br4lywipl6b" path="res://player/torpedo.tscn" id="9_3kq28"]
+[ext_resource type="Texture2D" uid="uid://qrkh611gfavm" path="res://player/atlas_textures/upgrades/StandardIssue/icons_2x/SpreadBow.tres" id="9_11183"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0wb6"]
 atlas = ExtResource("1_8vccx")
@@ -663,13 +665,13 @@ texture = SubResource("AtlasTexture_lhk6v")
 centered = false
 script = ExtResource("3_tf2kj")
 
-[node name="Muzzle" type="Marker2D" parent="StandardIssue/TorpedoPort" node_paths=PackedStringArray("firing_sfx")]
+[node name="Muzzle" type="Marker2D" parent="StandardIssue/TorpedoPort" node_paths=PackedStringArray("connected_weapons", "firing_sfx")]
 position = Vector2(1.00001, 2.00003)
-script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
-bullet_type = 1
-fire_delay = 2.0
-firing_sfx = NodePath("../../LaunchTubePortSmall/Muzzle/SfxrStreamPlayer")
+script = ExtResource("9_3ffjg")
+connected_weapons = [NodePath(".."), NodePath("../../TorpedoStarboard")]
+bullet = ExtResource("9_3kq28")
+bullet_type = 2
+firing_sfx = NodePath("SfxrStreamPlayer")
 fire_direction = 1
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/TorpedoPort/Muzzle"]
@@ -708,11 +710,13 @@ texture = SubResource("AtlasTexture_lhk6v")
 centered = false
 script = ExtResource("3_tf2kj")
 
-[node name="Muzzle" type="Marker2D" parent="StandardIssue/TorpedoStarboard" node_paths=PackedStringArray("firing_sfx")]
+[node name="Muzzle" type="Marker2D" parent="StandardIssue/TorpedoStarboard" node_paths=PackedStringArray("connected_weapons", "firing_sfx")]
 position = Vector2(1.00001, 2.00003)
-script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
-firing_sfx = NodePath("../../LaunchTubePortSmall/Muzzle/SfxrStreamPlayer")
+script = ExtResource("9_3ffjg")
+connected_weapons = [NodePath("../../TorpedoPort"), NodePath("..")]
+bullet = ExtResource("9_3kq28")
+bullet_type = 2
+firing_sfx = NodePath("SfxrStreamPlayer")
 fire_direction = 1
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/TorpedoStarboard/Muzzle"]
@@ -864,7 +868,7 @@ unique_name_in_owner = true
 [node name="CannonPort" type="Sprite2D" parent="MedWing"]
 visible = false
 position = Vector2(-5, -8)
-texture = ExtResource("2_lciwm")
+texture = ExtResource("9_11183")
 script = ExtResource("3_tf2kj")
 
 [node name="CannonStarboard" type="Sprite2D" parent="MedWing"]
@@ -950,7 +954,7 @@ unique_name_in_owner = true
 [node name="CannonPort" type="Sprite2D" parent="LargeWing"]
 visible = false
 position = Vector2(-5, -8)
-texture = ExtResource("2_lciwm")
+texture = ExtResource("9_11183")
 script = ExtResource("3_tf2kj")
 
 [node name="CannonStarboard" type="Sprite2D" parent="LargeWing"]

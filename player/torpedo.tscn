@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1br4lywipl6b"]
+
+[ext_resource type="Script" path="res://player/bullet.gd" id="1_ixyiy"]
+[ext_resource type="Texture2D" uid="uid://b2khisneh0bjn" path="res://player/atlas_textures/upgrades/StandardIssue/Torpedo.tres" id="2_1o6be"]
+[ext_resource type="Script" path="res://lib/HitBox.gd" id="3_3pitj"]
+[ext_resource type="Script" path="res://player/BulletMovement.gd" id="4_k80ry"]
+[ext_resource type="Script" path="res://lib/ActorInput.gd" id="5_reh5a"]
+[ext_resource type="Script" path="res://lib/Gravity.gd" id="6_bgovj"]
+[ext_resource type="Script" path="res://lib/HurtBox.gd" id="7_nl0kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg13y"]
+size = Vector2(6, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp62h"]
+size = Vector2(6, 1)
+
+[node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_box", "movement") groups=["Bullet"]]
+script = ExtResource("1_ixyiy")
+hit_box = NodePath("BulletHitBox")
+movement = NodePath("Movement")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1o6be")
+
+[node name="BulletHitBox" type="Area2D" parent="." groups=["Bullet"]]
+script = ExtResource("3_3pitj")
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitBox"]
+shape = SubResource("RectangleShape2D_fg13y")
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
+script = ExtResource("4_k80ry")
+actor = NodePath("..")
+speed = 750.0
+input = NodePath("../ActorInput")
+gravity = NodePath("../Gravity")
+
+[node name="ActorInput" type="Node" parent="."]
+script = ExtResource("5_reh5a")
+
+[node name="Gravity" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("6_bgovj")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("7_nl0kc")
+actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_hp62h")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.96046e-08, -1.78814e-07)
+rect = Rect2(-4, -2.5, 8, 5)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
