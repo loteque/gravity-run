@@ -31,6 +31,7 @@ func shoot():
         is_live = false
         get_parent().visible = false
         super.shoot()
+        can_shoot = true
 
     set_is_live()
 
@@ -48,6 +49,7 @@ func _on_parent_visibility_changed():
     if get_parent().visible:
 
         is_empty = false
+        set_is_live()
 
     else:
 
