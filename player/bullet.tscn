@@ -18,9 +18,10 @@ size = Vector2(4, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp62h"]
 size = Vector2(4, 2)
 
-[node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_box") groups=["Bullet"]]
+[node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_box", "movement") groups=["Bullet"]]
 script = ExtResource("1_ttfp0")
 hit_box = NodePath("BulletHitBox")
+movement = NodePath("Movement")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_y0edw")

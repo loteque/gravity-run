@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://7ol42fgfnbpr"]
+[gd_scene load_steps=20 format=3 uid="uid://7ol42fgfnbpr"]
 
 [ext_resource type="Script" path="res://player/ui/player_ui.gd" id="1_51wwd"]
 [ext_resource type="PackedScene" uid="uid://dl2htgjrw0710" path="res://player/ui/total_kills_counter/TotalKillsCounter.tscn" id="1_yuab5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b58kbxv6143me" path="res://ui/announce/level_up_announcement.tscn" id="4_7x624"]
 [ext_resource type="Texture2D" uid="uid://dyl5h0aqs12se" path="res://player/atlas_textures/upgrades/StandardIssue/LazerBow.tres" id="4_e4wbs"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/ShipEditorPanel.gd" id="4_ojf84"]
+[ext_resource type="Script" path="res://lib/CountdownBar.gd" id="5_eqvx8"]
 [ext_resource type="Texture2D" uid="uid://cys3lmvx8q6m1" path="res://player/atlas_textures/upgrades/StandardIssue/TorpedoPort.tres" id="5_gxkcl"]
 [ext_resource type="Script" path="res://player/ui/upgrade_panel/ship_editor_control.gd" id="6_8rnnf"]
 [ext_resource type="Texture2D" uid="uid://bav278krrdjl0" path="res://player/atlas_textures/upgrades/StandardIssue/SmallBomb.tres" id="6_25c1v"]
@@ -84,19 +85,22 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AbilitySlots/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilitySlots/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilitySlots/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer"]
+[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_e4wbs")
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer/AbilityIcon"]
+[node name="TextureRect" type="TextureRect" parent="AbilitySlots/VBoxContainer/VBoxContainer/HBoxContainer/AbilityIcon"]
 visible = false
 show_behind_parent = true
 layout_mode = 1
@@ -108,15 +112,21 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_j7akb")
 expand_mode = 1
 
-[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer"]
+[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Lazer"
 
-[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer"]
+[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "X"
+
+[node name="CountdownBar" type="ProgressBar" parent="AbilitySlots/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+show_percentage = false
+script = ExtResource("5_eqvx8")
+bullet_type = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="AbilitySlots/VBoxContainer"]
 layout_mode = 2

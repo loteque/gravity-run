@@ -4,6 +4,9 @@ extends Node2D
 @onready var medium_wing: Node2D = %MedWing
 @onready var large_wing: Node2D = %LargeWing
 
+signal cooldown_timer_started(bullet_type: Muzzle.BulletType, timer: Timer)
+
+
 enum UpgradeType {
 
     STA,

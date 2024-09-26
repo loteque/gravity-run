@@ -6,6 +6,7 @@ signal upgrade_applied(wing_type, id)
 
 
 func _ready():
+
     upgrade_applied.connect(_on_upgrade_applied)
 
 

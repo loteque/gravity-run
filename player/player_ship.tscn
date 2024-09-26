@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dit028henhvgo"]
+[gd_scene load_steps=27 format=3 uid="uid://dit028henhvgo"]
 
 [ext_resource type="Shader" path="res://third_party/color_flash_effect/solid_color_shader.gdshader" id="1_dwyfn"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="2_mqwqv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="10_wiydb"]
 [ext_resource type="Script" path="res://player/PlayerState.gd" id="11_a02nr"]
 [ext_resource type="PackedScene" uid="uid://dl5q4sxdam73k" path="res://player/upgrades.tscn" id="13_gsix2"]
+[ext_resource type="PackedScene" uid="uid://c57gyg5t7evqd" path="res://player/h_lazer.tscn" id="14_5bx6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx3h"]
 size = Vector2(12, 4)
@@ -274,9 +275,11 @@ player_state = NodePath("../../../../PlayerState")
 player_state = NodePath("../../../../PlayerState")
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/LazerBow" index="0" node_paths=PackedStringArray("player_state")]
+bullet_type = 1
 player_state = NodePath("../../../../PlayerState")
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/LazerStern" index="0" node_paths=PackedStringArray("player_state")]
+bullet = ExtResource("14_5bx6s")
 player_state = NodePath("../../../../PlayerState")
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/LazerPort" index="0" node_paths=PackedStringArray("player_state")]
@@ -290,9 +293,6 @@ player_state = NodePath("../../../../PlayerState")
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/TorpedoStarboard" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-
-[node name="SpreadStern" parent="Upgrades/StandardIssue" index="13"]
-visible = false
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/SpreadStern" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dl5q4sxdam73k"]
+[gd_scene load_steps=33 format=3 uid="uid://dl5q4sxdam73k"]
 
 [ext_resource type="Script" path="res://player/upgrades.gd" id="1_3g23n"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_8vccx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://player/Muzzle.gd" id="4_53ecp"]
 [ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player/bullet.tscn" id="5_hchhx"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="6_ss1ae"]
+[ext_resource type="PackedScene" uid="uid://c57gyg5t7evqd" path="res://player/h_lazer.tscn" id="7_w6k8d"]
+[ext_resource type="PackedScene" uid="uid://b1h2iabbd3f56" path="res://player/v_lazer.tscn" id="8_ned6q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0wb6"]
 atlas = ExtResource("1_8vccx")
@@ -478,9 +480,11 @@ script = ExtResource("3_tf2kj")
 [node name="Muzzle" type="Marker2D" parent="StandardIssue/LazerBow" node_paths=PackedStringArray("firing_sfx")]
 position = Vector2(3, 4)
 script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
+bullet = ExtResource("7_w6k8d")
+fire_delay = 2.0
 firing_sfx = NodePath("../../CannonPort/Muzzle/SfxrStreamPlayer")
 fire_direction = 1
+bullet_animation = &"grow_right"
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/LazerBow/Muzzle"]
 stream = SubResource("AudioStreamWAV_jb4bm")
@@ -523,8 +527,11 @@ script = ExtResource("3_tf2kj")
 position = Vector2(3, 4)
 script = ExtResource("4_53ecp")
 bullet = ExtResource("5_hchhx")
+bullet_type = 1
+fire_delay = 2.0
 firing_sfx = NodePath("../../CannonPort/Muzzle/SfxrStreamPlayer")
 fire_direction = 3
+bullet_animation = &"grow_left"
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/LazerStern/Muzzle"]
 stream = SubResource("AudioStreamWAV_jb4bm")
@@ -565,10 +572,13 @@ flip_h = true
 script = ExtResource("3_tf2kj")
 
 [node name="Muzzle" type="Marker2D" parent="StandardIssue/LazerPort" node_paths=PackedStringArray("firing_sfx")]
-position = Vector2(2.00001, 4.00003)
+position = Vector2(2.00001, 3.00003)
 script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
+bullet = ExtResource("8_ned6q")
+bullet_type = 1
+fire_delay = 2.0
 firing_sfx = NodePath("../../LaunchTubePortSmall/Muzzle/SfxrStreamPlayer")
+bullet_animation = &"grow_up"
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/LazerPort/Muzzle"]
 stream = SubResource("AudioStreamWAV_jb4bm")
@@ -608,11 +618,14 @@ centered = false
 script = ExtResource("3_tf2kj")
 
 [node name="Muzzle" type="Marker2D" parent="StandardIssue/LazerStarboard" node_paths=PackedStringArray("firing_sfx")]
-position = Vector2(3.00001, 4.00003)
+position = Vector2(3.00001, 3.00003)
 script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
+bullet = ExtResource("8_ned6q")
+bullet_type = 1
+fire_delay = 2.0
 firing_sfx = NodePath("../../LaunchTubePortSmall/Muzzle/SfxrStreamPlayer")
 fire_direction = 2
+bullet_animation = &"grow_down"
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/LazerStarboard/Muzzle"]
 stream = SubResource("AudioStreamWAV_jb4bm")
@@ -654,6 +667,8 @@ script = ExtResource("3_tf2kj")
 position = Vector2(1.00001, 2.00003)
 script = ExtResource("4_53ecp")
 bullet = ExtResource("5_hchhx")
+bullet_type = 1
+fire_delay = 2.0
 firing_sfx = NodePath("../../LaunchTubePortSmall/Muzzle/SfxrStreamPlayer")
 fire_direction = 1
 
@@ -730,6 +745,7 @@ high_pass_filter/cutoff_frequency = 0.143954
 high_pass_filter/cutoff_sweep = 0.0
 
 [node name="SpreadStern" type="Sprite2D" parent="StandardIssue"]
+visible = false
 position = Vector2(-3, 0)
 texture = SubResource("AtlasTexture_n5p75")
 script = ExtResource("3_tf2kj")

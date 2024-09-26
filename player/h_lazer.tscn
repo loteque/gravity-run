@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://c57gyg5t7evqd"]
+
+[ext_resource type="Script" path="res://player/bullet.gd" id="1_yxti3"]
+[ext_resource type="Script" path="res://lib/HitBox.gd" id="2_t0i0k"]
+[ext_resource type="Script" path="res://player/BulletMovement.gd" id="3_nfc11"]
+[ext_resource type="Script" path="res://lib/ActorInput.gd" id="4_7idtb"]
+[ext_resource type="Script" path="res://lib/Gravity.gd" id="5_oabyj"]
+[ext_resource type="Script" path="res://lib/HurtBox.gd" id="6_ilw1i"]
+
+[sub_resource type="Gradient" id="Gradient_mg1y3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a3n7u"]
+gradient = SubResource("Gradient_mg1y3")
+width = 1
+height = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg13y"]
+size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp62h"]
+size = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_3iw1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_j1lau"]
+resource_name = "grow_left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 2), Vector2(-120, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_ku5ng"]
+resource_name = "grow_right"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 2), Vector2(120, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxe8p"]
+_data = {
+"RESET": SubResource("Animation_3iw1g"),
+"grow_left": SubResource("Animation_j1lau"),
+"grow_right": SubResource("Animation_ku5ng")
+}
+
+[node name="HLazer" type="CharacterBody2D" node_paths=PackedStringArray("hit_box", "movement", "animation") groups=["Bullet"]]
+script = ExtResource("1_yxti3")
+hit_box = NodePath("Sprite2D/BulletHitBox")
+movement = NodePath("Sprite2D/Movement")
+animation = NodePath("Sprite2D/AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-1, 2)
+texture = SubResource("GradientTexture2D_a3n7u")
+centered = false
+
+[node name="BulletHitBox" type="Area2D" parent="Sprite2D" groups=["Bullet"]]
+script = ExtResource("2_t0i0k")
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/BulletHitBox"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_fg13y")
+
+[node name="Gravity" type="Area2D" parent="Sprite2D"]
+position = Vector2(0.5, 0.5)
+monitoring = false
+monitorable = false
+script = ExtResource("5_oabyj")
+
+[node name="HurtBox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("actor")]
+position = Vector2(0.5, 0.5)
+script = ExtResource("6_ilw1i")
+actor = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
+shape = SubResource("RectangleShape2D_hp62h")
+
+[node name="Movement" type="Node" parent="Sprite2D" node_paths=PackedStringArray("actor", "input", "gravity")]
+script = ExtResource("3_nfc11")
+actor = NodePath("../..")
+speed = 750.0
+input = NodePath("../ActorInput")
+gravity = NodePath("../Gravity")
+
+[node name="ActorInput" type="Node" parent="Sprite2D"]
+script = ExtResource("4_7idtb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
+rect = Rect2(0, 0, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_jxe8p")
+}
+
+[connection signal="screen_exited" from="Sprite2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
