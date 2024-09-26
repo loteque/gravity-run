@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Bullet
 
 @export var hit_box: HitBox
 @export var movement: Movement

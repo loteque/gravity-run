@@ -150,27 +150,48 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "C"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="AbilitySlots/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="AbilitySlots/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilitySlots/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
+[node name="AbilityIcon" type="TextureRect" parent="AbilitySlots/VBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("7_k2jrx")
 stretch_mode = 3
 
-[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="AbilitySlots/VBoxContainer/VBoxContainer2/HBoxContainer/AbilityIcon"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_j7akb")
+expand_mode = 1
+
+[node name="AbilityName" type="Label" parent="AbilitySlots/VBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "SM Bomb"
 
-[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/HBoxContainer3"]
+[node name="AbilityButton" type="Label" parent="AbilitySlots/VBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "V"
+
+[node name="CountdownBar" type="ProgressBar" parent="AbilitySlots/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+show_percentage = false
+script = ExtResource("5_eqvx8")
+bullet_type = 3
 
 [node name="Menus" type="CanvasLayer" parent="."]
 layer = 5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dl5q4sxdam73k"]
+[gd_scene load_steps=36 format=3 uid="uid://dl5q4sxdam73k"]
 
 [ext_resource type="Script" path="res://player/upgrades.gd" id="1_3g23n"]
 [ext_resource type="Texture2D" uid="uid://bl8naqqs71i67" path="res://grey_box_texture_sheet.png" id="1_8vccx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://player/Muzzle.gd" id="4_53ecp"]
 [ext_resource type="PackedScene" uid="uid://bnyleqcusyak5" path="res://player/bullet.tscn" id="5_hchhx"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="6_ss1ae"]
+[ext_resource type="PackedScene" uid="uid://dtcgp2x7kt71o" path="res://player/bomb_sm.tscn" id="7_3ewp1"]
 [ext_resource type="PackedScene" uid="uid://c57gyg5t7evqd" path="res://player/h_lazer.tscn" id="7_w6k8d"]
 [ext_resource type="PackedScene" uid="uid://b1h2iabbd3f56" path="res://player/v_lazer.tscn" id="8_ned6q"]
 [ext_resource type="Script" path="res://player/MultiMuzzle.gd" id="9_3ffjg"]
@@ -198,7 +199,9 @@ script = ExtResource("3_tf2kj")
 
 [node name="Muzzle" type="Marker2D" parent="StandardIssue/LaunchTubeSmall" node_paths=PackedStringArray("firing_sfx")]
 script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
+bullet = ExtResource("7_3ewp1")
+bullet_type = 3
+fire_delay = 10.0
 firing_sfx = NodePath("../../CannonStarboard/Muzzle/SfxrStreamPlayer")
 fire_direction = 3
 
@@ -241,7 +244,9 @@ script = ExtResource("3_tf2kj")
 [node name="Muzzle" type="Marker2D" parent="StandardIssue/LaunchTubePortSmall" node_paths=PackedStringArray("firing_sfx")]
 position = Vector2(0, 3.74317e-05)
 script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
+bullet = ExtResource("7_3ewp1")
+bullet_type = 3
+fire_delay = 10.0
 firing_sfx = NodePath("SfxrStreamPlayer")
 
 [node name="SfxrStreamPlayer" type="AudioStreamPlayer" parent="StandardIssue/LaunchTubePortSmall/Muzzle"]
@@ -284,7 +289,9 @@ script = ExtResource("3_tf2kj")
 [node name="Muzzle" type="Marker2D" parent="StandardIssue/LaunchTubeStarboardSmall" node_paths=PackedStringArray("firing_sfx")]
 position = Vector2(0, 3.74317e-05)
 script = ExtResource("4_53ecp")
-bullet = ExtResource("5_hchhx")
+bullet = ExtResource("7_3ewp1")
+bullet_type = 3
+fire_delay = 10.0
 firing_sfx = NodePath("../../LaunchTubePortSmall/Muzzle/SfxrStreamPlayer")
 fire_direction = 2
 

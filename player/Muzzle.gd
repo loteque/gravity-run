@@ -88,6 +88,12 @@ func handle_shoot_event(event):
 				
 				shoot()
 
+			KEY_V:
+
+				if bullet_type != BulletType.SM_BOMB: return
+
+				shoot()
+
 			_: 
 
 				return

@@ -1,0 +1,108 @@
+[gd_scene load_steps=14 format=3 uid="uid://dtcgp2x7kt71o"]
+
+[ext_resource type="Script" path="res://player/bomb_sm.gd" id="1_v65hp"]
+[ext_resource type="Texture2D" uid="uid://2staey3sa7hi" path="res://player/atlas_textures/upgrades/StandardIssue/bomb_sm.tres" id="2_8w5ay"]
+[ext_resource type="Shader" path="res://black_hole/fx/invert_gradient.gdshader" id="2_q562m"]
+[ext_resource type="Script" path="res://lib/HitBox.gd" id="3_yit1d"]
+[ext_resource type="Script" path="res://player/BulletMovement.gd" id="4_g46yr"]
+[ext_resource type="Script" path="res://lib/ActorInput.gd" id="5_381h8"]
+[ext_resource type="Script" path="res://lib/Gravity.gd" id="6_jbuuh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmjng"]
+shader = ExtResource("2_q562m")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/y_zoom = null
+
+[sub_resource type="Gradient" id="Gradient_bxr1n"]
+offsets = PackedFloat32Array(0.686217, 0.695015)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ejvp6"]
+gradient = SubResource("Gradient_bxr1n")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tysqn"]
+radius = 136.004
+
+[sub_resource type="Animation" id="Animation_vn1sj"]
+resource_name = "energy_expansion"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.55),
+"transitions": PackedFloat32Array(0.203063, 19.6983, 4.92458, 2.92817),
+"update": 0,
+"values": [Vector2(0.05, 0.05), Vector2(1.2, 1.2), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5cg8s"]
+_data = {
+"energy_expansion": SubResource("Animation_vn1sj")
+}
+
+[node name="BombSM" type="CharacterBody2D" node_paths=PackedStringArray("hit_box", "movement") groups=["Bullet"]]
+script = ExtResource("1_v65hp")
+hit_box = NodePath("Explosion/BulletHitBox")
+movement = NodePath("Movement")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8w5ay")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dmjng")
+position = Vector2(0, 2.30074e-05)
+scale = Vector2(0.05, 0.05)
+texture = SubResource("GradientTexture2D_ejvp6")
+
+[node name="BulletHitBox" type="Area2D" parent="Explosion" groups=["Bullet"]]
+position = Vector2(0, -1.00136e-05)
+scale = Vector2(0.438356, 0.438356)
+script = ExtResource("3_yit1d")
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion/BulletHitBox"]
+shape = SubResource("CircleShape2D_tysqn")
+
+[node name="Gravity" type="Area2D" parent="Explosion"]
+position = Vector2(0, 0.438346)
+scale = Vector2(0.438356, 0.438356)
+monitorable = false
+script = ExtResource("6_jbuuh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Explosion/Gravity"]
+shape = SubResource("CircleShape2D_tysqn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Explosion"]
+position = Vector2(-2.6128e-08, -0.438366)
+scale = Vector2(0.438356, 0.438356)
+rect = Rect2(-2, -2, 4, 4)
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
+script = ExtResource("4_g46yr")
+actor = NodePath("..")
+speed = 500.0
+input = NodePath("../ActorInput")
+gravity = NodePath("../Explosion/Gravity")
+
+[node name="ActorInput" type="Node" parent="."]
+script = ExtResource("5_381h8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5cg8s")
+}
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 0.17
+one_shot = true
+
+[connection signal="screen_exited" from="Explosion/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

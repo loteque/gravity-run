@@ -288,14 +288,8 @@ player_state = NodePath("../../../../PlayerState")
 [node name="Muzzle" parent="Upgrades/StandardIssue/LazerStarboard" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
 
-[node name="TorpedoPort" parent="Upgrades/StandardIssue" index="11"]
-visible = true
-
 [node name="Muzzle" parent="Upgrades/StandardIssue/TorpedoPort" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
-
-[node name="TorpedoStarboard" parent="Upgrades/StandardIssue" index="12"]
-visible = true
 
 [node name="Muzzle" parent="Upgrades/StandardIssue/TorpedoStarboard" index="0" node_paths=PackedStringArray("player_state")]
 player_state = NodePath("../../../../PlayerState")
