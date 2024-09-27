@@ -50,23 +50,27 @@ func _on_parent_visibility_changed():
 
         is_empty = false
         
-        if get_parent().name == "TorpedoStarboard":
 
-            if connected_weapons[0].is_visible():
+        if connected_weapons[0].visible and connected_weapons[1].visible:
 
-                is_live = false
+            connected_weapons[0].get_child(0).is_live = true
+            connected_weapons[1].get_child(0).is_live = false
 
-            else:
+        if !connected_weapons[0].visible and connected_weapons[1].visible:
 
-                is_live = true
+            connected_weapons[0].get_child(0).is_live = false
+            connected_weapons[1].get_child(0).is_live = true
 
-        else:
+        if connected_weapons[0].visible:
 
-            is_live = true
+            connected_weapons[0].get_child(0).is_live = true
+            connected_weapons[1].get_child(0).is_live = false
+
 
     else:
 
         is_empty = true
+        is_live = false
 
 
 func _unhandled_input(event):
