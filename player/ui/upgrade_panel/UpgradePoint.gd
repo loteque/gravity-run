@@ -62,41 +62,41 @@ func validate_upgrade_point(data) -> bool:
     return type_match and point_match and section_match
 
 
-func _can_drop_data(_at_position, data):
+# func _can_drop_data(_at_position, data):
     
-    var is_valid_upgrade_point: bool = validate_upgrade_point(data)
+#     var is_valid_upgrade_point: bool = validate_upgrade_point(data)
 
-    var is_valid_part: bool = UpgradeData.Validator.validate(
+#     var is_valid_part: bool = UpgradeData.Validator.validate(
          
-        data[&"wing_type"],
-        data[&"ship_section"], 
-        data[&"id"]
+#         data[&"wing_type"],
+#         data[&"ship_section"], 
+#         data[&"id"]
     
-    )
+#     )
 
-    return is_valid_upgrade_point and is_valid_part
-
-
-func _drop_data(_at_position, data):
-
-    var new_value: int = value + data[&"return_value"]
-
-    print("upgrading mount points")
-
-    await upgrade_points(data[&"id"])
-    value = new_value
-    set_neighbor_values(value)
-
-    owner.upgrade_applied.emit(data[&"wing_type"], data[&"id"])
-    data[&"object"].tree_exiting.connect(_on_card_tree_exiting)
-    data[&"object"].queue_free()
+#     return is_valid_upgrade_point and is_valid_part
 
 
-func _on_card_tree_exiting():
+# func _drop_data(_at_position, data):
 
-    var editor_panel = %ShipEditorPanel
-    editor_panel.hide()
-    GameState.unpause_stage() 
+#     var new_value: int = value + data[&"return_value"]
+
+#     print("upgrading mount points")
+
+#     await upgrade_points(data[&"id"])
+#     value = new_value
+#     set_neighbor_values(value)
+
+#     owner.upgrade_applied.emit(data[&"wing_type"], data[&"id"])
+#     data[&"object"].tree_exiting.connect(_on_card_tree_exiting)
+#     data[&"object"].queue_free()
+
+
+# func _on_card_tree_exiting():
+
+#     var editor_panel = %ShipEditorPanel
+#     editor_panel.hide()
+#     GameState.unpause_stage() 
 
 
 func upgrade_points(id):

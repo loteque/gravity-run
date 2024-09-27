@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://7ol42fgfnbpr"]
+[gd_scene load_steps=22 format=3 uid="uid://7ol42fgfnbpr"]
 
 [ext_resource type="Script" path="res://player/ui/player_ui.gd" id="1_51wwd"]
 [ext_resource type="PackedScene" uid="uid://dl2htgjrw0710" path="res://player/ui/total_kills_counter/TotalKillsCounter.tscn" id="1_yuab5"]
@@ -18,6 +18,28 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_j7akb"]
 gradient = SubResource("Gradient_lq2s2")
+
+[sub_resource type="Animation" id="Animation_x5t5d"]
+resource_name = "shake_ui_horizontal"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(3.605, 1, 1, 1, 5.85634),
+"update": 0,
+"values": [Vector2(283, 132), Vector2(275, 132), Vector2(291, 132), Vector2(283, 132), Vector2(275, 132)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqfll"]
+_data = {
+"shake_ui_horizontal": SubResource("Animation_x5t5d")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pm2vn"]
 atlas = ExtResource("4_0vcc7")
@@ -196,26 +218,26 @@ bullet_type = 3
 [node name="Menus" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="ShipEditorPanel" type="PanelContainer" parent="Menus"]
+[node name="ShipEditorPanel" type="PanelContainer" parent="Menus" node_paths=PackedStringArray("upgrade_points")]
 unique_name_in_owner = true
 process_mode = 3
 z_index = -5
 z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.0
-offset_top = -47.5
-offset_right = 37.0
-offset_bottom = 47.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+offset_left = 283.0
+offset_top = 132.0
+offset_right = 357.0
+offset_bottom = 227.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_ojf84")
+upgrade_points = [NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingTopSurface/Point3"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/Drones/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/WingType/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/WingLeadingTrailing/LeadingEdge/Point3"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/Fuselage/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Port/Fuselage/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2/Point3"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints1/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints/Point3"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/Fuselage/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/Drones/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/Drones/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/WingType/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge/Point1"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingLeadingTrailing/LeadingEdge/Point3"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface/Point3"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface/Point2"), NodePath("MarginContainer/ShipEditor/ShipLayout/Starboard/WingTopSurface/Point1")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menus/ShipEditorPanel"]
+root_node = NodePath("../MarginContainer")
+libraries = {
+"": SubResource("AnimationLibrary_eqfll")
+}
 
 [node name="ShipEditorControl" type="Control" parent="Menus/ShipEditorPanel" node_paths=PackedStringArray("stern_2", "stern_1", "bow", "port_wing_top", "port_wing_drones", "port_wing_leading", "port_fuselage", "star_wing_top", "star_wing_drones", "star_wing_leading", "star_fuselage")]
 unique_name_in_owner = true
@@ -407,7 +429,6 @@ texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 value_max = 4
-value = 3
 ship_section = 2
 
 [node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
@@ -417,7 +438,7 @@ texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
 value_max = 4
-value = 3
+value = 2
 ship_section = 2
 
 [node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/SternPoints/SternPoints2"]
@@ -439,7 +460,6 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
-value_max = 4
 ship_section = 2
 
 [node name="Ship" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern"]
@@ -457,7 +477,6 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
-value = 3
 
 [node name="Point2" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
@@ -465,7 +484,7 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_pm2vn")
 script = ExtResource("6_or1v3")
 type = 1
-value = 3
+value = 2
 
 [node name="Point3" type="TextureRect" parent="Menus/ShipEditorPanel/MarginContainer/ShipEditor/ShipLayout/BowStern/BowPoints"]
 visible = false
