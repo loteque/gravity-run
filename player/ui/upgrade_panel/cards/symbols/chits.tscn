@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb6hej87fvkci"]
+
+[sub_resource type="Gradient" id="Gradient_em4bu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_owp36"]
+gradient = SubResource("Gradient_em4bu")
+width = 2
+height = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_busab"]
+gradient = SubResource("Gradient_em4bu")
+width = 4
+height = 4
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5gtkv"]
+gradient = SubResource("Gradient_em4bu")
+width = 6
+height = 6
+
+[node name="Chits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SmallRectChit" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+offset_right = 2.0
+offset_bottom = 2.0
+texture = SubResource("GradientTexture2D_owp36")
+stretch_mode = 3
+
+[node name="MedRectChit" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 6.0
+offset_bottom = 6.0
+texture = SubResource("GradientTexture2D_busab")
+stretch_mode = 3
+
+[node name="LargeRectChit" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 2.0
+offset_bottom = 2.0
+texture = SubResource("GradientTexture2D_5gtkv")
+stretch_mode = 3

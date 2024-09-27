@@ -1,10 +1,11 @@
 extends TextureRect
+class_name UpgradeCard
 
 @onready var cost_tray: BoxContainer = %Cost
 @onready var part_image: GridContainer = %PartImage
 @onready var return_tray: BoxContainer = %Gain
 
-var all_cards = [
+static var all_cards = [
 
     preload("res://player/ui/upgrade_panel/cards/cannon_port.tres"),
     preload("res://player/ui/upgrade_panel/cards/cannon_starboard.tres"),
@@ -24,15 +25,15 @@ var all_cards = [
 var card
 
 
-func get_random_card():
+static func get_random_card():
     
     var cards_idx_max = all_cards.size() - 1
     return all_cards[randi_range(0, cards_idx_max)]
 
 
-func compile_card():
+func compile_card(new_card):
 
-    card = get_random_card()
+    card = new_card
 
     for i in card.cost:
         
@@ -54,9 +55,9 @@ func compile_card():
     part_image.add_child(part_tex_rect)
 
 
-func _ready():
+# func _ready():
     
-    compile_card()
+#     compile_card(card)
 
 
 func _get_drag_data(_at_position):
@@ -67,6 +68,7 @@ func _get_drag_data(_at_position):
     prev.z_index = 1
 
     set_drag_preview(prev)
+    prev.compile_card(card)
     prev.texture = null
     prev.get_node("ColorRect").hide()
     prev.part_image.hide()
