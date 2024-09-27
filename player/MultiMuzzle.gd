@@ -49,7 +49,20 @@ func _on_parent_visibility_changed():
     if get_parent().visible:
 
         is_empty = false
-        set_is_live()
+        
+        if get_parent().name == "TorpedoStarboard":
+
+            if connected_weapons[0].is_visible():
+
+                is_live = false
+
+            else:
+
+                is_live = true
+
+        else:
+
+            is_live = true
 
     else:
 
