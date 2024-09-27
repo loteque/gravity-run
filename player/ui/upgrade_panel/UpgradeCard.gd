@@ -67,6 +67,10 @@ func _get_drag_data(_at_position):
     prev.z_index = 1
 
     set_drag_preview(prev)
+    prev.texture = null
+    prev.get_node("ColorRect").hide()
+    prev.part_image.hide()
+    prev.return_tray.hide()
     
     print(prev.size, prev.global_position, prev.z_index)
     return {
