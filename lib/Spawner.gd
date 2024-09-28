@@ -40,18 +40,19 @@ class SpawnTimer extends Timer:
 		wait_time = gen_wait_time()
 
 
-func _ready():
+# func _ready():
 	
-	GameState.spawner_state.merge({&"asteroid_spawner": self})
+# 	GameState.spawner_state.merge({&"asteroid_spawner": self})
 
-	var spawn_timer := SpawnTimer.new(timer_name, wait_max)
-	spawn_timer.timeout.connect(_on_timeout)
-	add_child(spawn_timer)
+# 	var spawn_timer := SpawnTimer.new(timer_name, wait_max)
+# 	spawn_timer.timeout.connect(_on_timeout)
+# 	add_child(spawn_timer)
 
 
 func get_rand_spawn_point():
 	
 	var rand_idx: int = randi_range(0, get_child_count() - 2)
+
 	return get_child(rand_idx)
 
 

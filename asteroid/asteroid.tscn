@@ -50,7 +50,7 @@ shape = SubResource("CircleShape2D_8yiah")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input", "gravity")]
 script = ExtResource("3_6slht")
-min_speed = 40.0
+min_speed = 25.0
 actor = NodePath("..")
 speed = 75.0
 input = NodePath("../ActorInput")

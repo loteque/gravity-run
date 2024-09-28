@@ -22,5 +22,6 @@ func set_rand_speed(player_level):
 
 func _ready():
 
+	# REFACTOR so that this doesn't use a hard coded value
 	set_rand_speed(GameState.player_state["player1"].level)
 
