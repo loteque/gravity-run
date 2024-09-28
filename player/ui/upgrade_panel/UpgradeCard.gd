@@ -24,6 +24,9 @@ static var all_cards = [
 
 var card
 
+var data
+
+signal card_selected(data)
 
 static func get_random_card():
     
@@ -54,10 +57,40 @@ func compile_card(new_card):
     part_tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
     part_image.add_child(part_tex_rect)
 
-
-# func _ready():
+    data = {
     
-#     compile_card(card)
+    &"type": card.upgrade_type, 
+    &"cost": card.cost, 
+    &"id": card.id, 
+    &"wing_type": card.wing_type,
+    &"ship_section": card.ship_section, 
+    &"return_type": card.return_type, 
+    &"return_value": card.return_value,
+    &"object": self,
+    
+    }
+
+
+func _ready():
+    
+    if get_parent().name != &"UpgradesRow":
+    
+        return
+    
+    set_focus_mode(FOCUS_ALL)
+    focus_entered.connect(_on_focus_enterd)
+    focus_exited.connect(_on_focus_exited)
+    self_modulate = Color(0,0,0,1)
+    
+    get_parent().get_child(0).grab_focus.call_deferred()
+
+func _on_focus_enterd():
+
+    self_modulate = Color(1,1,1,1)
+
+func _on_focus_exited():
+
+    self_modulate = Color(0,0,0,1)
 
 
 func _get_drag_data(_at_position):
@@ -75,17 +108,15 @@ func _get_drag_data(_at_position):
     prev.return_tray.hide()
     
     print(prev.size, prev.global_position, prev.z_index)
-    return {
-        
-        &"type": card.upgrade_type, 
-        &"cost": card.cost, 
-        &"id": card.id, 
-        &"wing_type": card.wing_type,
-        &"ship_section": card.ship_section, 
-        &"return_type": card.return_type, 
-        &"return_value": card.return_value,
-        &"object": self,
-    
-    }
 
+    return data
 
+func _process(_delta):
+
+    if get_parent().name != &"UpgradesRow":
+
+        return
+
+    if Input.is_action_just_pressed("ui_accept") and has_focus():
+
+        card_selected.emit(data)

@@ -128,3 +128,38 @@ func _ready():
 	cooldown_timer.wait_time = fire_delay
 	cooldown_timer.one_shot = true
 	add_child(cooldown_timer)
+
+
+func _process(_delta):
+
+	if player_state.input_paused:
+
+		return
+
+	if !is_active:
+
+		return
+
+	if Input.is_action_just_pressed("cannon"):
+
+		if bullet_type == BulletType.DEFAULT: 
+
+			shoot()
+
+	if Input.is_action_just_pressed("lazer"):
+
+		if bullet_type == BulletType.LAZER:
+
+			shoot()
+
+	if Input.is_action_just_pressed("bomb"):
+
+		if bullet_type == BulletType.SM_BOMB: 
+			
+			shoot()
+
+	if Input.is_action_just_pressed("torpedo"):
+
+		if bullet_type == BulletType.TORPEDO: 
+		
+			shoot()

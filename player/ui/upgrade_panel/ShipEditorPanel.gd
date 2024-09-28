@@ -9,10 +9,19 @@ func draw_3():
 
     for i in 3:
 
-        var new_card = card.instantiate()
+        var new_card: UpgradeCard = card.instantiate()
         card_tray.add_child(new_card)
+        new_card.card_selected.connect(_on_card_selected)
         new_card.compile_card(UpgradeCard.get_random_card())
 
+
+func _on_card_selected(data):
+
+    var is_valid_card = validate_drop(data)
+
+    if is_valid_card:
+
+        apply_upgrade(data)
 
 
 func _ready():
@@ -71,8 +80,9 @@ func find_valid_upgrade_point(data):
 
     return null
 
-func _can_drop_data(_at_position, data):
-    
+
+func validate_drop(data) -> bool:
+
     valid_upgrade_point = find_valid_upgrade_point(data)
     print("find_valid_upgrade_point(): ", valid_upgrade_point)
 
@@ -94,21 +104,32 @@ func _can_drop_data(_at_position, data):
         anim_player.play(&"shake_ui_horizontal")
 
     return is_valid_drop
+    
 
+func _can_drop_data(_at_position, data):
 
-func _drop_data(_at_position, data):
+    return validate_drop(data)
+    
+
+func apply_upgrade(data):
 
     var new_value: int = valid_upgrade_point.value + data[&"return_value"]
 
     print("upgrading mount points")
 
     await valid_upgrade_point.upgrade_points(data[&"id"])
+    if !valid_upgrade_point: return
     valid_upgrade_point.value = new_value
     valid_upgrade_point.set_neighbor_values(valid_upgrade_point.value)
 
     owner.upgrade_applied.emit(data[&"wing_type"], data[&"id"])
     data[&"object"].tree_exiting.connect(_on_card_tree_exiting)
     data[&"object"].queue_free()
+
+
+func _drop_data(_at_position, data):
+
+    apply_upgrade(data)
 
 
 func _on_card_tree_exiting():

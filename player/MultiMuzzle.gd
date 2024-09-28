@@ -90,3 +90,18 @@ func _unhandled_input(event):
     handle_shoot_event(event)
 
 
+func _process(_delta):
+
+    if player_state.input_paused:
+
+        return
+
+    if !is_active:
+
+        return
+
+    if Input.is_action_just_pressed("torpedo"):
+
+        if bullet_type == BulletType.TORPEDO: 
+
+            self.shoot()
