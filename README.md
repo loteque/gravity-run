@@ -42,12 +42,16 @@ Commander Quacker is challenged to race for the fate of duck-kind, because appar
 ### Keyboard
 
 - **WASD / Arrow keys** — movement
+- **Space** — cannon; also advances dialogue / confirms menu actions where applicable
+- **X** — laser
+- **C** — torpedo
+- **V** — small bomb
 - **Esc** — pause / resume
-- **Space / Enter** — menu confirmation where applicable
+- **Enter** — menu confirmation where applicable
 
 ### Gamepad
 
-The project includes controller navigation, movement, and mapped actions for the ship's weapon systems.
+The project includes controller navigation, movement, and mapped actions for the ship's weapon systems. Campaign dialogue progression is currently keyboard-driven and needs controller-input cleanup before a polished release.
 
 ## Running the project
 
@@ -81,10 +85,10 @@ A few useful starting points:
 
 The codebase contains more gameplay systems than finished content. In particular, the player/upgrades infrastructure is substantially broader than the current campaign. The next development milestone should be driven by playtesting and scope validation rather than adding more systems by default.
 
-## Third-party components and assets
+## Licensing status
 
-This repository includes third-party components, shaders, audio, and the bundled GodotSfxr plugin. Third-party material may be subject to its own licensing and attribution requirements; those should be verified before any commercial distribution.
+The repository's current root `LICENSE` file appears to belong to the bundled GodotSfxr component and **should not be interpreted as a project-wide license for Gravity Run**.
 
-## License
+The repository also contains third-party shaders, audio, plugins, and other components that may have separate attribution or licensing requirements. Ownership, contributor rights, and third-party notices need to be reviewed and made explicit before commercial distribution.
 
-See [`LICENSE`](LICENSE) for the repository license. Third-party components and assets retain their applicable licenses.
+Until that cleanup is complete, do not assume that the game or all bundled assets are covered by the root MIT license.
