@@ -1,53 +1,90 @@
-# GodotSfxr
+# Gravity Run
 
-Godot plugin that adds the SfxrStreamPlayer node and SfxrAudioStream Resource to generate sound effects inside the editor.
+![Gravity Run title screen](ui/title_screen.png)
 
-![SfxrStreamPlayer Node](images/icon_big.png)
+**Gravity Run** is a gravity-driven arcade shmup / endless-runner prototype built in Godot, starring Commander Quacker.
 
-Ported from [jsfxr](https://sfxr.me/) (by Eric Fredricksen), which is a port from the original [sfxr](https://www.drpetter.se/project_sfxr.html) (by DrPetter).
+What began as a compact game-jam experiment has grown into a short campaign, an endless arcade mode, a small cast of aggressively spacefaring birds, and a ship system with multiple weapons and upgrades.
 
-## Installation
+## The hook
 
-- Install options:
+You are flying through a hostile field of asteroids while gravity itself becomes part of the problem.
 
-  1. Install from the [Godot Asset Library](https://godotengine.org/asset-library/asset?filter=GodotSfxr&category=5&godot_version=&cost=&sort=updated)*.
+Asteroids can pull on nearby objects, gravity can invert around the black-hole mechanics, and survival is not always as simple as shooting everything in front of you. Movement, positioning, momentum, and deciding when *not* to destroy an asteroid are part of the original design.
 
-  2. Clone or download this repository, and copy the contents of the "addons" directory to the "addons" directory of your Godot Project.
+## Current game
 
-  > \* The download from the Godot Asset Library might not be up to date. You can use Github to always get the latest version.
+The current project includes:
 
-- After installing the plugin you need to enable it on the menu: ``Project`` > ``Project Settings...`` > ``Plugins`` > ``GodotSfxr``.
+- a short campaign featuring **Commander Quacker**, General Goose, and an alien challenge;
+- an **endless mode** that unlocks after campaign completion;
+- asteroid spawning and gravity interactions;
+- black-hole and inversion visual effects;
+- player health, kill tracking, leveling, and level-up flow;
+- configurable ship upgrades and multiple weapon families;
+- cannon, laser, torpedo, and bomb systems;
+- keyboard movement and gamepad support;
+- dialogue, cutscenes, announcements, menus, pause, and game-over flow;
+- Web, Linux, and Windows export presets.
 
-## Usage
+The project is still a **playable prototype / work in progress**, not a finished commercial release.
 
-Add the desired node: ``SfxrStreamPlayer``, ``SfxrStreamPlayer2D``, or ``SfxrStreamPlayer3D``.
+## Campaign
 
-![Node selection](https://user-images.githubusercontent.com/8657959/156293234-b7273f72-ce67-4f6c-94c9-2d8739361d45.png)
+The current short campaign is titled:
 
-Select a preset sound effect under the ``Generators`` group in the inspector.
+> **Commander Quacker and the Quack in the Spacetime Continuum**
 
-That will generate and save an ``AudioStreamSample`` resource with the audio data (embedded on the node).
+Commander Quacker is challenged to race for the fate of duck-kind, because apparently spacetime did not have enough problems already.
 
-![Node options](https://user-images.githubusercontent.com/8657959/152902343-408276c1-dc8a-49d1-bdd6-e6de5fd4138d.png)
+## Controls
 
-You can adjust the sound parameters on the inspector as needed.
+### Keyboard
 
-The sound will play automatically after being generated, but you can also click on the ``Playing`` property to make it play.
+- **WASD / Arrow keys** — movement
+- **Esc** — pause / resume
+- **Space / Enter** — menu confirmation where applicable
 
-If for some reason you need to regenerate the sound (maybe you deleted the stream resource), you can use the ``Force Rebuild`` option under the ``Actions`` group.
+### Gamepad
 
-![Node regen](https://user-images.githubusercontent.com/8657959/152902707-267a9be9-02a9-43b7-8f9b-73641474c8b3.png)
+The project includes controller navigation, movement, and mapped actions for the ship's weapon systems.
 
-Everything else works as in the regular ``AudioStreamPlayer*`` nodes.
+## Running the project
 
-For example, you can call the ``play`` function on the node, or connect to the ``finished`` signal.
+The repository currently targets **Godot 4.2**.
 
-![Code example](https://user-images.githubusercontent.com/8657959/152903349-cb60ba13-e2b3-456f-b741-61550a78dde4.png)
+1. Clone the repository.
+2. Open the project directory in Godot 4.2 or a compatible Godot 4 release.
+3. Run the project from `main.tscn`.
 
-Depending on your needs, you can also create a ``SfxrAudioStream`` Resource that will contain the audio data, and has all the same options as the nodes above.
+The project contains export presets for:
 
-![Resource Creation](https://github.com/tomeyro/godot-sfxr/assets/8657959/3e80511d-0895-4dc6-a781-71c6e9374190)
+- Web
+- Linux/X11
+- Windows Desktop
 
-Then you can use that resource by setting it to the ``stream`` parameter of any ``AudioStreamPlayer``.
+## Project structure
 
-![Node with resource](https://github.com/tomeyro/godot-sfxr/assets/8657959/5877916e-20e9-47ef-b805-fb10948faaa6)
+A few useful starting points:
+
+- `main.tscn` / `main.gd` — application entry point and pause/game-over handling
+- `stages/` — stage loading, campaign stage, endless/demo stage, backgrounds, and music
+- `player/` — ship, weapons, state, upgrades, and player UI
+- `asteroid/` — asteroid behavior and spawning
+- `black_hole/` — black-hole behavior and visual effects
+- `cut_scenes/` — dialogue and campaign cutscene sequencing
+- `lib/` — reusable gameplay systems including gravity, spawning, movement, and event sequencing
+- `ui/` — menus, announcements, dialogue, and title screen
+- `design.md` — the original game-jam design document; useful historical context, but no longer a complete description of the current game
+
+## Development status
+
+The codebase contains more gameplay systems than finished content. In particular, the player/upgrades infrastructure is substantially broader than the current campaign. The next development milestone should be driven by playtesting and scope validation rather than adding more systems by default.
+
+## Third-party components and assets
+
+This repository includes third-party components, shaders, audio, and the bundled GodotSfxr plugin. Third-party material may be subject to its own licensing and attribution requirements; those should be verified before any commercial distribution.
+
+## License
+
+See [`LICENSE`](LICENSE) for the repository license. Third-party components and assets retain their applicable licenses.
